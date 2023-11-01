@@ -25,3 +25,21 @@ export const ProfileImg = styled.div`
   width: 30px;
   height: 30px;
 `;
+
+export const NavLine = styled.div`
+  width: 100%;
+  height: 1px;
+  margin: 22px 0px;
+  background-color: ${COLORS.gray.gray200};
+`;
+
+export const FocusLine = styled.div`
+  width: auto;
+  height: 2px;
+  background-color: ${COLORS.gray.black};
+`;
+
+export const FocusWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

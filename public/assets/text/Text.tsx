@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextStyleName } from '../fonts/fonts';
-import * as styles from './text.style';
+import * as styles from './Text.style';
 
 export interface TextProps {
   children: React.ReactNode;
