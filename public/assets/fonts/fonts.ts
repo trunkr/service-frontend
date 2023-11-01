@@ -37,6 +37,8 @@ export const TEXT_STYLE_NAME = {
 
 export type TextStyleName = (typeof TEXT_STYLE_NAME)[keyof typeof TEXT_STYLE_NAME];
 
+export type FontFamilyName = 'Poppins' | 'Pretendard';
+
 interface TextStyle {
   fontSize: number;
   fontWeight: number;
