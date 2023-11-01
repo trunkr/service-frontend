@@ -48,4 +48,7 @@ export const COLORS = {
     gray900: '#111111',
     black: '#000000',
   },
+  shadow: {
+    shadow1: '0px 3px 16px 0px rgba(0, 0, 0, 0.20);',
+  },
 };
