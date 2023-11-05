@@ -4,7 +4,7 @@ type TextError = 'NON_ERROR' | 'ERROR';
 
 type TextSize = 'SMALL' | 'MEDIUM';
 
-import * as styles from './TexField.style';
+import * as styles from './TextField.style';
 
 export interface TextInputProps {
   txt?: string;

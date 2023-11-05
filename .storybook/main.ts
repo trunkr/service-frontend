@@ -22,6 +22,23 @@ const config: StorybookConfig = {
       '@assets': path.resolve(__dirname, '../src/assets'),
     };
 
+    const imageRule = config.module?.rules?.find((rule) => {
+      const test = (rule as { test: RegExp }).test;
+
+      if (!test) {
+        return false;
+      }
+
+      return test.test('.svg');
+    }) as { [key: string]: any };
+
+    imageRule.exclude = /\.svg$/;
+
+    config.module?.rules?.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     // tsconfig-paths-webpack-plugin 설정 추가를 위해 배열로 초기화합니다.
     config.resolve.plugins = [...(config.resolve.plugins || []), new TsconfigPathsPlugin()];
 
