@@ -48,4 +48,10 @@ export const COLORS = {
     gray900: '#111111',
     black: '#000000',
   },
+<<<<<<< HEAD
+=======
+  shadow: {
+    shadow1: '0px 3px 16px 0px rgba(0, 0, 0, 0.20);',
+  },
+>>>>>>> 95dc70afeb76c195c312eda6dc5777f3176d68a2
 };
