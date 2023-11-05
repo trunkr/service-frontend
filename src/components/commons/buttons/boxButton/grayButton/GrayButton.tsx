@@ -1,7 +1,6 @@
-import { COLORS } from '@public/assets/colors/color';
-import * as styles from './PrimaryButton.style';
+import * as styles from './GrayButton.style';
 
-interface PrimaryButtonProps {
+interface GrayButtonProps {
   size: 'SMALL' | 'MEDIUM' | 'LARGE';
   state: 'DEFAULT' | 'PRESSED' | 'DISABLED';
   msg: string;
@@ -31,14 +30,14 @@ export interface LargeSize extends SizeProps {
   height: '66px';
 }
 
-export const PrimaryButton = ({ size, msg, state }: PrimaryButtonProps) => {
+export const GrayButton = ({ size, msg, state }: GrayButtonProps) => {
   if (size == 'SMALL') {
     return (
       <styles.Button width="92px" height="41px" padding="12px, 22px, 12px, 22px" state={state}>
         {msg}
       </styles.Button>
     );
-  } else if ((size = 'MEDIUM')) {
+  } else if (size == 'MEDIUM') {
     return (
       <styles.Button width="155px" height="55px" padding="18px, 50px, 18px, 50px" state={state}>
         {msg}
@@ -53,4 +52,4 @@ export const PrimaryButton = ({ size, msg, state }: PrimaryButtonProps) => {
   }
 };
 
-export default PrimaryButton;
+export default GrayButton;
