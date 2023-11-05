@@ -4,6 +4,7 @@ interface LineButtonProps {
   size: 'SMALL' | 'MEDIUM' | 'LARGE';
   state: 'DEFAULT' | 'PRESSED' | 'DISABLED';
   msg: string;
+  onClick: () => void;
 }
 
 export interface SizeProps {
@@ -30,22 +31,22 @@ export interface LargeSize extends SizeProps {
   height: '66px';
 }
 
-export const LineButton = ({ size, msg, state }: LineButtonProps) => {
+export const LineButton = ({ size, msg, state, onClick }: LineButtonProps) => {
   if (size == 'SMALL') {
     return (
-      <styles.Button width="92px" height="41px" padding="12px, 22px, 12px, 22px" state={state}>
+      <styles.Button width="92px" height="41px" padding="12px, 22px, 12px, 22px" state={state} onClick={onClick}>
         {msg}
       </styles.Button>
     );
   } else if (size == 'MEDIUM') {
     return (
-      <styles.Button width="155px" height="55px" padding="18px, 50px, 18px, 50px" state={state}>
+      <styles.Button width="155px" height="55px" padding="18px, 50px, 18px, 50px" state={state} onClick={onClick}>
         {msg}
       </styles.Button>
     );
   } else {
     return (
-      <styles.Button width="600px" height="66px" padding="12px, 22px, 12px, 22px" state={state}>
+      <styles.Button width="600px" height="66px" padding="12px, 22px, 12px, 22px" state={state} onClick={onClick}>
         {msg}
       </styles.Button>
     );

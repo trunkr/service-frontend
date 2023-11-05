@@ -2,12 +2,11 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../../../public/assets/colors/color';
 
 export const Wrapper = styled.div({
-  width: '100%',
+  width: '100vw',
   height: '209px',
   backgroundColor: COLORS.gray.white,
   display: 'flex',
   alignItems: 'baseline',
-  justifyContent: 'space-between',
 });
 
 export const FooterTextBar = styled.div`
