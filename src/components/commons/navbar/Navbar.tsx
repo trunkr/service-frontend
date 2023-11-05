@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LogoIcon from '@public/logo/LOGO-TEXT.svg';
 import ProfileIcon from '@public/graphics/Graphics/Profile 1-1.svg';
@@ -14,6 +13,7 @@ const NavigationBar = () => {
   return (
     <div>
       <styles.Wrapper>
+        <br style={{ width: '1440px', height: '1px', color: COLORS.gray.gray200 }} />
         <styles.NavMenu>
           <Link href="/">
             <LogoIcon />
