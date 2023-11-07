@@ -111,14 +111,6 @@
 }
 
 @font-face {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  font-family: Poppins;
-  font-weight: 400;
-  src: url('../../assets/fonts/Poppins-Regular.ttf') format('ttf');
-=======
-=======
->>>>>>> 95dc70afeb76c195c312eda6dc5777f3176d68a2
   font-family: 'Poppins';
   font-weight: 100;
   src: url('../../assets/fonts/Poppins-Thin.ttf') format('ttf');
@@ -184,5 +176,4 @@
 :root {
   --font-primary: 'Pretendard', sans-serif;
   --font-secondary: 'Poppins', sans-serif;
-
 }
