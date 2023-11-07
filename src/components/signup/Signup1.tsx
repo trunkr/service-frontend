@@ -3,12 +3,22 @@ import PrimaryButton from '../commons/buttons/capsuleButton/primaryButton/Primar
 import * as styles from './Signup.style';
 import { useForm } from 'react-hook-form';
 import { COLORS } from '@public/assets/colors/color';
-import Checkbox from '@public/icons/System/Check Box.svg';
+import CheckboxOn from '@public/icons/System/ic_check_bold.svg';
+import CheckboxOff from '@public/icons/System/Check Box.svg';
+import { useState } from 'react';
 
 export const Signup1 = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, watch, handleSubmit } = useForm();
+  const [checkbox, setCheckbox] = useState(false);
+  const onCheckboxClick = () => {
+    setCheckbox(!checkbox);
+  };
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <styles.Container>
         <div>
           <Text color={COLORS.gray.black} textStyleName="Title1" fontFamily="Pretendard">
@@ -16,7 +26,7 @@ export const Signup1 = () => {
           </Text>
         </div>
         <styles.NameContainer>
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <Text color={COLORS.gray.black} textStyleName="Title5" fontFamily="Pretendard">
               닉네임
             </Text>
@@ -35,17 +45,23 @@ export const Signup1 = () => {
             약관동의
           </Text>
           <styles.AgreeCheckbox>
-            <Checkbox />
+            <div style={{ cursor: 'pointer' }} onClick={onCheckboxClick}>
+              {checkbox ? <CheckboxOn /> : <CheckboxOff />}
+            </div>
             <Text color={COLORS.gray.black} textStyleName="Label3B" fontFamily="Pretendard">
               Trunkr 이용약관에 동의합니다
             </Text>
           </styles.AgreeCheckbox>
         </styles.AgreeContainer>
         <styles.BoxContainer>
-          <PrimaryButton size="LARGE" msg="완료" state="DISABLED" />
+          {watch('name') && checkbox ? (
+            <PrimaryButton size="LARGE" msg="완료" state="DEFAULT" />
+          ) : (
+            <PrimaryButton size="LARGE" msg="완료" state="DISABLED" />
+          )}
         </styles.BoxContainer>
       </styles.Container>
-    </div>
+    </form>
   );
 };
 export default Signup1;
