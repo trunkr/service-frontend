@@ -7,11 +7,11 @@ import { NavigationProps } from '@/components/commons/navbar/Navbar';
 
 const Layout4 = ({ children, state }: PropsWithChildren & NavigationProps) => {
   return (
-    <styles.LayoutContainer>
+    <div>
       <NavigationBar state={state} />
-      {children || <Outlet />}
+      <styles.LayoutContainer>{children || <Outlet />}</styles.LayoutContainer>
       <Footer />
-    </styles.LayoutContainer>
+    </div>
   );
 };
 export default Layout4;
