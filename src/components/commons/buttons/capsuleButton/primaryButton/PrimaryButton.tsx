@@ -26,7 +26,8 @@ export interface MediumSize extends SizeProps {
 }
 
 export interface LargeSize extends SizeProps {
-  width: '600px';
+  width: '608px';
+
   height: '66px';
 }
 
@@ -45,7 +46,7 @@ export const PrimaryButton = ({ size, msg, state }: PrimaryButtonProps) => {
     );
   } else {
     return (
-      <styles.Button width="600px" height="66px" padding="12px, 22px, 12px, 22px" state={state}>
+      <styles.Button width="608px" height="66px" padding="12px, 22px, 12px, 22px" state={state}>
         {msg}
       </styles.Button>
     );

@@ -2,24 +2,29 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../../../public/assets/colors/color';
 
 export const Wrapper = styled.div({
-  width: '100%',
+  width: '100vw',
   height: '56px',
   backgroundColor: COLORS.gray.white,
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingLeft: '100px',
+  paddingRight: '100px',
 });
+
+export const NavMenuWrapper = styled.div`
+  flex-grow: 3;
+`;
 
 export const NavMenu = styled.div({
   display: 'flex',
-  padding: '0px 100px',
   alignItems: 'center',
   gap: '30px',
 });
 
-export const ProfileMenu = styled.div({
-  padding: '0px 100px',
-});
+export const ProfileMenuWrapper = styled.div`
+  flex-grow: 1;
+`;
 
 export const ProfileImg = styled.div`
   width: 30px;

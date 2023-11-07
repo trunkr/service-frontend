@@ -12,23 +12,33 @@ import { COLORS } from '@public/assets/colors/color';
 //   onClick: () => void;
 // }
 
-export const LoginDialog = () => {
+export interface LoginModalProps {
+  loginClick: boolean;
+  setLoginClick: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const LoginDialog = ({ setLoginClick, loginClick }: LoginModalProps) => {
+  const onCloseClick = () => {
+    setLoginClick(!loginClick);
+  };
   return (
-    <styles.DialogContainer>
-      <styles.CloseBtnContainer>
-        <CloseBtn />
-      </styles.CloseBtnContainer>
-      <TrunkrLogo />
-      <styles.RowContainer>
-        <TrunkrText />
-        <Text color={COLORS.gray.black} textStyleName="Title4" fontFamily="Pretendard">
-          에 로그인
-        </Text>
-      </styles.RowContainer>
-      <styles.LoginBtnContainer>
-        <KakaoLoginBtn />
-        <GoogleLoginBtn />
-      </styles.LoginBtnContainer>
-    </styles.DialogContainer>
+    <styles.DialogBackground>
+      <styles.DialogContainer>
+        <styles.CloseBtnContainer onClick={onCloseClick}>
+          <CloseBtn />
+        </styles.CloseBtnContainer>
+        <TrunkrLogo />
+        <styles.RowContainer>
+          <TrunkrText />
+          <Text color={COLORS.gray.black} textStyleName="Title4" fontFamily="Pretendard">
+            에 로그인
+          </Text>
+        </styles.RowContainer>
+        <styles.LoginBtnContainer>
+          <KakaoLoginBtn />
+          <GoogleLoginBtn />
+        </styles.LoginBtnContainer>
+      </styles.DialogContainer>
+    </styles.DialogBackground>
   );
 };
