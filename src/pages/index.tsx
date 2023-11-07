@@ -1,11 +1,11 @@
-import Layout1 from './layout/Layout1/Layout1';
+import NavigationBar from '@/components/commons/navbar/Navbar';
+import { Footer } from '@/components/commons/footer/Footer';
 
-export const Home = () => {
+export default function Home() {
   return (
-    <Layout1 state="LOGIN">
-      <h1> 하이 </h1>
-    </Layout1>
+    <div>
+      <NavigationBar state="LOGIN" />
+      <Footer />
+    </div>
   );
-};
-
-export default Home;
+}

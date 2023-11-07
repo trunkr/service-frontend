@@ -27,6 +27,7 @@ export interface MediumSize extends SizeProps {
 
 export interface LargeSize extends SizeProps {
   width: '608px';
+
   height: '66px';
 }
 

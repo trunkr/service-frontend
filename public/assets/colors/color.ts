@@ -49,5 +49,7 @@ export const COLORS = {
     black: '#000000',
   },
 
-  shadow1: '0px 3px 16px 0px rgba(0, 0, 0, 0.20);',
+  shadow: {
+    shadow1: '0px 3px 16px 0px rgba(0, 0, 0, 0.20);',
+  },
 };
