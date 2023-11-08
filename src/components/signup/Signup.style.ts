@@ -6,8 +6,14 @@ export const Container = styled.div`
   padding-top: 100px;
   gap: 80px;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
+`;
+
+export const Signup2Container = styled.div`
+  display: flex;
+  padding-top: 100px;
+  gap: 80px;
+  flex-direction: column;
+  align-items: center;
 `;
 export const NameContainer = styled.div`
   display: flex;
@@ -39,4 +45,27 @@ export const AgreeCheckbox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+`;
+
+export const ProfileImgContainer = styled.div`
+  display: flex;
+  gap: 60px;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ProfileImgItemContainer = styled.div`
+  width: 25%;
+`;
+
+export const CheckboxContainer = styled.div`
+  position: relative;
+`;
+export const ProfileImg = styled.div`
+  //position: absolute;
+`;
+export const Checkbox = styled.div`
+  left: 120px;
+  top: 10px;
+  position: absolute;
 `;
