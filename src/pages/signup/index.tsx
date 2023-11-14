@@ -5,7 +5,7 @@ import Signup2 from '@/components/signup/Signup2';
 const SignupPage = () => {
   return (
     <Layout4 state="REGISTER">
-      <Signup2 />
+      <Signup />
     </Layout4>
   );
 };

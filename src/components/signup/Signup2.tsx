@@ -13,6 +13,10 @@ import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
 import { useState } from 'react';
 
 import PrimaryButton from '../commons/buttons/capsuleButton/primaryButton/PrimaryButton';
+
+/*
+프로필 이미지 타입을 const 로 저장
+ */
 const ProfileType = {
   P1: 'P1',
   P2: 'P2',

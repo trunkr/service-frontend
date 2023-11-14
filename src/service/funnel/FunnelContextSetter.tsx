@@ -1,0 +1,14 @@
+import { useEffect } from 'react';
+
+import { useFunnelContext } from './funnel/FunnelContentProvider';
+
+export const FunnelContextSetter = ({ children }: { children: React.ReactNode[] }) => {
+  const { setChildren, setCurrent } = useFunnelContext();
+
+  useEffect(() => {
+    setChildren(children);
+    setCurrent(children[0]);
+  }, []);
+
+  return null;
+};
