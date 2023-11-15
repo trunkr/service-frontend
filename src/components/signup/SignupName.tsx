@@ -6,7 +6,6 @@ import { COLORS } from '@public/assets/colors/color';
 import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
 import CheckboxOff from '@public/icons/System/Check Box.svg';
 import { useState } from 'react';
-import { ErrorTextInput } from '../commons/textInput/textField/TextField.style';
 import getMemberCheckNickname from '@/apis/getMembersCheckNickname';
 
 export const SignupName = () => {
