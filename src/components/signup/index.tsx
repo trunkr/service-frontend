@@ -1,8 +1,8 @@
-import Signup1 from './Signup1';
-import { useState } from 'react';
+import SignupName from './SignupName';
+
 export const Signup = () => {
-  const [step, setStep] = useState(['name', 'profileImg'] as const);
-  return <Signup1 />;
+  //const [Funnel, setStep] = useFunnel(['step1', 'step2', 'step3'] as const);
+  return <SignupName />;
 };
 
 export default Signup;

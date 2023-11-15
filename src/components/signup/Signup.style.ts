@@ -30,6 +30,17 @@ export const NameInput = styled.input`
   border: 2px solid ${COLORS.gray.gray250};
 `;
 
+export const ErrorInput = styled.input`
+  display: flex;
+  width: 165px;
+  height: 22px;
+  padding: 22px 417px 22px 26px;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px solid ${COLORS.error.red600};
+  margin-bottom: 10px;
+`;
+
 export const BoxContainer = styled.div`
   display: flex;
 `;

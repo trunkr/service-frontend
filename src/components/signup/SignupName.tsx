@@ -3,27 +3,29 @@ import PrimaryButton from '../commons/buttons/capsuleButton/primaryButton/Primar
 import * as styles from './Signup.style';
 import { useForm } from 'react-hook-form';
 import { COLORS } from '@public/assets/colors/color';
-import CheckboxOn from '@public/icons/System/ic_check_bold.svg';
+import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
 import CheckboxOff from '@public/icons/System/Check Box.svg';
 import { useState } from 'react';
-import { useGetMemberCheckNickname } from '@/hooks/useGetMemberCheckNickname';
 import { ErrorTextInput } from '../commons/textInput/textField/TextField.style';
+import getMemberCheckNickname from '@/apis/getMembersCheckNickname';
 
-export const Signup1 = () => {
+export const SignupName = () => {
   const { register, watch, handleSubmit } = useForm();
+  const [nickName, setNickname] = useState<string>('');
   const [checkbox, setCheckbox] = useState(false);
-  const [nickname, setNickname] = useState<string>('');
   const [nicknameError, setNicknameError] = useState<boolean>(false);
   const onCheckboxClick = () => {
     setCheckbox(!checkbox);
   };
-  const { data: checkNicknameData } = useGetMemberCheckNickname(nickname);
-
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    const nameVal = data.name;
-    setNickname(nameVal);
-    if (checkNicknameData?.payload == false) {
+    const nameVal = data.name as string;
+    const res = await getMemberCheckNickname(nameVal);
+    if (res.payload == false) {
+      setNickname(nameVal);
+      setNicknameError(true);
+    } else {
+      setNickname(nameVal);
       setNicknameError(true);
     }
   };
@@ -47,7 +49,11 @@ export const Signup1 = () => {
           </div>
           {nicknameError ? (
             <div>
-              <ErrorTextInput focus="FOCUS" backgroundColor={COLORS.gray.white} textSize="MEDIUM" />
+              <styles.ErrorInput
+                type="text"
+                placeholder={nickName}
+                {...register('name', { required: true, maxLength: 12 })}
+              />
               <Text color={COLORS.error.red600} textStyleName="Label4M" fontFamily="Pretendard">
                 중복된 닉네임이라 사용할 수 없습니다.
               </Text>
@@ -84,4 +90,4 @@ export const Signup1 = () => {
     </form>
   );
 };
-export default Signup1;
+export default SignupName;

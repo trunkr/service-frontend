@@ -27,7 +27,7 @@ const ProfileType = {
   P7: 'P7',
   P8: 'P8',
 } as const;
-const Signup2 = () => {
+const SignupImage = () => {
   const [checkbox, setCheckbox] = useState<keyof typeof ProfileType>(ProfileType.P1);
   console.log(checkbox);
   const onCheckboxClick = (profileType: keyof typeof ProfileType) => {
@@ -112,4 +112,4 @@ const Signup2 = () => {
   );
 };
 
-export default Signup2;
+export default SignupImage;
