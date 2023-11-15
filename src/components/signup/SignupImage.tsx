@@ -13,6 +13,7 @@ import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
 import { useState } from 'react';
 
 import PrimaryButton from '../commons/buttons/capsuleButton/primaryButton/PrimaryButton';
+import { SignupProps } from '.';
 
 /*
 프로필 이미지 타입을 const 로 저장
@@ -27,7 +28,8 @@ const ProfileType = {
   P7: 'P7',
   P8: 'P8',
 } as const;
-const SignupImage = () => {
+
+const SignupImage = ({ setSignupState }: SignupProps) => {
   const [checkbox, setCheckbox] = useState<keyof typeof ProfileType>(ProfileType.P1);
   console.log(checkbox);
   const onCheckboxClick = (profileType: keyof typeof ProfileType) => {

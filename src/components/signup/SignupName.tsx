@@ -7,12 +7,14 @@ import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
 import CheckboxOff from '@public/icons/System/Check Box.svg';
 import { useState } from 'react';
 import getMemberCheckNickname from '@/apis/getMembersCheckNickname';
+import { SignupProps } from '.';
 
-export const SignupName = () => {
+export const SignupName = ({ setSignupState }: SignupProps) => {
   const { register, watch, handleSubmit } = useForm();
   const [nickName, setNickname] = useState<string>('');
   const [checkbox, setCheckbox] = useState(false);
   const [nicknameError, setNicknameError] = useState<boolean>(false);
+
   const onCheckboxClick = () => {
     setCheckbox(!checkbox);
   };
@@ -20,9 +22,11 @@ export const SignupName = () => {
     console.log(data);
     const nameVal = data.name as string;
     const res = await getMemberCheckNickname(nameVal);
+    console.log(res.payload);
     if (res.payload == false) {
       setNickname(nameVal);
-      setNicknameError(true);
+      setNicknameError(false);
+      setSignupState('Image');
     } else {
       setNickname(nameVal);
       setNicknameError(true);

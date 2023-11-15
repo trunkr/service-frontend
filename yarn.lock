@@ -1084,7 +1084,7 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.8", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.3", "@babel/runtime@^7.19.0", "@babel/runtime@^7.21.0", "@babel/runtime@^7.22.6", "@babel/runtime@^7.23.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.3", "@babel/runtime@^7.22.6", "@babel/runtime@^7.23.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4":
   version "7.23.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.2.tgz#062b0ac103261d68a966c4c7baf2ae3e62ec3885"
   integrity sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==
@@ -3029,62 +3029,6 @@
   resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.5.1.tgz#27337d72046d5236b32fd977edee3f74c71d332f"
   integrity sha512-UCcUKrUYGj7ClomOo2SpNVvx4/fkd/2BbIHDCle8A0ax+P3bU7yJwDBDrS6ZwdTMARWTGODX1hEsCcO+7beJjg==
 
-"@toss/assert@^1.1.12":
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/@toss/assert/-/assert-1.1.12.tgz#86e7a98b383d28207890e89760ba40ec2b9bba60"
-  integrity sha512-6ZNujiSf5AHOJ2tWtEb5E2mLz5OTChCWwHZk9osPR3Jjk0t/RpbRnXxuAnFWiEdfqlZLg2QM1YHD4DDTBP3JEg==
-  dependencies:
-    "@toss/utils" "^1.4.6"
-
-"@toss/react-query@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@toss/react-query/-/react-query-1.2.1.tgz#1effb35fbb51863ff8c93cba38ccc4a58feceb13"
-  integrity sha512-1qbYQwt1aIc9iFkchZpQ3AlzHdtHp384RFE4LApx2gjETf4PRQz83Hz1dO9zPesIIUPb1ZU3B6hKCgBWOOI0xA==
-
-"@toss/react@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@toss/react/-/react-1.6.1.tgz#2175735bdcbf12efd8cbfc3ba75a5dcd1abacc41"
-  integrity sha512-XothLThF2xgOQR3YZF22GCaXk6ywWA7VGuxaPHZRZ2MCDGXVhsDgPvjYrjYkMIFLjYF4zN3PgE8kelAmGsPzwA==
-  dependencies:
-    "@babel/runtime" "^7.14.8"
-    "@toss/storage" "^1.3.1"
-    "@toss/utils" "^1.4.6"
-    classnames "^2.3.1"
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
-
-"@toss/storage@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@toss/storage/-/storage-1.3.1.tgz#02af72658c2eb2b69d3cb70fbb78861d26adc364"
-  integrity sha512-NLRB5s5PAmAzofsnRr5xKwdpFQeDSBFyuyHjF/rzZsgMlsFb94mzweYKmFrPx6oCM3Boh/TUYn6A8yxAcncBeA==
-  dependencies:
-    "@babel/runtime" "^7.19.0"
-
-"@toss/use-funnel@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@toss/use-funnel/-/use-funnel-1.3.1.tgz#14eb71b0920f472541f06cc31cdd2a8ebe09febf"
-  integrity sha512-bsEGKDPGiXUd5ycvAvJ291UmNjWSm38l7WCqbPow21YEZ/0pxOAmkF2vA9bSrj+Cd1mWPqbrIak1fulC0d1Wtg==
-  dependencies:
-    "@toss/assert" "^1.1.12"
-    "@toss/react" "^1.6.1"
-    "@toss/storage" "^1.3.1"
-    "@toss/use-query-param" "^1.2.1"
-    "@toss/utils" "^1.4.6"
-    fast-deep-equal "^3.1.3"
-
-"@toss/use-query-param@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@toss/use-query-param/-/use-query-param-1.2.1.tgz#375bbc8fd6560b9ebb88da9ad22fa909dd8ae54b"
-  integrity sha512-wLyHxwdwPp/zlWqXdvu7miQcwe5wRZ2CVCEbkarhIm+S50ViMaXurHEjgaxbczLNirtSgOzjr8Rre+7WNH1Gjg==
-
-"@toss/utils@^1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@toss/utils/-/utils-1.4.6.tgz#5f2db113253ad2d44a4e746f34a07ed4e7076d9e"
-  integrity sha512-MXLAL44Q6HU3fZ8v0DxgMiVqLLwSxegqPd7OsOsV5/tSJL5Ti6zFZRDMidIi73wp7IE3VAa4YswSEiuXbEwHZA==
-  dependencies:
-    "@babel/runtime" "^7.14.8"
-    date-fns "^2.25.0"
-
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
@@ -4616,11 +4560,6 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-classnames@^2.3.1:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
-  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
-
 clean-css@^5.2.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.3.2.tgz#70ecc7d4d4114921f5d298349ff86a31a9975224"
@@ -5008,13 +4947,6 @@ damerau-levenshtein@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz#b43d286ccbd36bc5b2f7ed41caf2d0aba1f8a6e7"
   integrity sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==
-
-date-fns@^2.25.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
-  integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
-  dependencies:
-    "@babel/runtime" "^7.21.0"
 
 debug@2.6.9, debug@^2.6.9:
   version "2.6.9"
@@ -7476,11 +7408,6 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
-
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
 lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
