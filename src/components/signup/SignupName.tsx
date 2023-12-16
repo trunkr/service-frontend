@@ -6,7 +6,7 @@ import { COLORS } from '@public/assets/colors/color';
 import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
 import CheckboxOff from '@public/icons/System/Check Box.svg';
 import { useState } from 'react';
-import getMemberCheckNickname from '@/apis/getMembersCheckNickname';
+import getMemberCheckNickname from '@/apis/auth/getMembersCheckNickname';
 import { SignupProps } from '.';
 
 export const SignupName = ({ setSignupState }: SignupProps) => {
@@ -18,7 +18,10 @@ export const SignupName = ({ setSignupState }: SignupProps) => {
   const onCheckboxClick = () => {
     setCheckbox(!checkbox);
   };
-  const onSubmit = async (data) => {
+  interface SignUpNameProps {
+    name: string;
+  }
+  const onSubmit = async (data: SignUpNameProps) => {
     console.log(data);
     const nameVal = data.name as string;
     const res = await getMemberCheckNickname(nameVal);
@@ -34,7 +37,7 @@ export const SignupName = ({ setSignupState }: SignupProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(() => onSubmit({ name: nickName }))}>
       <styles.Container>
         <div>
           <Text color={COLORS.gray.black} textStyleName="Title1" fontFamily="Pretendard">

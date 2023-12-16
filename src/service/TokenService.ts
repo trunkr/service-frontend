@@ -3,15 +3,21 @@ import { Cookies } from 'react-cookie';
 class TokenService {
   cookie = new Cookies();
 
-  setToken(token: string) {
-    this.cookie.set('token', token, { path: '/' });
+  setAccessToken(token: string) {
+    this.cookie.set('accessToken', token, { path: '/' });
   }
-  setId(id: string) {
+  setRefreshToken(token: string) {
+    this.cookie.set('refreshToken', token, { path: '/' });
+  }
+  setId(id: number) {
     this.cookie.set('id', id, { path: '/' });
   }
 
-  getToken() {
-    return this.cookie.get('token');
+  getAccessToken() {
+    return this.cookie.get('accessToken');
+  }
+  getRefreshToken() {
+    return this.cookie.get('refreshToken');
   }
   getId() {
     return this.cookie.get('id');
@@ -23,7 +29,7 @@ class TokenService {
   }
   get headers() {
     return {
-      Authorization: `Bearer ${this.getToken()}`,
+      Authorization: `Bearer ${this.getAccessToken()}`,
     };
   }
 }

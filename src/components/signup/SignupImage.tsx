@@ -10,7 +10,7 @@ import Profile6 from '@public/graphics/Graphics/Profile 6.svg';
 import Profile7 from '@public/graphics/Graphics/Profile 7.svg';
 import Profile8 from '@public/graphics/Graphics/Profile 8.svg';
 import CheckboxOn from '@public/icons/System/CheckboxOn.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PrimaryButton from '../commons/buttons/capsuleButton/primaryButton/PrimaryButton';
 import { SignupProps } from '.';
@@ -31,7 +31,9 @@ const ProfileType = {
 
 const SignupImage = ({ setSignupState }: SignupProps) => {
   const [checkbox, setCheckbox] = useState<keyof typeof ProfileType>(ProfileType.P1);
-  console.log(checkbox);
+  useEffect(() => {
+    setSignupState('Image');
+  }, []);
   const onCheckboxClick = (profileType: keyof typeof ProfileType) => {
     setCheckbox(profileType);
   };

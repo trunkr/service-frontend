@@ -1,5 +1,5 @@
 import { GetMemberCheckNickname } from '@/types/Member';
-import customedAxios from './customedAxios';
+import customedAxios from '../customedAxios';
 
 export const getMemberCheckNickname = async (nickname: string): Promise<GetMemberCheckNickname> => {
   const res = await customedAxios(`${process.env.NEXT_PUBLIC_BASE_URL}/members/check-nickname?nickname=${nickname}`);

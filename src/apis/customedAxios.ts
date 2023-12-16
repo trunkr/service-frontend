@@ -9,8 +9,8 @@ export const customedAxios = axios.create({
 });
 
 customedAxios.interceptors.request.use((config) => {
-  if (TokenService.getToken() !== undefined && TokenService.getId() !== undefined) {
-    config.headers!.authorization = `Bearer ${TokenService.getToken()}`;
+  if (TokenService.getAccessToken() !== undefined && TokenService.getId() !== undefined) {
+    config.headers!.authorization = `Bearer ${TokenService.getAccessToken()}`;
   }
   return config;
 });
