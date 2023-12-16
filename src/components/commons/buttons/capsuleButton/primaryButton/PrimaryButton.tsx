@@ -4,6 +4,7 @@ interface PrimaryButtonProps {
   size: 'SMALL' | 'MEDIUM' | 'LARGE';
   state: 'DEFAULT' | 'PRESSED' | 'DISABLED';
   msg: string;
+  onClick?: () => void;
 }
 
 export interface SizeProps {
@@ -27,11 +28,10 @@ export interface MediumSize extends SizeProps {
 
 export interface LargeSize extends SizeProps {
   width: '608px';
-
   height: '66px';
 }
 
-export const PrimaryButton = ({ size, msg, state }: PrimaryButtonProps) => {
+export const PrimaryButton = ({ size, msg, state, onClick }: PrimaryButtonProps) => {
   if (size == 'SMALL') {
     return (
       <styles.Button width="92px" height="41px" padding="12px, 22px, 12px, 22px" state={state}>
@@ -46,7 +46,7 @@ export const PrimaryButton = ({ size, msg, state }: PrimaryButtonProps) => {
     );
   } else {
     return (
-      <styles.Button width="608px" height="66px" padding="12px, 22px, 12px, 22px" state={state}>
+      <styles.Button width="608px" height="66px" padding="12px, 22px, 12px, 22px" state={state} onClick={onClick}>
         {msg}
       </styles.Button>
     );

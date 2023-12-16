@@ -9,7 +9,7 @@ import { useState } from 'react';
 import getMemberCheckNickname from '@/apis/auth/getMembersCheckNickname';
 import { SignupProps } from '.';
 
-export const SignupName = ({ setSignupState }: SignupProps) => {
+export const SignupName = ({ setSignupState, setNickName }: SignupProps) => {
   const { register, watch, handleSubmit } = useForm();
   const [nickName, setNickname] = useState<string>('');
   const [checkbox, setCheckbox] = useState(false);
@@ -18,16 +18,14 @@ export const SignupName = ({ setSignupState }: SignupProps) => {
   const onCheckboxClick = () => {
     setCheckbox(!checkbox);
   };
-  interface SignUpNameProps {
-    name: string;
-  }
-  const onSubmit = async (data: SignUpNameProps) => {
+  const onSubmit = async (data) => {
     console.log(data);
     const nameVal = data.name as string;
     const res = await getMemberCheckNickname(nameVal);
     console.log(res.payload);
     if (res.payload == false) {
       setNickname(nameVal);
+      setNickName(nameVal);
       setNicknameError(false);
       setSignupState('Image');
     } else {
@@ -37,7 +35,7 @@ export const SignupName = ({ setSignupState }: SignupProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(() => onSubmit({ name: nickName }))}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <styles.Container>
         <div>
           <Text color={COLORS.gray.black} textStyleName="Title1" fontFamily="Pretendard">

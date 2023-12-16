@@ -14,6 +14,10 @@ import { useEffect, useState } from 'react';
 
 import PrimaryButton from '../commons/buttons/capsuleButton/primaryButton/PrimaryButton';
 import { SignupProps } from '.';
+import { MemberStatus, PostAuthSignupReq } from '@/types/Auth';
+import api from '@/service/TokenService';
+import postAuthSignUp from '@/apis/auth/postAuthSignUp';
+import { useRouter } from 'next/router';
 
 /*
 프로필 이미지 타입을 const 로 저장
@@ -29,13 +33,31 @@ const ProfileType = {
   P8: 'P8',
 } as const;
 
-const SignupImage = ({ setSignupState }: SignupProps) => {
+const SignupImage = ({ setSignupState, nickname }: SignupProps) => {
+  const router = useRouter();
   const [checkbox, setCheckbox] = useState<keyof typeof ProfileType>(ProfileType.P1);
   useEffect(() => {
     setSignupState('Image');
   }, []);
   const onCheckboxClick = (profileType: keyof typeof ProfileType) => {
     setCheckbox(profileType);
+  };
+  const onButtonClick = async () => {
+    const data: PostAuthSignupReq = {
+      memberId: api.getId(),
+      nickname: nickname,
+      profileImageUrl: checkbox,
+      termsAgreement: {
+        PRIVACY_CONSENT: true,
+      },
+    };
+    console.log(data);
+    const res = await postAuthSignUp(data);
+    if (res.payload.memberStatus == MemberStatus.ACTIVATED) {
+      api.setAccessToken(res.payload.token.accessToken);
+      api.setRefreshToken(res.payload.token.refreshToken);
+      router.push('/');
+    }
   };
   return (
     <styles.Signup2Container>
@@ -111,7 +133,7 @@ const SignupImage = ({ setSignupState }: SignupProps) => {
         </styles.ProfileImgItemContainer>
       </styles.ProfileImgContainer>
 
-      <PrimaryButton size="LARGE" msg="완료" state="DEFAULT" />
+      <PrimaryButton size="LARGE" msg="완료" state="DEFAULT" onClick={onButtonClick} />
     </styles.Signup2Container>
   );
 };

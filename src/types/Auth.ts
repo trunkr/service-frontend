@@ -1,5 +1,11 @@
 import { ResponseDto } from './Common';
 
+// 멤버 상태 상수처리
+export const MemberStatus = {
+  PENDING: 'PENDING',
+  ACTIVATED: 'ACTIVATED',
+} as const;
+
 // 소셜로그인 API
 export interface PostAuthSocialSignInReqInterface {
   identity: string;
@@ -13,14 +19,6 @@ export interface PostAuthSocialSignInResInterface {
   memberStatus: string;
   isRequiredSignUp: boolean;
   token: TokenInterface;
-}
-export interface PostAuthSignUpReqInterface {
-  memberId: number;
-  nickname: string;
-  profileImgUrl: string;
-  termsAgreement: {
-    PRIVACY_CONSENT: boolean;
-  };
 }
 
 export interface TokenInterface {

@@ -1,16 +1,11 @@
 import { useSearchParams } from 'next/navigation';
 import postKakaoIdToken from '@/apis/auth/postKakaoIdToken';
-import { PostAuthSocialSignInReq, PostKakaoIdTokenReq } from '@/types/Auth';
+import { MemberStatus, PostAuthSocialSignInReq, PostKakaoIdTokenReq } from '@/types/Auth';
 import { useEffect } from 'react';
 import { useMemo } from 'react';
 import postAuthSocialSignIn from '@/apis/auth/postAuthSocialSignIn';
 import api from '@/service/TokenService';
 import { useRouter } from 'next/router';
-
-const MemberStatus = {
-  PENDING: 'PENDING',
-  ACTIVATED: 'ACTIVATED',
-} as const;
 
 const KakaoLoginRedirect = () => {
   const router = useRouter();
