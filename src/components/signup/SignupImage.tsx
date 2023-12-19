@@ -53,6 +53,7 @@ const SignupImage = ({ setSignupState, nickname }: SignupProps) => {
     };
     console.log(data);
     const res = await postAuthSignUp(data);
+    console.log(res);
     if (res.payload.memberStatus == MemberStatus.ACTIVATED) {
       api.setAccessToken(res.payload.token.accessToken);
       api.setRefreshToken(res.payload.token.refreshToken);

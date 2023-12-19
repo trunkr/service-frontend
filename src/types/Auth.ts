@@ -48,25 +48,17 @@ export interface PostAuthSignUpResInterface {
   token: TokenInterface;
 }
 // 카카오 idToken API
-export interface PostKakaoIdTokenResInterface {
-  token_type: string;
-  access_token: string;
-  id_token: string;
-  expires_in: number;
-  refresh_token: string;
-  refresh_token_expires_in: number;
-  scope: string;
+export interface GetKakaoIdTokenResInterface {
+  idToken: string;
+  provider: string;
 }
 
-export interface PostKakaoIDTokenReqInterface {
-  grant_type: string;
-  client_id: string;
-  redirect_uri: string;
+export interface GetKakaoIDTokenReqInterface {
   code: string;
-  client_secret: string;
+  state: string;
 }
 export interface PostKakaoIDTokenReqInterface {}
 export type PostAuthSignupReq = PostAuthSignUpReqInterface;
 export type PostAuthSignupRes = ResponseDto<PostAuthSignUpResInterface>;
-export type PostKakaoIdTokenReq = PostKakaoIDTokenReqInterface;
-export type PostKakaoIdTokenRes = PostKakaoIdTokenResInterface;
+export type GetKakaoIdTokenReq = GetKakaoIDTokenReqInterface;
+export type GetKakaoIdTokenRes = ResponseDto<GetKakaoIdTokenResInterface>;
