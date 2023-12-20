@@ -7,7 +7,6 @@ import { NavigationProps } from '@/components/commons/navbar/Navbar';
 
 const Home = () => {
   const [userState, setUserState] = useState<NavigationProps>();
-  console.log(userState);
   useEffect(() => {
     const accessToken = api.getAccessToken();
     if (accessToken) {
