@@ -14,7 +14,8 @@ export interface NavigationProps {
   state: 'REGISTER' | 'LOGIN' | 'NON_LOGIN';
 }
 
-const NavigationBar = ({ state }: NavigationProps) => {
+const NavigationBar = (navProps: NavigationProps) => {
+  const { state } = navProps;
   const navState = useRecoilValue(NavAtom);
   const [loginClick, setLoginClick] = useState(false);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
