@@ -12,9 +12,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
@@ -39,9 +37,9 @@
     "react/display-name": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-unused-vars": [
-      "error"
-    ],
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-useless-catch": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

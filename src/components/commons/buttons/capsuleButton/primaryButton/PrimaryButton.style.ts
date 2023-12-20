@@ -2,8 +2,10 @@ import styled from '@emotion/styled';
 import { SizeProps } from './PrimaryButton';
 import { COLORS } from '@public/assets/colors/color';
 
-export const Button = styled.div<SizeProps>`
+export const Button = styled.button<SizeProps>`
+  cursor: pointer;
   display: flex;
+  border: none;
   justify-content: center;
   align-items: center;
   color: ${COLORS.gray.white};

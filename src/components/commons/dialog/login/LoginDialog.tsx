@@ -1,11 +1,11 @@
 import * as styles from './LoginDialog.style';
-import KakaoLoginBtn from '@public/loginBtn/Kakao_Button.svg';
-import GoogleLoginBtn from '@public/loginBtn/Google_Button.svg';
 import CloseBtn from '@public/icons/System/ic_close.svg';
 import TrunkrLogo from '@public/logo/symbol.svg';
 import TrunkrText from '@public/logo/LOGO-TEXT.svg';
 import Text from '@public/assets/text/Text';
 import { COLORS } from '@public/assets/colors/color';
+import GoogleLoginButton from '../../buttons/login/GoogleLoginButton';
+import KakaoLoginButton from '../../buttons/login/KakaoLoginButton';
 
 // interface LoginDialogProps {
 //   platform: 'KAKAO' | 'GOOGLE';
@@ -35,8 +35,8 @@ export const LoginDialog = ({ setLoginClick, loginClick }: LoginModalProps) => {
           </Text>
         </styles.RowContainer>
         <styles.LoginBtnContainer>
-          <KakaoLoginBtn />
-          <GoogleLoginBtn />
+          <KakaoLoginButton />
+          <GoogleLoginButton />
         </styles.LoginBtnContainer>
       </styles.DialogContainer>
     </styles.DialogBackground>
