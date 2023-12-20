@@ -33,8 +33,7 @@ export const ProfileImg = styled.div`
 
 export const NavLine = styled.div`
   width: 100%;
-  height: 1px;
-  margin: 22px 0px;
+  height: 2px;
   background-color: ${COLORS.gray.gray200};
 `;
 

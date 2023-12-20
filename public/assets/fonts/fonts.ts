@@ -1,4 +1,7 @@
 export const TEXT_STYLE_NAME = {
+  Main: 'Main',
+  Main2: 'Main2',
+  Main3: 'Main3',
   Title1: 'Title1',
   Title2: 'Title2',
   Title3: 'Title3',
@@ -47,6 +50,21 @@ interface TextStyle {
 }
 
 export const TEXT_STYLES: Record<TextStyleName, TextStyle> = {
+  [TEXT_STYLE_NAME.Main]: {
+    fontSize: 45,
+    fontWeight: 700,
+    lineHeight: '58.5px',
+  },
+  [TEXT_STYLE_NAME.Main2]: {
+    fontSize: 40,
+    fontWeight: 700,
+    lineHeight: '130%',
+  },
+  [TEXT_STYLE_NAME.Main3]: {
+    fontSize: 20,
+    fontWeight: 500,
+    lineHeight: '170%',
+  },
   [TEXT_STYLE_NAME.Title1]: {
     fontSize: 36,
     fontWeight: 700,
@@ -116,11 +134,6 @@ export const TEXT_STYLES: Record<TextStyleName, TextStyle> = {
     fontSize: 15,
     fontWeight: 500,
     lineHeight: '25.5px',
-  },
-  [TEXT_STYLE_NAME.Body4B]: {
-    fontSize: 14,
-    fontWeight: 700,
-    lineHeight: '23.8px',
   },
   [TEXT_STYLE_NAME.Body4B]: {
     fontSize: 14,

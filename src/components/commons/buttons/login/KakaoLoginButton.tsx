@@ -13,6 +13,7 @@ const KakaoLoginButton = () => {
     window.Kakao.Auth.authorize({
       redirectUri: REDIRECT_URI,
       scope: 'account_email,openid',
+      nonce: 'TRUNKR',
     });
   }
   return (

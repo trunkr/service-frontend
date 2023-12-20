@@ -7,6 +7,7 @@ import { NavigationProps } from '@/components/commons/navbar/Navbar';
 import { PropsWithChildren } from 'react';
 
 const Layout1 = ({ children, state }: PropsWithChildren & NavigationProps) => {
+  console.log(state);
   return (
     <div>
       <NavigationBar state={state} />

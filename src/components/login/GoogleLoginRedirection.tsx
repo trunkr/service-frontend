@@ -32,7 +32,6 @@ const GoogleLoginRedirect = () => {
       }
     };
     if (idToken != null) {
-      console.log('useEffect실행', idToken);
       fetchData();
     }
   }, []);

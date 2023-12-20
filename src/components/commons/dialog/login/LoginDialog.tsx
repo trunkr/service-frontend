@@ -19,6 +19,7 @@ export interface LoginModalProps {
 
 export const LoginDialog = ({ setLoginClick, loginClick }: LoginModalProps) => {
   const onCloseClick = () => {
+    console.log('dialog', loginClick);
     setLoginClick(!loginClick);
   };
   return (
