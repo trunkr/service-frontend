@@ -1,14 +1,19 @@
 import KakaoLogin from '@public/loginBtn/Kakao_Button.svg';
-import { useRouter } from 'next/router';
+//import { useRouter } from 'next/router';
 
 const KakaoLoginButton = () => {
-  const router = useRouter();
-  const REST_API_KEY = process.env.NEXT_PUBLIC_KAKAO_REST_APT_KEY;
+  //const router = useRouter();
+  //const REST_API_KEY = process.env.NEXT_PUBLIC_KAKAO_REST_APT_KEY;
   const REDIRECT_URI = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI;
-  const LINK = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  //const LINK = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   function kakaoLogin() {
-    router.push(LINK);
+    // router.push(LINK);
+    console.log(REDIRECT_URI);
+    window.Kakao.Auth.authorize({
+      redirectUri: REDIRECT_URI,
+      scope: 'account_email,openid',
+    });
   }
   return (
     <div onClick={kakaoLogin}>
