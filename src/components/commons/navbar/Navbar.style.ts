@@ -33,8 +33,9 @@ export const ProfileImg = styled.div`
 
 export const NavLine = styled.div`
   width: 100%;
-  height: 2px;
+  height: 1px;
   background-color: ${COLORS.gray.gray200};
+  margin-top: 18px;
 `;
 
 export const FocusLine = styled.div`

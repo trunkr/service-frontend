@@ -8,6 +8,7 @@ import { NavAtom, NavList } from '@/states/NavState';
 import LineButton from '../buttons/capsuleButton/lineButton/LineButton';
 import { useState, useEffect } from 'react';
 import { LoginDialog } from '../dialog/login/LoginDialog';
+import P1 from '@public/graphics/Graphics/Profile 1-1.svg';
 
 export interface NavigationProps {
   state: 'REGISTER' | 'LOGIN' | 'NON_LOGIN';
@@ -85,11 +86,7 @@ const NavigationBar = (navProps: NavigationProps) => {
           </styles.NavMenuWrapper>
           <styles.ProfileMenuWrapper>
             <styles.ProfileImg>
-              {loginClick && portalElement ? (
-                <LoginDialog loginClick={loginClick} setLoginClick={setLoginClick} />
-              ) : (
-                <LineButton size="SMALL" state="DEFAULT" msg="로그인" onClick={onLoginClick} />
-              )}
+              <P1 />
             </styles.ProfileImg>
           </styles.ProfileMenuWrapper>
         </styles.Wrapper>

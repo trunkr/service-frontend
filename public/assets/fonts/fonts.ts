@@ -36,6 +36,11 @@ export const TEXT_STYLE_NAME = {
   Label6M: 'Label6M',
   Label7B: 'Label7B',
   Label7M: 'Label7M',
+  Number1: 'Number1',
+  Number2: 'Number2',
+  Number3: 'Number3',
+  Number4: 'Number4',
+  Number5: 'Number5',
 } as const;
 
 export type TextStyleName = (typeof TEXT_STYLE_NAME)[keyof typeof TEXT_STYLE_NAME];
@@ -231,8 +236,33 @@ export const TEXT_STYLES: Record<TextStyleName, TextStyle> = {
     lineHeight: '13.2px',
   },
   [TEXT_STYLE_NAME.Label7M]: {
-    fontSize: 11,
-    fontWeight: 500,
+    fontSize: 36,
+    fontWeight: 700,
     lineHeight: '13.2px',
+  },
+  [TEXT_STYLE_NAME.Number1]: {
+    fontSize: 36,
+    fontWeight: 700,
+    lineHeight: '46.8px',
+  },
+  [TEXT_STYLE_NAME.Number2]: {
+    fontSize: 35,
+    fontWeight: 600,
+    lineHeight: '30px',
+  },
+  [TEXT_STYLE_NAME.Number3]: {
+    fontSize: 32,
+    fontWeight: 700,
+    lineHeight: '30px',
+  },
+  [TEXT_STYLE_NAME.Number4]: {
+    fontSize: 20,
+    fontWeight: 600,
+    lineHeight: '30px',
+  },
+  [TEXT_STYLE_NAME.Number5]: {
+    fontSize: 14,
+    fontWeight: 600,
+    lineHeight: '30px',
   },
 };

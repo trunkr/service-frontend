@@ -11,8 +11,8 @@ export const Container = styled.div`
 `;
 
 export const LottieContainer = styled.div`
-  width: 504px;
-  height: 300px;
+  width: 535px;
+  height: 445px;
 `;
 
 export const BoldTextContainer = styled.div`
