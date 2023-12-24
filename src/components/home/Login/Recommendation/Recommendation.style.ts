@@ -6,27 +6,19 @@ export const Container = styled.div`
 `;
 
 export const RecommendationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 28px;
 `;
 
-export const RecommendationBox = styled.div`
-  width: 1240px;
-  height: 209px;
-  padding-top: 40px;
-  padding-left: 30px;
-  padding-right: 100px;
+export const RecommendationTopBar = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
-
-export const TextContainer = styled.div`
+export const RecommendationItemContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 43px;
-`;
-
-export const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  gap: 24px;
 `;
