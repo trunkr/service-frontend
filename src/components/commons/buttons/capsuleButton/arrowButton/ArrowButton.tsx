@@ -5,7 +5,7 @@ interface ArrowButtonProps {
 }
 const ArrowButton = ({ onClick }: ArrowButtonProps) => {
   return (
-    <styles.ArrowButtonContainer>
+    <styles.ArrowButtonContainer onClick={onClick}>
       <RightArrow />
     </styles.ArrowButtonContainer>
   );

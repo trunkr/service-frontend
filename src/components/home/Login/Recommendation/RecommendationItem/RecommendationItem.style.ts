@@ -34,7 +34,7 @@ export const ImageContainer = styled.div`
 
 export const ArrowButtonContainer = styled.div`
   position: absolute;
-  bottom: -130px;
+  bottom: -220px;
   z-index: 10;
   padding-left: 300px;
   cursor: pointer;
