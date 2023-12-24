@@ -28,14 +28,15 @@ export const TextField = styled.div`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 160px;
+  display: flex;
+  flex-direction: column;
   position: relative;
 `;
 
 export const ArrowButtonContainer = styled.div`
-  position: absolute;
-  bottom: -220px;
   z-index: 10;
-  padding-left: 300px;
   cursor: pointer;
+  position: absolute;
+  bottom: -20px;
+  padding-left: 300px;
 `;
