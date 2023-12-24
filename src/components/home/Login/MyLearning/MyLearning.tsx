@@ -126,7 +126,7 @@ const MyLearning = ({
                       {recommendedAnswerCount}
                     </Text>
                     <Text color={COLORS.gray.gray750} textStyleName="Label2SB" fontFamily="Pretendard">
-                      추천했어요! 🎉
+                      명이 추천했어요! 🎉
                     </Text>
                   </div>
                 )}

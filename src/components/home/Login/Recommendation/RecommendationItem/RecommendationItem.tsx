@@ -2,28 +2,8 @@ import Text from '@public/assets/text/Text';
 import * as styles from './RecommendationItem.style';
 import { COLORS } from '@public/assets/colors/color';
 import NETWORK_IMAGE from '@public/graphics/Category/Network.svg';
-import DB_IMAGE from '@public/graphics/Category/DataBase.svg';
-import SPRING_IMAGE from '@public/graphics/Category/Spring.svg';
 import ArrowButton from '@/components/commons/buttons/capsuleButton/arrowButton/ArrowButton';
 
-interface RecommendationCategoryImageProps {
-  name: string;
-  link: string;
-}
-const recommendationCategoryImageList: RecommendationCategoryImageProps[] = [
-  {
-    name: 'Network',
-    link: NETWORK_IMAGE,
-  },
-  {
-    name: 'DB',
-    link: DB_IMAGE,
-  },
-  {
-    name: 'Spring',
-    link: SPRING_IMAGE,
-  },
-];
 const RecommendationItem = () => {
   const onClick = () => {};
   return (
