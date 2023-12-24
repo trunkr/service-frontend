@@ -28,10 +28,12 @@ const RecommendationItem = () => {
   const onClick = () => {};
   return (
     <styles.RecommendationItemContainer>
-      <NETWORK_IMAGE />
-      <styles.ArrowButtonContainer>
-        <ArrowButton onClick={onClick} />
-      </styles.ArrowButtonContainer>
+      <styles.ImageContainer>
+        <NETWORK_IMAGE />
+        <styles.ArrowButtonContainer>
+          <ArrowButton onClick={onClick} />
+        </styles.ArrowButtonContainer>
+      </styles.ImageContainer>
       <styles.TextContainer>
         <styles.TextField>
           <Text textStyleName="Title6" color={COLORS.gray.black} fontFamily="Pretendard">
