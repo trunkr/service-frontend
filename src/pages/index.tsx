@@ -7,9 +7,11 @@ import { NavigationProps } from '@/components/commons/navbar/Navbar';
 
 const Home = () => {
   const [userState, setUserState] = useState<NavigationProps>();
+  console.log(userState?.state);
   useEffect(() => {
     const accessToken = api.getAccessToken();
-    if (accessToken) {
+    console.log(accessToken);
+    if (accessToken != undefined) {
       setUserState({
         state: 'LOGIN',
       });

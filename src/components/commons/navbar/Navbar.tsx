@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import LogoIcon from '@public/logo/LOGO-TEXT.svg';
-import ProfileIcon from '@public/graphics/Graphics/Profile 1-1.svg';
 import { COLORS } from 'public/assets/colors/color';
 import * as styles from './Navbar.style';
 import Text from 'public/assets/text/Text';
@@ -9,6 +8,7 @@ import { NavAtom, NavList } from '@/states/NavState';
 import LineButton from '../buttons/capsuleButton/lineButton/LineButton';
 import { useState, useEffect } from 'react';
 import { LoginDialog } from '../dialog/login/LoginDialog';
+import P1 from '@public/graphics/Graphics/Profile 1-1.svg';
 
 export interface NavigationProps {
   state: 'REGISTER' | 'LOGIN' | 'NON_LOGIN';
@@ -16,6 +16,7 @@ export interface NavigationProps {
 
 const NavigationBar = (navProps: NavigationProps) => {
   const { state } = navProps;
+  console.log(state);
   const navState = useRecoilValue(NavAtom);
   const [loginClick, setLoginClick] = useState(false);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
@@ -25,6 +26,7 @@ const NavigationBar = (navProps: NavigationProps) => {
     setLoginClick(true);
   };
   useEffect(() => {
+    console.log('useEffect', loginClick);
     setPortalElement(document.getElementById('root-modal'));
   }, [loginClick]);
   if (state == 'LOGIN') {
@@ -84,11 +86,7 @@ const NavigationBar = (navProps: NavigationProps) => {
           </styles.NavMenuWrapper>
           <styles.ProfileMenuWrapper>
             <styles.ProfileImg>
-              {loginClick && portalElement ? (
-                <LoginDialog loginClick={loginClick} setLoginClick={setLoginClick} />
-              ) : (
-                <LineButton size="SMALL" state="DEFAULT" msg="로그인" onClick={onLoginClick} />
-              )}
+              <P1 />
             </styles.ProfileImg>
           </styles.ProfileMenuWrapper>
         </styles.Wrapper>
@@ -151,9 +149,11 @@ const NavigationBar = (navProps: NavigationProps) => {
             </styles.NavMenu>
           </styles.NavMenuWrapper>
           <styles.ProfileMenuWrapper>
-            <styles.ProfileImg>
-              <ProfileIcon />
-            </styles.ProfileImg>
+            {loginClick && portalElement ? (
+              <LoginDialog loginClick={loginClick} setLoginClick={setLoginClick} />
+            ) : (
+              <LineButton size="SMALL" state="DEFAULT" msg="로그인" onClick={onLoginClick} />
+            )}
           </styles.ProfileMenuWrapper>
         </styles.Wrapper>
         <styles.NavLine />

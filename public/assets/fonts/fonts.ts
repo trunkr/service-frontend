@@ -1,4 +1,7 @@
 export const TEXT_STYLE_NAME = {
+  Main: 'Main',
+  Main2: 'Main2',
+  Main3: 'Main3',
   Title1: 'Title1',
   Title2: 'Title2',
   Title3: 'Title3',
@@ -33,6 +36,11 @@ export const TEXT_STYLE_NAME = {
   Label6M: 'Label6M',
   Label7B: 'Label7B',
   Label7M: 'Label7M',
+  Number1: 'Number1',
+  Number2: 'Number2',
+  Number3: 'Number3',
+  Number4: 'Number4',
+  Number5: 'Number5',
 } as const;
 
 export type TextStyleName = (typeof TEXT_STYLE_NAME)[keyof typeof TEXT_STYLE_NAME];
@@ -47,6 +55,21 @@ interface TextStyle {
 }
 
 export const TEXT_STYLES: Record<TextStyleName, TextStyle> = {
+  [TEXT_STYLE_NAME.Main]: {
+    fontSize: 45,
+    fontWeight: 700,
+    lineHeight: '58.5px',
+  },
+  [TEXT_STYLE_NAME.Main2]: {
+    fontSize: 40,
+    fontWeight: 700,
+    lineHeight: '130%',
+  },
+  [TEXT_STYLE_NAME.Main3]: {
+    fontSize: 20,
+    fontWeight: 500,
+    lineHeight: '170%',
+  },
   [TEXT_STYLE_NAME.Title1]: {
     fontSize: 36,
     fontWeight: 700,
@@ -116,11 +139,6 @@ export const TEXT_STYLES: Record<TextStyleName, TextStyle> = {
     fontSize: 15,
     fontWeight: 500,
     lineHeight: '25.5px',
-  },
-  [TEXT_STYLE_NAME.Body4B]: {
-    fontSize: 14,
-    fontWeight: 700,
-    lineHeight: '23.8px',
   },
   [TEXT_STYLE_NAME.Body4B]: {
     fontSize: 14,
@@ -218,8 +236,33 @@ export const TEXT_STYLES: Record<TextStyleName, TextStyle> = {
     lineHeight: '13.2px',
   },
   [TEXT_STYLE_NAME.Label7M]: {
-    fontSize: 11,
-    fontWeight: 500,
+    fontSize: 36,
+    fontWeight: 700,
     lineHeight: '13.2px',
+  },
+  [TEXT_STYLE_NAME.Number1]: {
+    fontSize: 36,
+    fontWeight: 700,
+    lineHeight: '46.8px',
+  },
+  [TEXT_STYLE_NAME.Number2]: {
+    fontSize: 35,
+    fontWeight: 600,
+    lineHeight: '30px',
+  },
+  [TEXT_STYLE_NAME.Number3]: {
+    fontSize: 32,
+    fontWeight: 700,
+    lineHeight: '30px',
+  },
+  [TEXT_STYLE_NAME.Number4]: {
+    fontSize: 20,
+    fontWeight: 600,
+    lineHeight: '30px',
+  },
+  [TEXT_STYLE_NAME.Number5]: {
+    fontSize: 14,
+    fontWeight: 600,
+    lineHeight: '30px',
   },
 };

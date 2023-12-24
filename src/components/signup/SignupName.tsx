@@ -18,7 +18,7 @@ export const SignupName = ({ setSignupState, setNickName }: SignupProps) => {
   const onCheckboxClick = () => {
     setCheckbox(!checkbox);
   };
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     console.log(data);
     const nameVal = data.name as string;
     const res = await getMemberCheckNickname(nameVal);
