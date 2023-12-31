@@ -4,7 +4,7 @@ import { COLORS } from 'public/assets/colors/color';
 import * as styles from './Navbar.style';
 import Text from 'public/assets/text/Text';
 import { useRecoilValue } from 'recoil';
-import { NavAtom, NavList } from '@/states/NavState';
+import { NavAtom } from '@/states/NavState';
 import LineButton from '../buttons/capsuleButton/lineButton/LineButton';
 import { useState, useEffect } from 'react';
 import { LoginDialog } from '../dialog/login/LoginDialog';
@@ -40,11 +40,13 @@ const NavigationBar = (navProps: NavigationProps) => {
                 <LogoIcon />
               </Link>
 
-              <Link href="/solve" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Solve ? (
-                  <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
-                    CS 문제풀기
-                  </Text>
+              <Link href="/solving/intro" style={{ textDecoration: 'none' }}>
+                {navState != 'Solve' ? (
+                  <div>
+                    <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
+                      CS 문제풀기
+                    </Text>
+                  </div>
                 ) : (
                   <styles.FocusWrapper>
                     <Text color={COLORS.gray.black} textStyleName="Label4B" fontFamily="Pretendard">
@@ -55,7 +57,7 @@ const NavigationBar = (navProps: NavigationProps) => {
                 )}
               </Link>
               <Link href="/analysis" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Analysis ? (
+                {navState != 'Analysis' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     CS 문제풀이 분석
                   </Text>
@@ -69,7 +71,7 @@ const NavigationBar = (navProps: NavigationProps) => {
                 )}
               </Link>
               <Link href="/algorithm" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Algorithm ? (
+                {navState != 'Algorithm' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     알고리즘 분석
                   </Text>
@@ -104,8 +106,8 @@ const NavigationBar = (navProps: NavigationProps) => {
                 <LogoIcon />
               </Link>
 
-              <Link href="/solve" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Solve ? (
+              <Link href="/solving/intro" style={{ textDecoration: 'none' }}>
+                {navState != 'Solve' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     CS 문제풀기
                   </Text>
@@ -119,7 +121,7 @@ const NavigationBar = (navProps: NavigationProps) => {
                 )}
               </Link>
               <Link href="/analysis" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Analysis ? (
+                {navState != 'Analysis' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     CS 문제풀이 분석
                   </Text>
@@ -133,7 +135,7 @@ const NavigationBar = (navProps: NavigationProps) => {
                 )}
               </Link>
               <Link href="/algorithm" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Algorithm ? (
+                {navState != 'Algorithm' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     알고리즘 분석
                   </Text>
@@ -170,8 +172,8 @@ const NavigationBar = (navProps: NavigationProps) => {
                 <LogoIcon />
               </Link>
 
-              <Link href="/solve" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Solve ? (
+              <Link href="/solving/intro" style={{ textDecoration: 'none' }}>
+                {navState != 'Solve' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     CS 문제풀기
                   </Text>
@@ -185,7 +187,7 @@ const NavigationBar = (navProps: NavigationProps) => {
                 )}
               </Link>
               <Link href="/analysis" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Analysis ? (
+                {navState != 'Analysis' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     CS 문제풀이 분석
                   </Text>
@@ -199,7 +201,7 @@ const NavigationBar = (navProps: NavigationProps) => {
                 )}
               </Link>
               <Link href="/algorithm" style={{ textDecoration: 'none' }}>
-                {navState != NavList.Algorithm ? (
+                {navState != 'Algorithm' ? (
                   <Text color={COLORS.gray.gray600} textStyleName="Label4B" fontFamily="Pretendard">
                     알고리즘 분석
                   </Text>

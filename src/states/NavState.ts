@@ -7,7 +7,7 @@ export const NavList = {
   Home: '홈',
 };
 
-type NavType = keyof typeof NavList;
+export type NavType = keyof typeof NavList;
 export const NavAtom = atom<NavType>({
   key: 'NavTypeAtom',
   default: 'Home',

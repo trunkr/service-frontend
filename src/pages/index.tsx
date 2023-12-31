@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 import NoneLoginUserHome from '@/components/home/NoneLoginUserHome';
 import LoginUserHome from '@/components/home/LoginUserHome';
 import { NavigationProps } from '@/components/commons/navbar/Navbar';
+import { useSetRecoilState } from 'recoil';
+import { NavAtom } from '@/states/NavState';
 
 const Home = () => {
+  const setNavAtom = useSetRecoilState(NavAtom);
+  setNavAtom('Home');
   const [userState, setUserState] = useState<NavigationProps>();
   console.log(userState?.state);
   useEffect(() => {
