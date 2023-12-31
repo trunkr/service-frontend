@@ -3,10 +3,13 @@ import * as styles from './SolvingIntro.style';
 import { COLORS } from '@public/assets/colors/color';
 import Link from 'next/link';
 import ThinDivider from '@/components/commons/divider/thin/ThinDivider';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TabsBubble from '@/components/commons/tabs/bubble';
 import PrimaryBoxButton from '@/components/commons/buttons/boxButton/primaryButton/PrimaryBoxButton';
 import SolvingIntroItem from './solvingIntroItem/SolvingIntroItem';
+import { useGetQuizCategoriesFigure } from '@/hooks/quiz/useGetQuizCategoriesFigure';
+import api from '@/service/TokenService';
+import { useRouter } from 'next/router';
 
 const CS = 'CS';
 const LANGUAGE = 'LANGUAGE';
@@ -14,66 +17,103 @@ const FRAMEWORK = 'FRAMEWORK';
 
 const SolvingCategory = [
   {
+    id: 1,
     name: '운영체제',
     type: CS,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 2,
     name: '자료구조',
     type: CS,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 3,
     name: '데이터베이스',
     type: CS,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 4,
     name: '컴퓨터구조',
     type: CS,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 5,
     name: '네트워크',
     type: CS,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 6,
     name: 'Spring',
     type: FRAMEWORK,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 7,
     name: 'React',
     type: FRAMEWORK,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 8,
     name: 'Java',
     type: LANGUAGE,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 9,
     name: 'JavaScript',
     type: LANGUAGE,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 10,
     name: 'GO',
     type: LANGUAGE,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
   {
+    id: 11,
     name: 'Kotlin',
     type: LANGUAGE,
+    quizTotal: 0,
+    solvableQuizCnt: 0,
   },
 ];
 
 const SolvingIntro = () => {
+  const token = api.getAccessToken();
+  const router = useRouter();
   const [clickAll, setClickAll] = useState(true);
   const [clickCs, setClickCs] = useState(false);
   const [clickFramework, setClickFramework] = useState(false);
   const [clickLanguage, setClickLanguage] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
-
-  const handleItemClick = (name: string) => {
+  const [selectedQuizIds, setSelectedQuizIds] = useState<number[]>([]);
+  const handleItemClick = (name: string, id: number) => {
     // 항목의 선택 여부를 토글
     if (selectedItems.some((item) => item == name)) {
       // 이미 존재하는 경우 제거
       setSelectedItems(selectedItems.filter((item) => !(item == name)));
+      setSelectedQuizIds(selectedQuizIds.filter((item) => !(item == id)));
     } else {
       // 존재하지 않는 경우 추가
       setSelectedItems([...selectedItems, name]);
+      setSelectedQuizIds([...selectedQuizIds, id]);
     }
     console.log(selectedItems);
   };
@@ -102,7 +142,25 @@ const SolvingIntro = () => {
     setClickLanguage(false);
     setClickFramework(true);
   };
-  const onButtonClick = () => {};
+  const onButtonClick = () => {
+    router.push('/solve', {
+      query: selectedQuizIds.toString(),
+    });
+  };
+
+  const { data } = useGetQuizCategoriesFigure(token);
+  console.log(data);
+  console.log(SolvingCategory);
+  useEffect(() => {
+    data?.payload.map((item) =>
+      SolvingCategory.filter((solvingItem) => {
+        if (solvingItem.name == item.name) {
+          solvingItem.quizTotal = item.quizTotal;
+          solvingItem.solvableQuizCnt = item.solvableQuizCnt;
+        }
+      }),
+    );
+  }, [data]);
   return (
     <styles.Container>
       <styles.TextContainer>
@@ -155,18 +213,58 @@ const SolvingIntro = () => {
       </styles.SelectContainer>
 
       <styles.SolvingIntroItemContainer>
-        {SolvingCategory.map((item) => (
-          <div key={item.name} onClick={() => handleItemClick(item.name)}>
-            <styles.SolvingIntroItemSubContainer>
-              <SolvingIntroItem
-                isClick={selectedItems.includes(item.name)}
-                name={item.name}
-                quizTotal={10}
-                solvableQuizCnt={10}
-              />
-            </styles.SolvingIntroItemSubContainer>
-          </div>
-        ))}
+        {clickAll &&
+          SolvingCategory.map((item) => (
+            <div key={item.name} onClick={() => handleItemClick(item.name, item.id)}>
+              <styles.SolvingIntroItemSubContainer>
+                <SolvingIntroItem
+                  isClick={selectedItems.includes(item.name)}
+                  name={item.name}
+                  quizTotal={item.quizTotal}
+                  solvableQuizCnt={item.solvableQuizCnt}
+                />
+              </styles.SolvingIntroItemSubContainer>
+            </div>
+          ))}
+        {clickCs &&
+          SolvingCategory.filter((item) => item.type === CS).map((item) => (
+            <div key={item.name} onClick={() => handleItemClick(item.name, item.id)}>
+              <styles.SolvingIntroItemSubContainer>
+                <SolvingIntroItem
+                  isClick={selectedItems.includes(item.name)}
+                  name={item.name}
+                  quizTotal={item.quizTotal}
+                  solvableQuizCnt={item.solvableQuizCnt}
+                />
+              </styles.SolvingIntroItemSubContainer>
+            </div>
+          ))}
+        {clickLanguage &&
+          SolvingCategory.filter((item) => item.type === LANGUAGE).map((item) => (
+            <div key={item.name} onClick={() => handleItemClick(item.name, item.id)}>
+              <styles.SolvingIntroItemSubContainer>
+                <SolvingIntroItem
+                  isClick={selectedItems.includes(item.name)}
+                  name={item.name}
+                  quizTotal={item.quizTotal}
+                  solvableQuizCnt={item.solvableQuizCnt}
+                />
+              </styles.SolvingIntroItemSubContainer>
+            </div>
+          ))}
+        {clickFramework &&
+          SolvingCategory.filter((item) => item.type === FRAMEWORK).map((item) => (
+            <div key={item.name} onClick={() => handleItemClick(item.name, item.id)}>
+              <styles.SolvingIntroItemSubContainer>
+                <SolvingIntroItem
+                  isClick={selectedItems.includes(item.name)}
+                  name={item.name}
+                  quizTotal={item.quizTotal}
+                  solvableQuizCnt={item.solvableQuizCnt}
+                />
+              </styles.SolvingIntroItemSubContainer>
+            </div>
+          ))}
       </styles.SolvingIntroItemContainer>
 
       <styles.CategoryCheckContainer>
