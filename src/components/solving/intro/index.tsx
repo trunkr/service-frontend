@@ -143,8 +143,11 @@ const SolvingIntro = () => {
     setClickFramework(true);
   };
   const onButtonClick = () => {
-    router.push('/solve', {
-      query: selectedQuizIds.toString(),
+    router.push({
+      pathname: '/solving/solve',
+      query: {
+        quizIds: JSON.stringify(selectedQuizIds),
+      },
     });
   };
 

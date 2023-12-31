@@ -1,13 +1,10 @@
-const Solve = ({ params }: any) => {
-  console.log(params);
-  return <div></div>;
+interface SolveProps {
+  selectedQuizIds: string;
+}
+
+const Solve = ({ selectedQuizIds }: SolveProps) => {
+  console.log(selectedQuizIds);
+  return <div>solve다!</div>;
 };
 
-export function getServerSideProps({ params: { params } }: any) {
-  return {
-    props: {
-      params,
-    },
-  };
-}
 export default Solve;
