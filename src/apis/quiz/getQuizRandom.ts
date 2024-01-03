@@ -1,9 +1,9 @@
 import { GetQuizRandomRes } from '@/types/Quiz';
 import customedAxios from '../customedAxios';
 
-export const getQuizRandom = async (token: string): Promise<GetQuizRandomRes> => {
+export const getQuizRandom = async (token: string, categoryIds: string): Promise<GetQuizRandomRes> => {
   try {
-    const res = await customedAxios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/random`, {
+    const res = await customedAxios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/random?categoryIds=${categoryIds}`, {
       headers: {
         Authorization: 'Bearer ' + token.trim(),
       },

@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 import Head from 'next/head';
 import Script from 'next/script';
+import '../../public/assets/styles/global';
 
 declare global {
   interface Window {
