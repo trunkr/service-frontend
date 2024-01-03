@@ -10,6 +10,8 @@ import SolvingIntroItem from './solvingIntroItem/SolvingIntroItem';
 import { useGetQuizCategoriesFigure } from '@/hooks/quiz/useGetQuizCategoriesFigure';
 import api from '@/service/TokenService';
 import { useRouter } from 'next/router';
+import CheckBox from '@public/icons/System/CheckSquareBox.svg';
+import CheckBoxOn from '@public/icons/System/CheckSquareMint.svg';
 
 const CS = 'CS';
 const LANGUAGE = 'LANGUAGE';
@@ -104,6 +106,7 @@ const SolvingIntro = () => {
   const [clickLanguage, setClickLanguage] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [selectedQuizIds, setSelectedQuizIds] = useState<number[]>([]);
+  const [selectAll, setSelectAll] = useState(false);
   const handleItemClick = (name: string, id: number) => {
     // 항목의 선택 여부를 토글
     if (selectedItems.some((item) => item == name)) {
@@ -115,7 +118,6 @@ const SolvingIntro = () => {
       setSelectedItems([...selectedItems, name]);
       setSelectedQuizIds([...selectedQuizIds, id]);
     }
-    console.log(selectedItems);
   };
 
   const onAllClick = () => {
@@ -150,10 +152,31 @@ const SolvingIntro = () => {
       },
     });
   };
+  const selectAllClick = () => {
+    if (selectAll) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems([
+        '운영체제',
+        '자료구조',
+        '데이터베이스',
+        '컴퓨터구조',
+        '네트워크',
+        'Spring',
+        'React',
+        'Java',
+        'JavaScript',
+        'GO',
+        'Kotlin',
+      ]);
+    }
+    setSelectAll(!selectAll);
+  };
 
   const { data } = useGetQuizCategoriesFigure(token);
-  console.log(data);
-  console.log(SolvingCategory);
+  // @TODO: 추후 스낵바 관련 작업
+  //const zeroQuizData = data?.payload.filter((item) => item.solvableQuizCnt == 0);
+
   useEffect(() => {
     data?.payload.map((item) =>
       SolvingCategory.filter((solvingItem) => {
@@ -209,11 +232,25 @@ const SolvingIntro = () => {
         )}
       </styles.BubbleTabContainer>
       <ThinDivider />
-      <styles.SelectContainer>
-        <Text color={COLORS.gray.black} textStyleName="Label4M" fontFamily="Pretendard">
-          전체선택(0/11)
-        </Text>
-      </styles.SelectContainer>
+      {selectAll ? (
+        <div onClick={selectAllClick}>
+          <styles.SelectContainer>
+            <CheckBoxOn />
+            <Text color={COLORS.gray.black} textStyleName="Label4M" fontFamily="Pretendard">
+              전체선택(11/11)
+            </Text>
+          </styles.SelectContainer>
+        </div>
+      ) : (
+        <div onClick={selectAllClick}>
+          <styles.SelectContainer>
+            <CheckBox />
+            <Text color={COLORS.gray.black} textStyleName="Label4M" fontFamily="Pretendard">
+              전체선택(0/11)
+            </Text>
+          </styles.SelectContainer>
+        </div>
+      )}
 
       <styles.SolvingIntroItemContainer>
         {clickAll &&
