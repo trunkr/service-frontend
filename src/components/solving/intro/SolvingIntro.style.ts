@@ -50,6 +50,8 @@ export const ButtonContainer = styled.div`
 export const SelectContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 10px;
 `;
 
 export const CategoryCheckContainer = styled.div`

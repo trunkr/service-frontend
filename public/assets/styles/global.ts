@@ -19,6 +19,9 @@ export const GlobalStyles = css`
     outline: none;
     border: none;
   }
+  input:focus {
+    outline: none; /* 포커스 효과 제거 */
+  }
 
   button {
     background: none;

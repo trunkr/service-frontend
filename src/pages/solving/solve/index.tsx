@@ -9,6 +9,7 @@ const SolvePage = (props: any) => {
   const setNavAtom = useSetRecoilState(NavAtom);
   setNavAtom('Solve');
   const token = api.getAccessToken();
+
   return (
     <div>
       {token ? (
