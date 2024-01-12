@@ -17,7 +17,7 @@ interface SolveItemProps {
   setIndicatorStep: React.Dispatch<React.SetStateAction<number>>;
   indicatorStep: number;
 }
-const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep, indicatorStep }: SolveItemProps) => {
+const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep }: SolveItemProps) => {
   const token = api.getAccessToken();
   const [answer, setAnswer] = useState<string>();
   const [switchClick, setSwtichClick] = useState<boolean>(true);
@@ -54,9 +54,9 @@ const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep, indicatorS
       },
       token,
     );
-    if (data.code == 200) {
-      indicatorStep += 1;
-      setIndicatorStep(indicatorStep);
+    if (data.code == 100) {
+      setIndicatorStep((prev) => prev + 1);
+      setAnswer('');
     }
   };
   return (

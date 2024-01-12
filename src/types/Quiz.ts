@@ -33,6 +33,16 @@ export interface PostQuizAnswerInterface {
   quizId: number;
   answer: string;
 }
+export interface QuizResultInterface {
+  quizId: number;
+  question: string;
+  isCorrect: boolean;
+}
+export interface GetQuizAnswerInterface {
+  quizGroupId: string;
+  result: QuizResultInterface[];
+}
 export type GetQuizCategoriesFigureRes = ResponseDto<GetQuizCategoriesFigureInterface[]>;
 export type GetQuizRandomRes = ResponseDto<GetQuizRandomInterface>;
 export type PostQuizAnswerReq = PostQuizAnswerInterface;
+export type GetQuizAnswerRes = ResponseDto<GetQuizAnswerInterface>;
