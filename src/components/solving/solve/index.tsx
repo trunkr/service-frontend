@@ -18,7 +18,7 @@ const Solve = ({ selectedQuizIds }: SolveProps) => {
 
   const { data } = useGetQuizRandom(token, paramString);
   const solveProblemSize = selectedQuizIds.length;
-  console.log(solveProblemSize);
+  console.log(data);
   const [indicatorStep, setIndicatorStep] = useState(0);
   if (data) {
     const quizGroupId = data.payload.quizGroupId;

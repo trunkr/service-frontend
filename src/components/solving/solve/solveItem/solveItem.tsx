@@ -21,7 +21,7 @@ const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep }: SolveIte
   const token = api.getAccessToken();
   const [answer, setAnswer] = useState<string>();
   const [switchClick, setSwtichClick] = useState<boolean>(true);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const [activeState, setActiveState] = useState(false);
 
   useLayoutEffect(() => {
@@ -39,7 +39,7 @@ const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep }: SolveIte
       setActiveState(false);
     }
   }, [answer]);
-  const onChangeAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeAnswer = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setAnswer(event.currentTarget.value);
   };
   const onSwitchClick = () => {
@@ -59,6 +59,27 @@ const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep }: SolveIte
       setAnswer('');
     }
   };
+
+  const handleFocus = () => {
+    // 포커스가 발생했을 때 커서 위치를 이동
+    if (inputRef.current) {
+      inputRef.current.style.paddingTop = '-200px';
+    }
+  };
+
+  const handleBlur = () => {
+    // 포커스가 해제되었을 때 커서 위치를 초기화
+    if (inputRef.current) {
+      inputRef.current.style.paddingTop = '30px';
+    }
+  };
+  const handleInput = () => {
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
+    }
+  };
+
   return (
     <styles.Container>
       <styles.AnswerWrapper>
@@ -73,6 +94,9 @@ const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep }: SolveIte
           value={answer}
           onChange={onChangeAnswer}
           ref={inputRef}
+          onInput={handleInput}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
 
         {switchClick ? (

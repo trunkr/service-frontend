@@ -18,18 +18,32 @@ export const AnswerWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
 `;
-export const AnswerField = styled.input`
+
+export const AnswerField = styled.textarea`
   width: 1030px;
+  min-height: 308px;
   padding: 30px;
   border-radius: 10px;
   margin-top: 60px;
   border: 2px solid ${COLORS.gray.gray250};
   outline: none;
+  font-size: 18px;
+  resize: none; /* textarea 크기 조절 비활성화 */
+  overflow-y: hidden; /* 스크롤바 비활성화 */
+  box-sizing: border-box; /* padding, border를 요소 크기에 포함 */
+
   &:active {
     border-color: ${COLORS.gray.black};
   }
+
   &:focus {
     border-color: ${COLORS.gray.black};
+    height: auto;
+  }
+
+  &::placeholder {
+    position: absolute;
+    top: 30px;
   }
 `;
 export const VisibleButtonContainer = styled.div`

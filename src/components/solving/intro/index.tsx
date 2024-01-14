@@ -81,13 +81,7 @@ const SolvingCategory = [
     quizTotal: 0,
     solvableQuizCnt: 0,
   },
-  {
-    id: 10,
-    name: 'GO',
-    type: LANGUAGE,
-    quizTotal: 0,
-    solvableQuizCnt: 0,
-  },
+
   {
     id: 11,
     name: 'Kotlin',
@@ -166,7 +160,6 @@ const SolvingIntro = () => {
         'React',
         'Java',
         'JavaScript',
-        'GO',
         'Kotlin',
       ]);
     }
