@@ -9,7 +9,11 @@ interface FeedbackTopProps {
 const FeedbackTop = ({ correct, incorrect }: FeedbackTopProps) => {
   // 전부다 맞아았을 때
   if (incorrect == 0) {
-    return <styles.FeedbackTopWrapper></styles.FeedbackTopWrapper>;
+    return (
+      <styles.FeedbackTopWrapper>
+        <CorrectGraphics />
+      </styles.FeedbackTopWrapper>
+    );
   }
   // 과반수이상 정답
   else if (correct > incorrect) {

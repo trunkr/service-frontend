@@ -9,7 +9,7 @@ interface FeedbackItemProps {
   quizId: number;
   onClick: () => void;
 }
-const FeedbackItem = ({ isCorrect, question, quizId, onClick }: FeedbackItemProps) => {
+const FeedbackItem = ({ isCorrect, question }: FeedbackItemProps) => {
   return (
     <styles.Container>
       <styles.RowWrapper>

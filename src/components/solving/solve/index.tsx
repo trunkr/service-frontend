@@ -1,12 +1,12 @@
-import { useGetQuizRandom } from '@/hooks/quiz/useGetQuizRandom';
-import api from '@/service/TokenService';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SolveItem from './solveItem/solveItem';
 import * as styles from './Solve.style';
 import IndicatorThree from '@/components/commons/indicators/indicatorThree/IndicatorThree';
 import IndicatorFive from '@/components/commons/indicators/indicatorFive/IndicatorFive';
 import IndicatorTen from '@/components/commons/indicators/indicatorTen/IndicatorTen';
-import SolveFeedback from '../feedback';
+import { useRouter } from 'next/router';
+import { useGetQuizRandom } from '@/hooks/quiz/useGetQuizRandom';
+import api from '@/service/TokenService';
 
 interface SolveProps {
   selectedQuizIds: string[];
@@ -15,65 +15,87 @@ interface SolveProps {
 const Solve = ({ selectedQuizIds }: SolveProps) => {
   const token = api.getAccessToken();
   const paramString = selectedQuizIds.join(',');
+  const router = useRouter();
 
   const { data } = useGetQuizRandom(token, paramString);
-  const solveProblemSize = selectedQuizIds.length;
-  console.log(data);
+  const solveProblemSize = data?.payload.quizzes.length;
+
   const [indicatorStep, setIndicatorStep] = useState(0);
+
+  useEffect(() => {
+    if (indicatorStep === 3 && solveProblemSize === 3) {
+      console.log('이동');
+      router.push('/', {
+        query: {
+          quizGroupId: data?.payload.quizGroupId,
+        },
+      });
+    }
+    if (indicatorStep === 5 && solveProblemSize === 5) {
+      router.push(`/solving/feedback/${data?.payload.quizGroupId}`, {
+        query: {
+          quizGroupId: data?.payload.quizGroupId,
+        },
+      });
+    }
+    if (indicatorStep === 10 && solveProblemSize === 10) {
+      router.push(`/solving/feedback/${data?.payload.quizGroupId}`, {
+        query: {
+          quizGroupId: data?.payload.quizGroupId,
+        },
+      });
+    }
+  }, [indicatorStep]);
+
   if (data) {
     const quizGroupId = data.payload.quizGroupId;
     const quizArr = data.payload.quizzes;
-    if (solveProblemSize == 3) {
+
+    if (solveProblemSize === 3) {
       return (
         <div>
-          {indicatorStep == 3 ? (
-            <SolveFeedback quizGroupId={quizGroupId} />
-          ) : (
+          {indicatorStep < 3 && (
             <styles.Container>
               <IndicatorThree step={indicatorStep} />
               <SolveItem
                 quizGroupId={quizGroupId}
                 quizId={quizArr[indicatorStep].id}
                 question={quizArr[indicatorStep].question}
-                indicatorStep={indicatorStep} // indicatorStep을 올려서 전달
+                indicatorStep={indicatorStep}
                 setIndicatorStep={setIndicatorStep}
               />
             </styles.Container>
           )}
         </div>
       );
-    } else if (solveProblemSize == 5) {
+    } else if (solveProblemSize === 5) {
       return (
         <div>
-          {indicatorStep == 5 ? (
-            <SolveFeedback quizGroupId={quizGroupId} />
-          ) : (
+          {indicatorStep < 5 && (
             <styles.Container>
               <IndicatorFive step={indicatorStep} />
               <SolveItem
                 quizGroupId={quizGroupId}
                 quizId={quizArr[indicatorStep].id}
                 question={quizArr[indicatorStep].question}
-                indicatorStep={indicatorStep} // indicatorStep을 올려서 전달
+                indicatorStep={indicatorStep}
                 setIndicatorStep={setIndicatorStep}
               />
             </styles.Container>
           )}
         </div>
       );
-    } else if (solveProblemSize == 10) {
+    } else if (solveProblemSize === 10) {
       return (
         <div>
-          {indicatorStep == 10 ? (
-            <SolveFeedback quizGroupId={quizGroupId} />
-          ) : (
+          {indicatorStep < 10 && (
             <styles.Container>
               <IndicatorTen step={indicatorStep} />
               <SolveItem
                 quizGroupId={quizGroupId}
                 quizId={quizArr[indicatorStep].id}
                 question={quizArr[indicatorStep].question}
-                indicatorStep={indicatorStep} // indicatorStep을 올려서 전달
+                indicatorStep={indicatorStep}
                 setIndicatorStep={setIndicatorStep}
               />
             </styles.Container>
@@ -81,21 +103,9 @@ const Solve = ({ selectedQuizIds }: SolveProps) => {
         </div>
       );
     }
-  } else {
-    return (
-      <styles.Container>
-        <IndicatorTen step={indicatorStep} />
-        <SolveItem
-          quizGroupId={'111'}
-          quizId={1}
-          question={'Java 오버라이딩어쩌구'}
-          indicatorStep={0} // indicatorStep을 올려서 전달
-          setIndicatorStep={setIndicatorStep}
-        />
-        ;
-      </styles.Container>
-    );
   }
+
+  return null; // data가 없을 때는 null을 반환하여 아무것도 렌더링하지 않도록 처리
 };
 
 export default Solve;

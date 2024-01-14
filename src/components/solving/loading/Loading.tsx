@@ -3,6 +3,7 @@ import * as styles from './Loading.style';
 import { COLORS } from '@public/assets/colors/color';
 import SolvingLottie from '@public/lottie/loading.json';
 import Lottie from 'lottie-react';
+
 const SolveLoading = () => {
   return (
     <styles.Container>

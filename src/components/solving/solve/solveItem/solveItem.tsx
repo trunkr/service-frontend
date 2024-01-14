@@ -89,7 +89,6 @@ const SolveItem = ({ quizId, quizGroupId, question, setIndicatorStep }: SolveIte
           </Text>
         </styles.TitleWrapper>
         <styles.AnswerField
-          type="text"
           placeholder="답변을 입력헤주세요"
           value={answer}
           onChange={onChangeAnswer}
