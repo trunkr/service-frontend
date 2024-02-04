@@ -1,4 +1,4 @@
-export * from './auth';
+export * from './Auth';
 export * from './ui';
 export * from './quiz';
 export * from './request';
