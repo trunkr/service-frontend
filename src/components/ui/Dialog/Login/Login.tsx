@@ -16,7 +16,7 @@ function Login({ ...props }: IDialogProps) {
   };
 
   return (
-    <Dialog existFooter={false} {...props}>
+    <Dialog existFooter={false} opacity={0.5} {...props}>
       <div css={wrap}>
         <img src={icSymbol} alt="" width={65} />
         <div css={title}>

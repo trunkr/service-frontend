@@ -26,3 +26,5 @@ export interface IQuizCategory extends IQuizCategoryBase {
   /** 풀 수 있는 퀴즈 수 */
   solvableQuizCnt: number;
 }
+
+export type QuizCategoryFilterType = QuizCategoryType | '';

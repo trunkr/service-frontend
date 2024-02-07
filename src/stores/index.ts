@@ -3,6 +3,8 @@ import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth';
+import { quizReducer } from './quiz';
+import { uiReducer } from './ui';
 
 export type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
@@ -10,11 +12,13 @@ type AppDispatch = typeof store.dispatch;
 const persistConfig = {
   key: process.env.REACT_APP_NAME as string,
   storage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'quiz'],
 };
 
 const reducers = combineReducers({
   auth: authReducer,
+  quiz: quizReducer,
+  ui: uiReducer,
 });
 const reducer = persistReducer(persistConfig, reducers);
 

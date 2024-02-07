@@ -1,11 +1,13 @@
 import React from 'react';
 import { Interpolation, Theme } from '@emotion/react';
 import { wrap } from './style';
+import icOn from 'static/icons/system/ic_radio_on.svg';
+import icOff from 'static/icons/system/ic_radio_off.svg';
 
 interface Props<T extends string> extends React.InputHTMLAttributes<HTMLInputElement> {
   handleClick?: (val: T) => void;
   current: T;
-  css?: Interpolation<Theme>;
+  sizeCss?: Interpolation<Theme>;
 }
 
 function Radio<T extends string>({
@@ -13,14 +15,13 @@ function Radio<T extends string>({
   children,
   current,
   value,
-  css = {},
+  sizeCss = {},
   ...props
 }: React.PropsWithChildren<Props<T>>) {
   return (
     <label css={wrap}>
       <input
         {...props}
-        css={[css]}
         type="radio"
         value={value}
         checked={current === value}
@@ -31,6 +32,7 @@ function Radio<T extends string>({
         }}
         disabled={props?.readOnly && current !== value}
       />
+      <img src={current === value ? icOn : icOff} css={sizeCss} />
       {children}
     </label>
   );

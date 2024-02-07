@@ -3,15 +3,16 @@ import icTextLogo from 'static/logos/text.svg';
 import { wrapper, logoSection, user } from './style';
 import { UiComponent } from 'components';
 import { PATH } from 'data/path';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'stores';
-import { AuthQuery, MemberQuery } from 'queries';
+import { MemberQuery } from 'queries';
 import { PROFILE_DATA } from 'data/profile';
 
 function Header() {
+  const navigate = useNavigate();
   const { auth } = useAppSelector((state) => state.auth);
-  const { mutate } = AuthQuery.useSignout();
   const { data } = MemberQuery.usePersonalInfo();
+
   const [isOpenLoginDialog, toggleLoginDialog] = useReducer((isOpen) => !isOpen, false);
 
   return (
@@ -32,10 +33,11 @@ function Header() {
                 to: PATH.statistics,
               },
             ]}
+            toggleLoginDialog={toggleLoginDialog}
           />
         </div>
         {auth?.token.accessToken ? (
-          <button type="button" css={user} onClick={() => mutate()}>
+          <button type="button" css={user} onClick={() => navigate(PATH.profile)}>
             <img src={PROFILE_DATA[Number(data?.profileImageUrl || '0')]} alt="" />
           </button>
         ) : (

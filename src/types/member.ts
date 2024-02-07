@@ -7,7 +7,7 @@ export interface IMember {
   profileImageUrl: string;
   quizCount: number;
   /** 나의 문제 공개 여부 */
-  isQuizOpen: true;
+  isQuizOpen: boolean;
   tier: string;
   type: string;
 }

@@ -9,12 +9,12 @@ import { title, subTitle } from './style';
 interface Props {
   item: IQuizCategory;
   checked: boolean;
-  handleChecked: (checked: boolean, item: IQuizCategory) => void;
+  handleChecked?: (checked: boolean, item: IQuizCategory) => void;
 }
 
 function CheckableItem({ item, checked, handleChecked }: Props) {
   const handleCheck = () => {
-    handleChecked(!checked, item);
+    handleChecked?.(!checked, item);
   };
 
   return (

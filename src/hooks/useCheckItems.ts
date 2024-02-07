@@ -3,11 +3,11 @@ import { useCallback, useMemo, useState } from 'react';
 interface Props<T> {
   items: T[];
   uniqueKey: keyof T;
+  defaultKeys?: T[keyof T][];
 }
 
-function useCheckItems<T extends object>({ items, uniqueKey }: Props<T>) {
-  const [checkedKeys, setCheckedKeys] = useState<T[keyof T][]>([]);
-
+function useCheckItems<T extends object>({ items, uniqueKey, defaultKeys = [] }: Props<T>) {
+  const [checkedKeys, setCheckedKeys] = useState<T[keyof T][]>(defaultKeys);
   const isChecked = useCallback(
     (data: T) => {
       return checkedKeys.includes(data[uniqueKey]);

@@ -1,14 +1,14 @@
 import { CSSObject, Theme } from '@emotion/react';
 
 const wrap: CSSObject = {
-  margin: '0 100px',
+  margin: '0 100px 220px 100px',
   display: 'flex',
   flexDirection: 'column',
 };
 
 const listWrap: CSSObject = {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr 1fr',
+  gridTemplateColumns: 'repeat(4, 1fr)',
   gap: '24px',
 };
 

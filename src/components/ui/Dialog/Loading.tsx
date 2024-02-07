@@ -4,15 +4,20 @@ import Background from './Background';
 import { Player } from '@lottiefiles/react-lottie-player';
 import animationData from 'static/lottie/loading.json';
 import { Interpolation, Theme } from '@emotion/react';
+import useDisableScroll from './useDisableScroll';
 
 interface Props {
   css?: Interpolation<Theme>;
+  opacity?: number;
+  isWhite?: boolean;
 }
 
-function Loading({ css = {}, children }: PropsWithChildren<Props>) {
+function Loading({ css = {}, opacity = 0.5, isWhite = false, children }: PropsWithChildren<Props>) {
+  useDisableScroll();
+
   return (
     <Portal>
-      <Background css={css}>
+      <Background css={css} opacity={opacity} isWhite={isWhite}>
         <Player
           autoplay
           loop

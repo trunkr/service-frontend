@@ -1,5 +1,7 @@
 const KEY = ['QUIZ'];
 
-const CATEGORY_KEY = [...KEY, 'QUIZ', 'CATEGORY'];
+const CATEGORY_KEY = [...KEY, 'CATEGORY'];
+const ANSWER_KEY = [...KEY, 'ANSWER'];
+const STATISTICS_KEY = [...KEY, 'STATISTICS'];
 
-export { KEY, CATEGORY_KEY };
+export { KEY, CATEGORY_KEY, ANSWER_KEY, STATISTICS_KEY };

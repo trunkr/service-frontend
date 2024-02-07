@@ -1,6 +1,6 @@
 import { base } from 'api';
 import { IResponse } from 'types';
-import { IMember, IMyStats } from 'types/member';
+import { IMember, IMyStats, MemberUpdateType } from 'types/member';
 
 const PATH = '/v1/members';
 
@@ -11,4 +11,6 @@ const getStats = () => base.get<IResponse<IMyStats>>(`${PATH}/stats`);
 
 const getPersonalInfo = () => base.get<IResponse<IMember>>(`${PATH}/personal-info`);
 
-export { checkNickname, getStats, getPersonalInfo };
+const putPersonalInfo = (data: MemberUpdateType) => base.put(`${PATH}/personal-info`, data);
+
+export { checkNickname, getStats, getPersonalInfo, putPersonalInfo };

@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-import { wrap, title, subTitle, listWrap } from './style';
+import { wrap, title } from './style';
 import { RECENT_MOCK_DATA } from './constants';
 import { StatisticsComponent } from 'components';
-import { IQuizStatisticsByCategoriesItem } from 'types';
 
 function Main() {
   return (
@@ -15,17 +14,7 @@ function Main() {
           </Fragment>
         ))}
       </div>
-      <p css={(theme) => ({ ...title(theme) })}>CS 카테고리별 정답율 분석</p>
-      <p css={subTitle}>
-        CS 카테고리 11개 중<span>3</span>개 학습 중
-      </p>
-      <div css={listWrap}>
-        {[].map((item: IQuizStatisticsByCategoriesItem) => (
-          <Fragment key={item.categoryId}>
-            <StatisticsComponent.StatisticsByCategoryItem item={item} />
-          </Fragment>
-        ))}
-      </div>
+      <StatisticsComponent.StatisticsByCategories />
     </main>
   );
 }

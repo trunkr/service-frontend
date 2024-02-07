@@ -10,6 +10,18 @@ const wrap = ({ shadows }: Theme): CSSObject => ({
   zIndex: 3000,
 });
 
+const backgroundCover =
+  (opacity: number, isWhite: boolean) =>
+  ({
+    color: {
+      gray: { gray1000, gray0 },
+    },
+  }: Theme): CSSObject => ({
+    background: isWhite ? gray0 : gray1000,
+    opacity,
+    height: '100vh',
+  });
+
 const closeStyle: CSSObject = {
   position: 'absolute',
   right: '30px',
@@ -21,6 +33,7 @@ const contents = ({
   },
   shadows,
 }: Theme): CSSObject => ({
+  boxSizing: 'border-box',
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -57,6 +70,11 @@ const foot = ({
 });
 
 const background: CSSObject = {
+  position: 'fixed',
+  left: 0,
+  top: 0,
+  right: 0,
+  bottom: 0,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -77,6 +95,8 @@ const titleStyle = ({
   fontSize: title5,
   fontWeight: bold,
   marginBottom: '20px',
+  whiteSpace: 'pre',
+  lineHeight: '31.2px',
 });
 
 const subTitleStyle = ({
@@ -95,4 +115,4 @@ const subTitleStyle = ({
   marginBottom: '30px',
 });
 
-export { wrap, foot, background, titleStyle, subTitleStyle, closeStyle, contents };
+export { wrap, foot, background, titleStyle, subTitleStyle, closeStyle, contents, backgroundCover };

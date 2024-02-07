@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { AuthApi } from 'api';
+import { AxiosError } from 'axios';
 import { useAppDispatch } from 'stores';
 import { setToken } from 'stores/auth';
 
@@ -8,6 +9,11 @@ function useRefreshToken() {
   return useMutation(AuthApi.refreshToken, {
     onSuccess(data) {
       dispatch(setToken(data.data.payload));
+    },
+    onError(err) {
+      if (err instanceof AxiosError && err.response?.data.code === '312') {
+        dispatch(setToken(null));
+      }
     },
   });
 }

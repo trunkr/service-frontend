@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function useNavLinkTabs(): {
-  current: HTMLAnchorElement | undefined;
-  addRefs: (refLink: HTMLAnchorElement | null, to: string) => void;
+  current: HTMLButtonElement | undefined;
+  addRefs: (refLink: HTMLButtonElement | null, to: string) => void;
 } {
   const { pathname } = useLocation();
-  const [refLinks] = useState<Record<string, HTMLAnchorElement>>({});
-  const [current, setCurrent] = useState<HTMLAnchorElement | undefined>(undefined);
+  const [refLinks] = useState<Record<string, HTMLButtonElement>>({});
+  const [current, setCurrent] = useState<HTMLButtonElement | undefined>(undefined);
 
-  const addRefs = (refLink: HTMLAnchorElement | null, to: string) => {
+  const addRefs = (refLink: HTMLButtonElement | null, to: string) => {
     if (!refLink) {
       return;
     }

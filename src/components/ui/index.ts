@@ -10,5 +10,6 @@ export { default as ProgressBar } from './ProgressBar';
 export { default as StepProgress } from './StepProgress';
 export { default as Textarea } from './Textarea';
 export { default as Toggle } from './Toggle';
+export { default as Pagination } from './Pagination';
 
 export * from './Dialog';

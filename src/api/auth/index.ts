@@ -1,5 +1,5 @@
 import { base } from 'api';
-import { IRefreshTokenParams, ISignUpParams, ISocialSignInParams } from 'types';
+import { ISignUpParams, ISocialSignInParams, IRefreshTokenParams } from 'types';
 
 const PATH = '/v1/auth';
 

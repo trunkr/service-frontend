@@ -20,7 +20,17 @@ const title = ({
   fontSize: title5,
   fontWeight: bold,
   lineHeight: 1.3,
-  marginBottom: '28px',
 });
 
-export { wrap, title };
+const titleWrap = (theme: Theme): CSSObject => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: '28px',
+  '> a': {
+    color: theme.color.gray.gray1000,
+  },
+});
+
+export { wrap, title, titleWrap };

@@ -27,6 +27,6 @@ export type AnswerGroupParams = Pick<IQuizAnswer, 'quizId' | 'quizGroupId'>;
 
 export type AnotherAnswerParams = Pick<IQuizAnotherAnswer, 'quizId'> & IPageParams;
 
-export type AnswerParams = AnswerGroupParams & Pick<IQuizAnswer, 'answer'>;
+export type AnswerParams = AnswerGroupParams & Pick<IQuizAnswer, 'answer'> & { isQuizOpen: boolean };
 
 export type AnswerResultType = Pick<IQuizAnswer, 'quizId' | 'question'> & { isCorrect: boolean };

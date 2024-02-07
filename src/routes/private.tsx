@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
 import { LayoutComponent } from 'components';
-import { StatisticsPage, QuizPage } from 'pages';
+import { StatisticsPage, QuizPage, Profile } from 'pages';
 import { PATH } from 'data/path';
 
 const privateApp: RouteObject = {
@@ -22,8 +22,20 @@ const privateApp: RouteObject = {
           element: <StatisticsPage.Main />,
         },
         {
+          path: `${PATH.statistics}/:categoryId`,
+          element: <StatisticsPage.Category />,
+        },
+        {
           path: `${PATH.quizAnswer}/:quizId/:quizGroupId`,
           element: <QuizPage.AnswerDetail />,
+        },
+        {
+          path: PATH.profile,
+          element: <Profile />,
+        },
+        {
+          path: `${PATH.quizAnswer}/:quizGroupId`,
+          element: <QuizPage.Result />,
         },
       ],
     },

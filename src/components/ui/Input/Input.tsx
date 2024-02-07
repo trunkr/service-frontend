@@ -1,6 +1,6 @@
 import React, { ClassAttributes, InputHTMLAttributes, forwardRef, ForwardedRef } from 'react';
 import { Interpolation, Theme } from '@emotion/react';
-import { wrap } from './style';
+import { wrap, invalidMsgStyle } from './style';
 import { SizeType } from 'types';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>, ClassAttributes<HTMLInputElement> {
@@ -14,10 +14,22 @@ function Input(
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
-    <label css={wrap(invalidMsg !== '', sizeType)}>
-      <input ref={ref} {...props} css={[css]} />
-      <p>{invalidMsg}</p>
-    </label>
+    <>
+      <label css={wrap(invalidMsg !== '', sizeType)}>
+        <input ref={ref} {...props} css={[css]} />
+        {/* {!props.disabled && (
+          <button
+            type="button"
+            onClick={(e) => {
+              reset?.();
+            }}
+          >
+            <img src={icCloseWhite} alt="" width={15} />
+          </button>
+        )} */}
+      </label>
+      <p css={invalidMsgStyle}>{invalidMsg}</p>
+    </>
   );
 }
 

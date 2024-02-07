@@ -1,0 +1,46 @@
+import { CSSObject, Theme } from '@emotion/react';
+
+const wrap = ({
+  color: {
+    gray: { gray250 },
+  },
+  typography: {
+    size: { title6 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  boxSizing: 'border-box',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  border: `2px solid ${gray250}`,
+  width: '100%',
+  marginBottom: '20px',
+  padding: '27px 30px',
+  fontSize: title6,
+  fontWeight: bold,
+  borderRadius: '10px',
+});
+
+const labelStyle =
+  (isCorrect: boolean) =>
+  ({
+    color: {
+      error: { red200, red850 },
+      primary: { mint200, mint800 },
+    },
+    typography: {
+      size: { label5 },
+      weight: { bold },
+    },
+  }: Theme): CSSObject => ({
+    borderRadius: '4px',
+    padding: '6px 10px',
+    background: isCorrect ? mint200 : red200,
+    color: isCorrect ? mint800 : red850,
+    marginRight: '16px',
+    fontSize: label5,
+    fontWeight: bold,
+  });
+
+export { wrap, labelStyle };

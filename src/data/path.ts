@@ -4,6 +4,7 @@ const PATH: Record<string, string> = {
   quiz: '/quiz',
   quizAnswer: '/quiz/answer',
   statistics: '/statistics',
+  profile: '/profile',
 };
 
 export { PATH };
