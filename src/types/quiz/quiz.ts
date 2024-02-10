@@ -26,3 +26,17 @@ export interface IQuizRandom {
 export interface IQuizStore {
   random: IQuizRandom | null;
 }
+
+export interface IsCorrect {
+  isCorrect: boolean;
+}
+
+export interface IIsCorrectQuizGroup extends Pick<IQuiz, 'question'> {
+  quizId: number;
+  isCorrect: boolean;
+}
+
+export interface IQuizGroup {
+  quizGroupId: number;
+  result: IIsCorrectQuizGroup[];
+}

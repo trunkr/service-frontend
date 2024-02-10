@@ -42,7 +42,7 @@ function Category() {
 
       {content.map((item) => (
         <Fragment key={item.quizId}>
-          <QuizComponent.ResultItem item={item} />
+          <QuizComponent.ResultItem item={item} quizGroupId="" />
         </Fragment>
       ))}
       <UiComponent.Pagination currentPage={page} totalPage={totalPage} handlePage={setPage} />

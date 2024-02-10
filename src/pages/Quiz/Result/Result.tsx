@@ -36,7 +36,7 @@ function Result() {
       </p>
       {data?.result.map((item) => (
         <Fragment key={item.quizId}>
-          <QuizComponent.ResultItem item={item} />
+          <QuizComponent.ResultItem item={item} quizGroupId={quizGroupId || ''} />
         </Fragment>
       ))}
     </main>

@@ -2,7 +2,7 @@ import React from 'react';
 import { optionTitle, rows, itemWrap } from './style';
 import { UiComponent } from 'components';
 
-const QUIZ_COUNT_OPTION: number[] = [1, 5, 10];
+const QUIZ_COUNT_OPTION: number[] = [3, 5, 10];
 
 interface Props {
   count: number;

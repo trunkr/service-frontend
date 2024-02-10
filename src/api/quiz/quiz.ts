@@ -1,6 +1,13 @@
 import { base } from 'api';
 import { PATH_BASE } from './constants';
-import { IQuizCategory, IQuizRandomParams, IQuizRandomResponse, IResponse, QuizCategoryFilterType } from 'types';
+import {
+  IQuizCategory,
+  IQuizRandomParams,
+  IQuizRandomResponse,
+  IResponse,
+  QuizCategoryFilterType,
+  RecentAnswerType,
+} from 'types';
 
 /** 퀴즈 단건 조회 */
 const get = (quizId: number) => base.get(`${PATH_BASE}/${quizId}`);
@@ -14,6 +21,6 @@ const getRandom = ({ categoryIds, quizCount }: IQuizRandomParams) =>
   base.get<IResponse<IQuizRandomResponse>>(`${PATH_BASE}/random`, { params: { categoryIds, quizCount } });
 
 /** 최근에 풀었던 퀴즈 조회 */
-const getRecent = () => base.get(`${PATH_BASE}/recent-answer`);
+const getRecent = () => base.get<IResponse<RecentAnswerType[]>>(`${PATH_BASE}/recent-answer`);
 
 export { get, getCategory, getRandom, getRecent };

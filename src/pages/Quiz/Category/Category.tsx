@@ -18,6 +18,7 @@ function Category() {
     handleCheck,
     isOpenQuizCountDialog,
     setIsOpenQuizCountDialog,
+    handleClickDisableCategory,
   } = useCategory();
 
   return (
@@ -46,7 +47,7 @@ function Category() {
         ))}
         {inactiveCategories.map((item: IQuizCategory) => (
           <Fragment key={item.id}>
-            <QuizComponent.CheckableItem item={item} checked={false} />
+            <QuizComponent.CheckableItem item={item} checked={false} hadnleClick={handleClickDisableCategory} />
           </Fragment>
         ))}
       </section>

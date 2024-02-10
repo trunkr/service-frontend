@@ -16,6 +16,11 @@ export interface IQuizAnswer {
   member: Pick<IMember, 'nickname' | 'profileImageUrl'> & { id: number };
 }
 
+export interface IAnswerDetailParams {
+  quizId: string;
+  quizGroupId: string;
+}
+
 export interface IQuizAnotherAnswer extends Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'answer' | 'member'> {
   favorCount: number;
   isFavor: boolean;

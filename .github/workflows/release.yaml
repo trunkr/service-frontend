@@ -2,7 +2,7 @@ name: FE-Trunkr CD Test
 on:
   push:
     branches:
-      - feat/quiz
+      - dev
 
 jobs:
   cd:

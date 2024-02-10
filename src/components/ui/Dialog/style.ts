@@ -115,4 +115,58 @@ const subTitleStyle = ({
   marginBottom: '30px',
 });
 
-export { wrap, foot, background, titleStyle, subTitleStyle, closeStyle, contents, backgroundCover };
+const popupContents = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  width: '100%',
+  height: '100%',
+  backgroundColor: gray0,
+});
+
+const popupHeader: CSSObject = {
+  width: '100%',
+  height: '84px',
+  display: 'flex',
+  alignItems: 'center',
+  position: 'relative',
+  padding: '0 30px',
+  borderBottom: '1px solid #EDEDED',
+};
+
+const popupTitle = ({
+  typography: {
+    size: { label2 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label2,
+  fontWeight: bold,
+});
+
+const popupCloseStyle: CSSObject = {
+  marginRight: '20px',
+};
+
+const popupChildren: CSSObject = {
+  height: 'calc(100% - 84px)',
+  maxHeight: 'calc(100% - 84px)',
+  overflowY: 'scroll',
+};
+
+export {
+  wrap,
+  backgroundCover,
+  foot,
+  background,
+  titleStyle,
+  subTitleStyle,
+  closeStyle,
+  contents,
+  popupContents,
+  popupHeader,
+  popupTitle,
+  popupCloseStyle,
+  popupChildren,
+};

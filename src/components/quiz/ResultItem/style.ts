@@ -20,6 +20,10 @@ const wrap = ({
   fontSize: title6,
   fontWeight: bold,
   borderRadius: '10px',
+  cursor: 'pointer',
+  ':hover': {
+    background: 'rgba(0,0,0,0.05)',
+  },
 });
 
 const labelStyle =

@@ -10,11 +10,16 @@ interface Props {
   item: IQuizCategory;
   checked: boolean;
   handleChecked?: (checked: boolean, item: IQuizCategory) => void;
+  hadnleClick?: () => void;
 }
 
-function CheckableItem({ item, checked, handleChecked }: Props) {
+function CheckableItem({ item, checked, handleChecked, hadnleClick }: Props) {
   const handleCheck = () => {
-    handleChecked?.(!checked, item);
+    if (handleChecked) {
+      handleChecked(!checked, item);
+    } else if (hadnleClick) {
+      hadnleClick();
+    }
   };
 
   return (

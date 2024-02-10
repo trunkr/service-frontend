@@ -1,0 +1,288 @@
+import { CSSObject, keyframes, Theme } from '@emotion/react';
+
+const section = ({ grids: { layout3 } }: Theme): CSSObject => ({
+  ...layout3,
+  alignItems: 'flex-start',
+});
+
+const wrap: CSSObject = {
+  margin: '80px 0',
+};
+
+const category: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '20px',
+};
+
+const grayDivider: CSSObject = {
+  height: 0,
+  margin: 0,
+  borderStyle: 'solid',
+  borderColor: '#efefef',
+  borderWidth: '0 0 1px 0',
+  width: '100%',
+};
+
+const categoryName = ({
+  color: {
+    gray: { gray870 },
+  },
+  typography: {
+    size: { label5 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label5,
+  fontWeight: bold,
+  color: gray870,
+  marginLeft: '6px',
+});
+
+const title = ({
+  color: {
+    gray: { gray1000 },
+  },
+  typography: {
+    size: { title2 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  marginBottom: '60px',
+  fontSize: title2,
+  fontWeight: bold,
+  color: gray1000,
+});
+
+const myAnswer: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: '60px 0 58px',
+};
+
+const subTitle = ({
+  color: {
+    gray: { gray1000 },
+  },
+  typography: {
+    size: { title5 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  color: gray1000,
+  fontSize: title5,
+  fontWeight: bold,
+  lineHeight: 1.4,
+  marginRight: '10px',
+});
+
+const answerLabel = ({
+  color: {
+    error: { red200, red850 },
+  },
+  typography: {
+    size: { label6 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label6,
+  fontWeight: bold,
+  color: red850,
+  backgroundColor: red200,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '26px',
+  padding: '0 10px',
+  borderRadius: '6px',
+});
+
+const answerDetail: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '14px',
+};
+
+const user = ({
+  color: {
+    gray: { gray1000 },
+  },
+}: Theme): CSSObject => ({
+  background: gray1000,
+  width: '50px',
+  height: '50px',
+  borderRadius: '50%',
+  marginRight: '10px',
+  '> img': {
+    width: '12.27px',
+  },
+});
+
+const smallUserInfo: CSSObject = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const nickname = ({
+  color: {
+    gray: { gray600, gray1000 },
+  },
+  typography: {
+    size: { label1 },
+    weight: { medium, bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label1,
+  fontWeight: bold,
+  color: gray1000,
+  marginBottom: '2px',
+
+  '& > span:last-of-type': {
+    fontWeight: medium,
+    color: gray600,
+    marginLeft: '2px',
+  },
+});
+
+const date = ({
+  color: {
+    gray: { gray400 },
+  },
+  typography: {
+    size: { label5 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label5,
+  fontWeight: bold,
+  color: gray400,
+});
+
+const answer = ({
+  color: {
+    gray: { gray900 },
+  },
+  typography: {
+    size: { body2 },
+    weight: { medium },
+  },
+}: Theme): CSSObject => ({
+  fontSize: body2,
+  fontWeight: medium,
+  color: gray900,
+  lineHeight: 1.7,
+  marginBottom: '30px',
+  whiteSpace: 'pre-wrap',
+  wordBreak: 'break-all',
+});
+
+const aiFeedBackWrap = ({
+  color: {
+    gray: { gray100, gray200 },
+  },
+}: Theme): CSSObject => ({
+  padding: '30px 30px 40px',
+  background: gray100,
+  border: `2px solid ${gray200}`,
+  borderRadius: '20px',
+  marginBottom: '80px',
+});
+
+const onlyMe = ({
+  color: {
+    gray: { gray600 },
+  },
+  typography: {
+    size: { label4 },
+    weight: { medium },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label4,
+  fontWeight: medium,
+  color: gray600,
+});
+
+const gpt = ({
+  color: {
+    primary: { mint400 },
+  },
+}: Theme): CSSObject => ({
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '50%',
+  width: '50px',
+  height: '50px',
+  background: mint400,
+  marginRight: '10px',
+  cursor: 'pointer',
+
+  '> img': {
+    width: '28.12px',
+  },
+
+  ':hover': {
+    '> img': {
+      animation: `${pop} 0.5s ease-in infinite`,
+    },
+  },
+});
+
+const pop = keyframes`
+  0% { 
+    transform: translate(0, 0); 
+  }
+  50% { 
+    transform:  translate(0, -5px); 
+  }
+  100% { 
+    transform:  translate(0, 0); 
+  }
+`;
+
+const gptInfo: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: '20px 0 14px',
+};
+
+const feedback = ({
+  color: {
+    gray: { gray900 },
+  },
+  typography: {
+    size: { body2 },
+    weight: { medium },
+  },
+}: Theme): CSSObject => ({
+  fontSize: body2,
+  fontWeight: medium,
+  color: gray900,
+  lineHeight: 1.7,
+  whiteSpace: 'pre-wrap',
+  wordBreak: 'break-all',
+});
+
+export {
+  section,
+  wrap,
+  category,
+  categoryName,
+  title,
+  myAnswer,
+  subTitle,
+  answerLabel,
+  answerDetail,
+  user,
+  smallUserInfo,
+  nickname,
+  date,
+  answer,
+  aiFeedBackWrap,
+  onlyMe,
+  gpt,
+  gptInfo,
+  feedback,
+  grayDivider,
+};

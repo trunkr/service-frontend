@@ -14,6 +14,9 @@ const global = css`
     margin: 0;
     background: unset;
   }
+  pre {
+    font-family: Pretendard, system-ui;
+  }
 `;
 
 export default global;

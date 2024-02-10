@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUiStore } from 'types';
 import { v4 as _v4 } from 'uuid';
 import { IToastPayload, IUiStore } from 'types';
 

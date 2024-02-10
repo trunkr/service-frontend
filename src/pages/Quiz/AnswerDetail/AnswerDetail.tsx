@@ -1,14 +1,31 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { Suspense } from 'react';
+
+import { QuizComponent, ErrorComponent } from 'components';
+import { wrap } from './style';
 
 function AnswerDetail() {
-  const { quizId, quizGroupId } = useParams();
-
   return (
-    <>
-      <p>{`quizId : ${quizId}`}</p>
-      <p>{`quizGroupId : ${quizGroupId}`}</p>
-    </>
+    <main css={wrap}>
+      <ErrorComponent.ErrorBoundaryGroup>
+        <ErrorComponent.QueryErrorBoundary fallback={null}>
+          <Suspense fallback={null}>
+            <QuizComponent.MyAnswer />
+          </Suspense>
+        </ErrorComponent.QueryErrorBoundary>
+
+        <ErrorComponent.QueryErrorBoundary fallback={null}>
+          <Suspense fallback={null}>
+            <QuizComponent.AnotherAnswers />
+          </Suspense>
+        </ErrorComponent.QueryErrorBoundary>
+
+        <ErrorComponent.QueryErrorBoundary fallback={null}>
+          <Suspense fallback={null}>
+            <QuizComponent.RelatedQuizzes />
+          </Suspense>
+        </ErrorComponent.QueryErrorBoundary>
+      </ErrorComponent.ErrorBoundaryGroup>
+    </main>
   );
 }
 
