@@ -9,6 +9,9 @@ const global = css`
     cursor: pointer;
     padding: 0;
   }
+  pre {
+    font-family: Pretendard, system-ui;
+  }
 `;
 
 export default global;
