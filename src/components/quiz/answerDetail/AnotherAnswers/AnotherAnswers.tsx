@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ErrorBoundary from 'components/ErrorBoundary';
 import withSuspense from 'hooks/withSuspense';
+import useGetAnotherAnswerResult from 'queries/Quiz/useGetAnotherAnswer';
 import { Nullable } from 'types/common';
 import icCheckBold from 'static/icons/system/ic_check_bold.svg';
 
@@ -18,10 +20,16 @@ function AnotherAnswersErrorBoundary() {
 }
 
 function AnotherAnswers() {
-  const [hasAnswer, set] = useState(true);
+  const { quizId } = useParams();
+  const { data } = useGetAnotherAnswerResult(quizId || '', quizId !== '');
+
+  const answers = useMemo(() => {
+    if (!data) return false;
+    return Boolean(data.length);
+  }, [data]);
 
   let Render: Nullable<React.ReactNode> = null;
-  switch (hasAnswer) {
+  switch (answers) {
     case true:
       Render = <List />;
       break;
@@ -42,9 +50,7 @@ function AnotherAnswers() {
             <img src={icCheckBold} alt="" />
             인기 순
           </button>
-          <button css={filterBtn(false)} onClick={() => set((prev) => !prev)}>
-            최신 순
-          </button>
+          <button css={filterBtn(false)}>최신 순</button>
         </div>
       </div>
       {Render}

@@ -13,6 +13,9 @@ const getGroup = () => base.get(PATH);
 const post = () => base.post(PATH);
 
 /** 특정 퀴즈에 대한 다른 사람들이 푼 답변 조회 */
-const getAnother = () => base.get(`${PATH_BASE}/another-answer`);
+const getAnother = (quizId: string) =>
+  base.get(`${PATH_BASE}/another-answer`, {
+    params: { quizId },
+  });
 
 export { get, getGroup, post, getAnother };
