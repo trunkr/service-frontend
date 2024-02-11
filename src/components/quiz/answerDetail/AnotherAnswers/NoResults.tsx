@@ -1,7 +1,7 @@
 import React from 'react';
 
 import graphicEmpty from 'static/graphics/system/empty.svg';
-import { noResultsWrap, noResultImg, noResultText } from './style';
+import { noResultsWrap, noResultImg, noResultText } from './style.noResult';
 
 function NoResults() {
   return (

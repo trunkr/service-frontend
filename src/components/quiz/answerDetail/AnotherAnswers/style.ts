@@ -60,33 +60,4 @@ const filterBtn =
     },
   });
 
-const noResultsWrap: CSSObject = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: '170px',
-};
-
-const noResultImg: CSSObject = {
-  width: '60px',
-  height: '60px',
-  marginBottom: '10px',
-};
-
-const noResultText = ({
-  color: {
-    gray: { gray900 },
-  },
-  typography: {
-    size: { label1 },
-    weight: { bold },
-  },
-}: Theme): CSSObject => ({
-  color: gray900,
-  fontSize: label1,
-  fontWeight: bold,
-});
-
-export { wrap, subTitle, countLabel, btnGroup, filterBtn, noResultsWrap, noResultImg, noResultText };
+export { wrap, subTitle, countLabel, btnGroup, filterBtn };

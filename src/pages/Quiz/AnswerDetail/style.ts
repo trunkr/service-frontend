@@ -21,6 +21,7 @@ const categoryName = ({
   fontSize: label5,
   fontWeight: bold,
   color: gray870,
+  marginLeft: '6px',
 });
 
 const title = ({
