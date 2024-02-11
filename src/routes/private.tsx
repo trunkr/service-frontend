@@ -21,10 +21,10 @@ const privateApp: RouteObject = {
           path: PATH.statistics,
           element: <StatisticsPage.Main />,
         },
-        // {
-        //   path: `${PATH.quizAnswer}/:quizId/:quizGroupId`,
-        //   element: <QuizPage.AnswerDetail />,
-        // },
+        {
+          path: `${PATH.quizAnswer}/:quizId/:quizGroupId`,
+          element: <QuizPage.AnswerDetail />,
+        },
       ],
     },
   ],
