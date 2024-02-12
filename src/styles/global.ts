@@ -12,6 +12,7 @@ const global = css`
   hr {
     height: 0;
     margin: 0;
+    background: unset;
   }
 `;
 

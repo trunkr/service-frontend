@@ -1,35 +1,21 @@
 import * as React from 'react';
-import { useTheme } from '@emotion/react';
-import { DividerProps } from './types';
+import { Interpolation, Theme } from '@emotion/react';
+import { DividerOrientationType, DividerVariantType, DividerSizeType } from 'types';
+import { borderStyle } from './style';
+import { theme } from 'styles';
 
-function Divider(props: DividerProps, ref: React.Ref<HTMLHRElement>) {
-  const { color, variant = 'solid', size = 1, orientation = 'horizontal' } = props;
+interface Props extends React.HTMLAttributes<HTMLHRElement> {
+  orientation?: DividerOrientationType;
+  variant?: DividerVariantType;
+  size?: DividerSizeType;
+  color?: string;
+  css?: Interpolation<Theme>;
+}
 
-  const theme = useTheme();
+function Divider(props: Props, ref: React.Ref<HTMLHRElement>) {
+  const { orientation = 'horizontal', variant = 'solid', size = 'thin', color = theme.color.gray.gray200, css } = props;
 
-  const borderStyle =
-    orientation === 'horizontal'
-      ? {
-          width: '100%',
-          borderWidth: `0 0 ${size}px 0`,
-        }
-      : {
-          height: '100%',
-          borderWidth: `0 0 0 ${size}px`,
-        };
-
-  return (
-    <hr
-      {...props}
-      ref={ref}
-      style={{
-        borderStyle: variant,
-        borderColor: color ?? theme.color.gray['gray100'],
-        ...borderStyle,
-        ...props.style,
-      }}
-    />
-  );
+  return <hr {...props} ref={ref} css={[borderStyle(orientation, variant, size, color), css]} />;
 }
 
 const _Divider = React.forwardRef(Divider);

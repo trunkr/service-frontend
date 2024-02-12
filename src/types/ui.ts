@@ -31,3 +31,8 @@ export interface IPagination {
   totalPage: number;
   totalSize: number;
 }
+export type DividerOrientationType = 'horizontal' | 'vertical';
+
+export type DividerVariantType = 'solid' | 'dashed';
+
+export type DividerSizeType = 'thin' | 'bold';
