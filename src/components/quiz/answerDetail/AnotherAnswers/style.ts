@@ -60,4 +60,13 @@ const filterBtn =
     },
   });
 
-export { wrap, subTitle, countLabel, btnGroup, filterBtn };
+const grayDivider: CSSObject = {
+  height: 0,
+  margin: 0,
+  borderStyle: 'solid',
+  borderColor: '#efefef',
+  borderWidth: '0 0 1px 0',
+  width: '100%',
+};
+
+export { wrap, subTitle, countLabel, btnGroup, filterBtn, grayDivider };

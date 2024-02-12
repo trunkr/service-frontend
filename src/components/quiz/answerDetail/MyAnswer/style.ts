@@ -1,4 +1,4 @@
-import { CSSObject, Theme } from '@emotion/react';
+import { CSSObject, keyframes, Theme } from '@emotion/react';
 
 const subTitle = ({
   color: {
@@ -105,4 +105,95 @@ const answer = ({
   wordBreak: 'break-all',
 });
 
-export { subTitle, answerLabel, user, nickname, date, answer };
+const aiFeedBackWrap = ({
+  color: {
+    gray: { gray100, gray200 },
+  },
+}: Theme): CSSObject => ({
+  padding: '30px 30px 40px',
+  background: gray100,
+  border: `2px solid ${gray200}`,
+  borderRadius: '20px',
+  marginBottom: '80px',
+});
+
+const onlyMe = ({
+  color: {
+    gray: { gray600 },
+  },
+  typography: {
+    size: { label4 },
+    weight: { medium },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label4,
+  fontWeight: medium,
+  color: gray600,
+});
+
+const gpt = ({
+  color: {
+    primary: { mint400 },
+  },
+}: Theme): CSSObject => ({
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '50%',
+  width: '50px',
+  height: '50px',
+  background: mint400,
+  marginRight: '10px',
+  cursor: 'pointer',
+
+  '> img': {
+    width: '28.12px',
+  },
+
+  ':hover': {
+    '> img': {
+      animation: `${pop} 0.5s ease-in infinite`,
+    },
+  },
+});
+
+const pop = keyframes`
+  0% { 
+    transform: translate(0, 0); 
+  }
+  50% { 
+    transform:  translate(0, -5px); 
+  }
+  100% { 
+    transform:  translate(0, 0); 
+  }
+`;
+
+const feedback = ({
+  color: {
+    gray: { gray900 },
+  },
+  typography: {
+    size: { body2 },
+    weight: { medium },
+  },
+}: Theme): CSSObject => ({
+  fontSize: body2,
+  fontWeight: medium,
+  color: gray900,
+  lineHeight: 1.7,
+  whiteSpace: 'pre-wrap',
+  wordBreak: 'break-all',
+});
+
+const grayDivider: CSSObject = {
+  height: 0,
+  margin: 0,
+  borderStyle: 'solid',
+  borderColor: '#efefef',
+  borderWidth: '0 0 1px 0',
+  width: '100%',
+};
+
+export { subTitle, answerLabel, user, nickname, date, answer, aiFeedBackWrap, onlyMe, gpt, feedback, grayDivider };

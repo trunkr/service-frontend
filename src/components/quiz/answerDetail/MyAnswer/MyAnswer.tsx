@@ -1,10 +1,34 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+
+import ErrorBoundary from 'components/ErrorBoundary';
+import withSuspense from 'hooks/withSuspense';
+import icGpt from 'static/graphics/profile/Gpt.svg';
 import icProfile7 from 'static/graphics/profile/Profile7.svg';
-import { subTitle, answerLabel, user, nickname, date, answer } from './style';
+import useGetQuizAnswerDetailResult from 'queries/Quiz/useGetQuizAnswerDetail';
+import { MOCK_AI_FEEDBACK } from 'pages/Quiz/constants';
+import { subTitle, answerLabel, user, nickname, date, answer, aiFeedBackWrap, onlyMe, gpt, feedback } from './style';
+
+function MyAnswerErrorBoundary() {
+  return (
+    <ErrorBoundary fallback={null}>
+      <MyAnswer />
+    </ErrorBoundary>
+  );
+}
 
 function MyAnswer() {
+  const { quizId, quizGroupId } = useParams();
+  const { data } = useGetQuizAnswerDetailResult(
+    { quizId: quizId || '', quizGroupId: quizGroupId || '' },
+    quizId !== '' && quizGroupId !== '',
+  );
+
+  console.log('data :', data);
+
   return (
     <>
+      {/* My Answer */}
       <div css={{ display: 'flex', alignItems: 'center', marginBottom: '58px' }}>
         <h2 css={subTitle}>내 풀이</h2>
         <span css={answerLabel}>오답</span>
@@ -28,8 +52,22 @@ function MyAnswer() {
         오버로딩은 다양한 매개변수 조합을 통해 같은 작업을 수행하는 데 유용합니다.수 조합을 통해 같은 작업을 수행하는 데
         유용합니다.수 조합을 통해 같은 작업을 수행하는 데 유용합니다.
       </pre>
+
+      {/* AI Feedback */}
+      <div css={aiFeedBackWrap}>
+        <span css={onlyMe}>나만 볼 수 있어요</span>
+        <div css={{ display: 'flex', alignItems: 'center', margin: '20px 0 14px' }}>
+          <button type="button" css={gpt}>
+            <img src={icGpt} alt="" />
+          </button>
+          <span css={nickname}>GPT 피드백</span>
+        </div>
+        <pre css={feedback}>{MOCK_AI_FEEDBACK}</pre>
+      </div>
     </>
   );
 }
 
-export default MyAnswer;
+export default withSuspense(MyAnswerErrorBoundary, {
+  fallback: null,
+});

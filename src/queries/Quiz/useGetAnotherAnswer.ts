@@ -9,6 +9,7 @@ function useGetAnotherAnswerResult(quizId: string, enabled?: boolean) {
       return data.data.payload;
     },
     enabled,
+    suspense: true,
   });
 
   return result;

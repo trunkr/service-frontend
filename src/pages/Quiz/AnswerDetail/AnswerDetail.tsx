@@ -18,9 +18,8 @@ function AnswerDetail() {
       <hr css={grayDivider} />
       <section css={sectionWrap}>
         <QuizComponent.MyAnswer />
-        <QuizComponent.AIFeedback />
         <QuizComponent.AnotherAnswers />
-        {/* <QuizComponent.RelatedQuizzes /> */}
+        <QuizComponent.RelatedQuizzes />
       </section>
     </main>
   );
