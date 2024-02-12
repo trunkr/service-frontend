@@ -107,6 +107,9 @@ const reset = css`
     display: block;
   }
   body {
+    font-family: 'Pretendard';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     line-height: 1;
   }
   ol,
