@@ -6,7 +6,7 @@ import { ANSWER_DETAIL_KEY } from './keys';
 
 function useGetQuizAnswerDetailResult({ quizId, quizGroupId }: IAnswerDetailParams, enabled?: boolean) {
   const result = useAuthQuery(
-    getQueryKeys(ANSWER_DETAIL_KEY).detail(quizGroupId),
+    getQueryKeys(ANSWER_DETAIL_KEY).detail(quizId),
     () => QuizAnswerApi.getDetail({ quizId, quizGroupId }),
     {
       select: (data) => {

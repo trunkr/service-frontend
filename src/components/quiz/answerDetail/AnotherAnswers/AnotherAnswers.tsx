@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { QuizQuery } from 'queries';
-import { Nullable } from 'types/common';
 import icCheckBold from 'static/icons/system/ic_check_bold.svg';
+import { QuizQuery } from 'queries';
+import { Nullable } from 'types';
 
 import List from './List';
 import NoResults from './NoResults';
@@ -13,13 +13,13 @@ function AnotherAnswers() {
   const { quizId } = useParams();
   const { data } = QuizQuery.useGetAnotherAnswerResult(quizId || '', quizId !== '');
 
-  const answers = useMemo(() => {
-    if (!data) return false;
+  const hasAnswers = useMemo(() => {
+    if (!data) return 'pending';
     return Boolean(data.length);
   }, [data]);
 
   let Render: Nullable<React.ReactNode> = null;
-  switch (answers) {
+  switch (hasAnswers) {
     case true:
       Render = <List />;
       break;

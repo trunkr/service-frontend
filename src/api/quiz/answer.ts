@@ -1,5 +1,5 @@
 import { base } from 'api';
-import { IAnswerDetailParams } from 'types';
+import { IAnswerDetailParams, IQuizAnswer, IResponse } from 'types';
 import { PATH_BASE } from './constants';
 
 const PATH = `${PATH_BASE}/answer`;
@@ -21,6 +21,6 @@ const getAnother = (quizId: string) =>
 
 /** 퀴즈 답변 상세 조회 */
 const getDetail = ({ quizId, quizGroupId }: IAnswerDetailParams) =>
-  base.get(`${PATH_BASE}/${quizId}/groups/${quizGroupId}/answer`);
+  base.get<IResponse<IQuizAnswer>>(`${PATH_BASE}/${quizId}/groups/${quizGroupId}/answer`);
 
 export { get, getGroup, post, getAnother, getDetail };
