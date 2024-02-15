@@ -20,7 +20,7 @@ const fadeOut = keyframes`
   to { opacity: 0; transform: translateY(50%)}
  `;
 
-export const toastContainerStyle: CSSObject = {
+const container: CSSObject = {
   position: 'fixed',
   top: '60px',
   left: '50%',
@@ -33,7 +33,8 @@ export const toastContainerStyle: CSSObject = {
   },
 };
 
-export const wrapperStyle = (isClosing: boolean): CSSObject => ({
+const wrap = (isClosing: boolean): CSSObject => ({
+  width: '608px',
   maxHeight: 0,
   overflow: 'visible',
   animation: `0.6s forwards ${isClosing ? scaleDown : scaleUp}`,
@@ -43,21 +44,22 @@ export const wrapperStyle = (isClosing: boolean): CSSObject => ({
   },
 });
 
-export const toastStyle = ({
+const toast = ({
   color: {
     gray: { gray900 },
   },
 }: Theme): CSSObject => ({
-  width: '608px',
+  width: '100%',
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'space-between',
   gap: '30px',
   background: gray900,
   padding: '20px 24px',
   borderRadius: '20px',
 });
 
-export const textStyle = ({
+const text = ({
   color: {
     gray: { gray0 },
   },
@@ -72,7 +74,9 @@ export const textStyle = ({
   lineHeight: 1.5,
 });
 
-export const closeStyle: CSSObject = {
+const closeBtn: CSSObject = {
   all: 'unset',
   cursor: 'pointer',
 };
+
+export { container, wrap, toast, text, closeBtn };

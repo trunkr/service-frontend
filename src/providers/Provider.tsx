@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from 'stores';
 import { theme, global } from 'styles';
 import QueryProvider from './QueryProvider';
-import { ToastProvider } from 'components/ui/Toast';
+import { UiComponent } from 'components';
 
 function AppProvider({ children }: PropsWithChildren) {
   return (
@@ -15,7 +15,8 @@ function AppProvider({ children }: PropsWithChildren) {
         <Provider store={store}>
           <PersistGate persistor={persistor}>
             <QueryProvider>
-              <ToastProvider>{children}</ToastProvider>
+              {children}
+              <UiComponent.Toast />
             </QueryProvider>
           </PersistGate>
         </Provider>
