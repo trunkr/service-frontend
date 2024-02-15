@@ -1,21 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import ErrorBoundary from 'components/ErrorBoundary';
-import withSuspense from 'hooks/withSuspense';
 import icGpt from 'static/graphics/profile/Gpt.svg';
 import icProfile7 from 'static/graphics/profile/Profile7.svg';
 import useGetQuizAnswerDetailResult from 'queries/Quiz/useGetQuizAnswerDetail';
 import { MOCK_AI_FEEDBACK } from 'pages/Quiz/constants';
 import { subTitle, answerLabel, user, nickname, date, answer, aiFeedBackWrap, onlyMe, gpt, feedback } from './style';
-
-function MyAnswerErrorBoundary() {
-  return (
-    <ErrorBoundary fallback={null}>
-      <MyAnswer />
-    </ErrorBoundary>
-  );
-}
 
 function MyAnswer() {
   const { quizId, quizGroupId } = useParams();
@@ -68,6 +58,4 @@ function MyAnswer() {
   );
 }
 
-export default withSuspense(MyAnswerErrorBoundary, {
-  fallback: null,
-});
+export default MyAnswer;

@@ -1,21 +1,11 @@
 import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ErrorBoundary from 'components/ErrorBoundary';
-import withSuspense from 'hooks/withSuspense';
 import useGetAnotherAnswerResult from 'queries/Quiz/useGetAnotherAnswer';
 
 import { wrap, title } from './style';
 import { RECENT_MOCK_DATA } from 'pages/Quiz/constants';
 import { UiComponent } from 'components';
-
-function RelatedQuizzesErrorBoundary() {
-  return (
-    <ErrorBoundary fallback={null}>
-      <RelatedQuizzes />
-    </ErrorBoundary>
-  );
-}
 
 function RelatedQuizzes() {
   const { quizId } = useParams();
@@ -36,6 +26,4 @@ function RelatedQuizzes() {
   );
 }
 
-export default withSuspense(RelatedQuizzesErrorBoundary, {
-  fallback: null,
-});
+export default RelatedQuizzes;

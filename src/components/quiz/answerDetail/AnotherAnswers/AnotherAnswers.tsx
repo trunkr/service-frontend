@@ -1,22 +1,13 @@
 import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ErrorBoundary from 'components/ErrorBoundary';
-import withSuspense from 'hooks/withSuspense';
 import { QuizQuery } from 'queries';
 import { Nullable } from 'types/common';
 import icCheckBold from 'static/icons/system/ic_check_bold.svg';
 
 import List from './List';
+import NoResults from './NoResults';
 import { wrap, subTitle, countLabel, btnGroup, filterBtn, grayDivider } from './style';
-
-function AnotherAnswersErrorBoundary() {
-  return (
-    <ErrorBoundary fallback={null}>
-      <AnotherAnswers />
-    </ErrorBoundary>
-  );
-}
 
 function AnotherAnswers() {
   const { quizId } = useParams();
@@ -33,8 +24,7 @@ function AnotherAnswers() {
       Render = <List />;
       break;
     case false:
-      Render = <List />;
-      // Render = <NoResults />;
+      Render = <NoResults />;
       break;
     default:
   }
@@ -59,6 +49,4 @@ function AnotherAnswers() {
   );
 }
 
-export default withSuspense(AnotherAnswersErrorBoundary, {
-  fallback: null,
-});
+export default AnotherAnswers;
