@@ -14,7 +14,7 @@ function Toast({ id, message }: IToastPayload) {
   const dispatch = useDispatch();
 
   const [isClosing, setIsClosing] = useState<boolean>(false);
-  useTimeout(() => setIsClosing(true), TOAST_DURATION);
+  useTimeout(() => !isClosing && setIsClosing(true), TOAST_DURATION);
   useTimeout(() => dispatch(removeToast({ id })), TOAST_DURATION + TRANSITION_DURATION);
 
   return (
