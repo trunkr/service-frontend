@@ -7,8 +7,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'stores';
 import { MemberQuery } from 'queries';
 import { PROFILE_DATA } from 'data/profile';
-import { useDispatch } from 'react-redux';
-import { addToast } from 'stores/ui';
 
 function Header() {
   const navigate = useNavigate();
@@ -16,7 +14,6 @@ function Header() {
   const { data } = MemberQuery.usePersonalInfo();
 
   const [isOpenLoginDialog, toggleLoginDialog] = useReducer((isOpen) => !isOpen, false);
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -52,8 +49,7 @@ function Header() {
               fontSize: theme.typography.size.label4,
               fontWeight: theme.typography.weight.bold,
             })}
-            // onClick={toggleLoginDialog}
-            onClick={() => dispatch(addToast({ message: '안녕하세요!!' }))}
+            onClick={toggleLoginDialog}
           >
             로그인
           </UiComponent.Button>
