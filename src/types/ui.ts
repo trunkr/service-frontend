@@ -35,6 +35,6 @@ export type DividerOrientationType = 'horizontal' | 'vertical';
 
 export type DividerThicknessType = 'thin' | 'bold';
 
-export type SizeWithPx = `${number}px`;
+export type SizeWithPxType = `${number}px`;
 
-export type SizeWithPercent = `${number}%`;
+export type SizeWithPercentType = `${number}%`;
