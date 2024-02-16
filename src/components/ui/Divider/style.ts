@@ -1,23 +1,24 @@
-import { CSSObject } from '@emotion/react';
-import { DividerOrientationType, DividerVariantType, DividerSizeType } from 'types';
+import { CSSObject, Theme } from '@emotion/react';
+import { DividerProps } from './Divider';
 
-const borderStyle = (
-  orientation?: DividerOrientationType,
-  variant?: DividerVariantType,
-  size?: DividerSizeType,
-  color?: string,
-): CSSObject => ({
-  borderColor: color,
-  borderStyle: variant,
-  ...(orientation === 'horizontal'
-    ? {
-        width: '100%',
-        borderWidth: `0 0 ${size === 'thin' ? 1 : 10}px 0`,
-      }
-    : {
-        height: '100%',
-        borderWidth: `0 0 0 ${size === 'thin' ? 1 : 10}px`,
-      }),
-});
+const borderStyle =
+  ({ orientation, variant, thickness, size, color }: Omit<DividerProps, 'css'>) =>
+  ({
+    color: {
+      gray: { gray200 },
+    },
+  }: Theme): CSSObject => ({
+    borderColor: color || gray200,
+    borderStyle: variant,
+    ...(orientation === 'horizontal'
+      ? {
+          width: size,
+          borderWidth: `0 0 ${thickness === 'thin' ? 1 : 10}px 0`,
+        }
+      : {
+          height: size,
+          borderWidth: `0 0 0 ${thickness === 'thin' ? 1 : 10}px`,
+        }),
+  });
 
 export { borderStyle };
