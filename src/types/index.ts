@@ -1,6 +1,7 @@
 export * from './authentication';
 export * from './ui';
 export * from './quiz';
+export * from './theme';
 export * from './request';
 export * from './response';
 <<<<<<< HEAD

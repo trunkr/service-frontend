@@ -1,18 +1,9 @@
 import { ReactNode } from 'react';
-import { theme } from 'styles';
-import { ValueOf } from 'types';
 
 export interface INavLinkData {
   title: string;
   to: string;
 }
-
-export type PrimaryColorValuesType = ValueOf<typeof theme.color.primary>;
-export type ErrorColorValuesType = ValueOf<typeof theme.color.error>;
-export type SubColorValuesType = ValueOf<typeof theme.color.sub>;
-export type GrayColorValuesType = ValueOf<typeof theme.color.gray>;
-
-export type ColorValueType = PrimaryColorValuesType | ErrorColorValuesType | SubColorValuesType | GrayColorValuesType;
 
 export type SizeType = 'small' | 'medium' | 'large';
 

@@ -1,3 +1,5 @@
+import { theme } from 'styles';
+import { ValueOf } from 'types';
 // import { CSSObject } from '@emotion/react';
 
 // type ColorKeyType = 'primary' | 'error' | 'sub' | 'gray';
@@ -28,4 +30,9 @@
 //   }
 // }
 
-export {};
+export type PrimaryColorValuesType = ValueOf<typeof theme.color.primary>;
+export type ErrorColorValuesType = ValueOf<typeof theme.color.error>;
+export type SubColorValuesType = ValueOf<typeof theme.color.sub>;
+export type GrayColorValuesType = ValueOf<typeof theme.color.gray>;
+
+export type ColorValueType = PrimaryColorValuesType | ErrorColorValuesType | SubColorValuesType | GrayColorValuesType;
