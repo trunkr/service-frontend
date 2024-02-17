@@ -10,6 +10,18 @@ const wrap = ({ shadows }: Theme): CSSObject => ({
   zIndex: 3000,
 });
 
+const backgroundCover =
+  (opacity: number, isWhite: boolean) =>
+  ({
+    color: {
+      gray: { gray1000, gray0 },
+    },
+  }: Theme): CSSObject => ({
+    background: isWhite ? gray0 : gray1000,
+    opacity,
+    height: '100vh',
+  });
+
 const closeStyle: CSSObject = {
   position: 'absolute',
   right: '30px',
@@ -57,6 +69,11 @@ const foot = ({
 });
 
 const background: CSSObject = {
+  position: 'fixed',
+  left: 0,
+  top: 0,
+  right: 0,
+  bottom: 0,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -95,4 +112,58 @@ const subTitleStyle = ({
   marginBottom: '30px',
 });
 
-export { wrap, foot, background, titleStyle, subTitleStyle, closeStyle, contents };
+const popupContents = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  width: '100%',
+  height: '100%',
+  backgroundColor: gray0,
+});
+
+const popupHeader: CSSObject = {
+  width: '100%',
+  height: '84px',
+  display: 'flex',
+  alignItems: 'center',
+  position: 'relative',
+  padding: '0 30px',
+  borderBottom: '1px solid #EDEDED',
+};
+
+const popupTitle = ({
+  typography: {
+    size: { label2 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label2,
+  fontWeight: bold,
+});
+
+const popupCloseStyle: CSSObject = {
+  marginRight: '20px',
+};
+
+const popupChildren: CSSObject = {
+  height: 'calc(100% - 84px)',
+  maxHeight: 'calc(100% - 84px)',
+  overflowY: 'scroll',
+};
+
+export {
+  wrap,
+  backgroundCover,
+  foot,
+  background,
+  titleStyle,
+  subTitleStyle,
+  closeStyle,
+  contents,
+  popupContents,
+  popupHeader,
+  popupTitle,
+  popupCloseStyle,
+  popupChildren,
+};
