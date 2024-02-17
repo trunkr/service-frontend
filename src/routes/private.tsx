@@ -3,10 +3,6 @@ import { RouteObject } from 'react-router-dom';
 import { LayoutComponent } from 'components';
 import { StatisticsPage, QuizPage } from 'pages';
 import { PATH } from 'data/path';
-import { QueryClient } from 'queries/query';
-import { answerDetailLoader } from 'pages/Quiz/AnswerDetail';
-
-const queryClient = new QueryClient();
 
 const privateApp: RouteObject = {
   element: <LayoutComponent.Private />,
@@ -28,7 +24,6 @@ const privateApp: RouteObject = {
         {
           path: `${PATH.quizAnswer}/:quizId/:quizGroupId`,
           element: <QuizPage.AnswerDetail />,
-          loader: answerDetailLoader(queryClient),
         },
       ],
     },

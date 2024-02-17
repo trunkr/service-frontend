@@ -4,57 +4,106 @@ import { useParams } from 'react-router-dom';
 import icGpt from 'static/graphics/profile/Gpt.svg';
 import icProfile7 from 'static/graphics/profile/Profile7.svg';
 import useGetQuizAnswerDetailResult from 'queries/Quiz/useGetQuizAnswerDetail';
-import { MOCK_AI_FEEDBACK } from 'pages/Quiz/constants';
-import { subTitle, answerLabel, user, nickname, date, answer, aiFeedBackWrap, onlyMe, gpt, feedback } from './style';
+import { CATEGORY_ICON_MAP } from 'data/category';
+import { MOCK_AI_FEEDBACK, MOCK_ANSWER } from 'pages/Quiz/constants';
+import { IQuizAnswer } from 'types';
+import {
+  section,
+  category,
+  categoryName,
+  title,
+  myAnswer,
+  subTitle,
+  answerLabel,
+  answerDetail,
+  user,
+  smallUserInfo,
+  nickname,
+  date,
+  answer,
+  aiFeedBackWrap,
+  onlyMe,
+  gptInfo,
+  gpt,
+  feedback,
+  grayDivider,
+} from './style';
+
+const mock_payload: IQuizAnswer = {
+  quizId: 1,
+  quizGroupId: '1',
+  quizAnswerStatus: 'INCORRECT',
+  question: '자바의 메모리 영역에 대해 설명해주세요.',
+  answer: MOCK_ANSWER,
+  feedback: MOCK_AI_FEEDBACK,
+  category: {
+    id: 1,
+    name: 'OS',
+    type: 'CS',
+  },
+  member: {
+    id: 1,
+    nickname: '테스터',
+    profileImageUrl: 'https://abc.xyz',
+  },
+};
 
 function MyAnswer() {
   const { quizId, quizGroupId } = useParams();
   const { data } = useGetQuizAnswerDetailResult(
     { quizId: quizId || '', quizGroupId: quizGroupId || '' },
-    quizId !== '' && quizGroupId !== '',
+    // quizId !== '' && quizGroupId !== '',
+    false,
   );
-
   console.log('data :', data);
 
   return (
-    <>
+    <section css={section}>
+      <div css={category}>
+        <img src={CATEGORY_ICON_MAP[mock_payload.category.name as keyof typeof CATEGORY_ICON_MAP]} />
+        <p css={categoryName}>Java</p>
+      </div>
+      <h1 css={title}>{mock_payload.question}</h1>
+
+      <hr css={grayDivider} />
+
       {/* My Answer */}
-      <div css={{ display: 'flex', alignItems: 'center', marginBottom: '58px' }}>
-        <h2 css={subTitle}>내 풀이</h2>
-        <span css={answerLabel}>오답</span>
-      </div>
-      <div css={{ display: 'flex', alignItems: 'center', marginBottom: '14px' }}>
-        <button type="button" css={user}>
-          <img src={icProfile7} alt="" />
-        </button>
-        <div css={{ display: 'flex', flexDirection: 'column' }}>
-          <div css={nickname}>
-            <span>바질크림치즈베이글</span>
-            <span>님의 풀이</span>
-          </div>
-          <span css={date}>2023.12.11</span>
+      <article>
+        <div css={myAnswer}>
+          <h2 css={subTitle}>내 풀이</h2>
+          <span css={answerLabel}>{mock_payload.quizAnswerStatus === 'CORRECT' ? '정답' : '오답'}</span>
         </div>
-      </div>
-      <pre css={answer}>
-        Java에서 오버로딩(Overloading)과 오버라이딩(Overriding)은 둘 다 객체 지향 프로그래밍의 개념이며, 다른 목적과
-        방식으로 사용됩니다. 오버로딩 (Overloading): 오버로딩은 같은 이름의 메서드를 여러 개 정의하는 것을 말합니다. 이
-        메서드들은 같은 클래스 내에서 선언되며, 매개변수의 개수, 타입 또는 순서가 다르게 정의될 수 있습니다. 메서드
-        오버로딩은 다양한 매개변수 조합을 통해 같은 작업을 수행하는 데 유용합니다.수 조합을 통해 같은 작업을 수행하는 데
-        유용합니다.수 조합을 통해 같은 작업을 수행하는 데 유용합니다.
-      </pre>
+        <div css={answerDetail}>
+          <button type="button" css={user}>
+            <img src={icProfile7} alt="" />
+          </button>
+          <div css={smallUserInfo}>
+            <div css={nickname}>
+              <span>{mock_payload.member.nickname}</span>
+              <span>님의 풀이</span>
+            </div>
+            <span css={date}>2023.12.11</span>
+          </div>
+        </div>
+        <pre css={answer}>{mock_payload.answer}</pre>
+      </article>
 
       {/* AI Feedback */}
-      <div css={aiFeedBackWrap}>
-        <span css={onlyMe}>나만 볼 수 있어요</span>
-        <div css={{ display: 'flex', alignItems: 'center', margin: '20px 0 14px' }}>
-          <button type="button" css={gpt}>
-            <img src={icGpt} alt="" />
-          </button>
-          <span css={nickname}>GPT 피드백</span>
-        </div>
-        <pre css={feedback}>{MOCK_AI_FEEDBACK}</pre>
-      </div>
-    </>
+      {mock_payload.quizAnswerStatus === 'INCORRECT' && (
+        <article>
+          <div css={aiFeedBackWrap}>
+            <span css={onlyMe}>나만 볼 수 있어요</span>
+            <div css={gptInfo}>
+              <button type="button" css={gpt}>
+                <img src={icGpt} alt="" />
+              </button>
+              <span css={nickname}>GPT 피드백</span>
+            </div>
+            <pre css={feedback}>{mock_payload.feedback}</pre>
+          </div>
+        </article>
+      )}
+    </section>
   );
 }
 

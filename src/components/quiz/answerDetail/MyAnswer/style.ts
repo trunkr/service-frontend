@@ -1,5 +1,61 @@
 import { CSSObject, keyframes, Theme } from '@emotion/react';
 
+const section: CSSObject = {
+  width: '100%',
+  margin: '80px 0',
+};
+
+const category: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '20px',
+};
+
+const grayDivider: CSSObject = {
+  height: 0,
+  margin: 0,
+  borderStyle: 'solid',
+  borderColor: '#efefef',
+  borderWidth: '0 0 1px 0',
+  width: '100%',
+};
+
+const categoryName = ({
+  color: {
+    gray: { gray870 },
+  },
+  typography: {
+    size: { label5 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  fontSize: label5,
+  fontWeight: bold,
+  color: gray870,
+  marginLeft: '6px',
+});
+
+const title = ({
+  color: {
+    gray: { gray1000 },
+  },
+  typography: {
+    size: { title2 },
+    weight: { bold },
+  },
+}: Theme): CSSObject => ({
+  marginBottom: '60px',
+  fontSize: title2,
+  fontWeight: bold,
+  color: gray1000,
+});
+
+const myAnswer: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: '60px 0 58px',
+};
+
 const subTitle = ({
   color: {
     gray: { gray1000 },
@@ -37,6 +93,12 @@ const answerLabel = ({
   borderRadius: '6px',
 });
 
+const answerDetail: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '14px',
+};
+
 const user = ({
   color: {
     gray: { gray1000 },
@@ -51,6 +113,11 @@ const user = ({
     width: '12.27px',
   },
 });
+
+const smallUserInfo: CSSObject = {
+  display: 'flex',
+  flexDirection: 'column',
+};
 
 const nickname = ({
   color: {
@@ -170,6 +237,12 @@ const pop = keyframes`
   }
 `;
 
+const gptInfo: CSSObject = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: '20px 0 14px',
+};
+
 const feedback = ({
   color: {
     gray: { gray900 },
@@ -187,13 +260,24 @@ const feedback = ({
   wordBreak: 'break-all',
 });
 
-const grayDivider: CSSObject = {
-  height: 0,
-  margin: 0,
-  borderStyle: 'solid',
-  borderColor: '#efefef',
-  borderWidth: '0 0 1px 0',
-  width: '100%',
+export {
+  section,
+  category,
+  categoryName,
+  title,
+  myAnswer,
+  subTitle,
+  answerLabel,
+  answerDetail,
+  user,
+  smallUserInfo,
+  nickname,
+  date,
+  answer,
+  aiFeedBackWrap,
+  onlyMe,
+  gpt,
+  gptInfo,
+  feedback,
+  grayDivider,
 };
-
-export { subTitle, answerLabel, user, nickname, date, answer, aiFeedBackWrap, onlyMe, gpt, feedback, grayDivider };

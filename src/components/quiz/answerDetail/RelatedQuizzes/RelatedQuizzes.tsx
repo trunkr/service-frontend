@@ -1,28 +1,60 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import useGetAnotherAnswerResult from 'queries/Quiz/useGetAnotherAnswer';
-
-import { wrap, title } from './style';
-import { RECENT_MOCK_DATA } from 'pages/Quiz/constants';
 import { UiComponent } from 'components';
+import useGetQuizGroup from 'queries/Quiz/useGetQuizGroup';
+import { IQuizGroup } from 'types';
+
+import { wrap, grayDivider, title, listWrap } from './style';
+
+const mock_data: IQuizGroup = {
+  quizGroupId: 1,
+  result: [
+    {
+      quizId: 0,
+      question: 'JVM의 역할에 대해 설명해주세요.',
+      isCorrect: true,
+    },
+    {
+      quizId: 1,
+      question: 'Wrapper Class란 무엇이며, Boxing과 UnBoxing은 무엇인지 설명해주세...',
+      isCorrect: false,
+    },
+    {
+      quizId: 2,
+      question: '불변 객체가 무엇인지 설명하고 대표적인 Java의 예시를 설명해주세요.',
+      isCorrect: false,
+    },
+    {
+      quizId: 3,
+      question: 'Java에서 오버로딩과 오버라이딩의 차이점은 무엇인가요?',
+      isCorrect: true,
+    },
+  ],
+};
 
 function RelatedQuizzes() {
-  const { quizId } = useParams();
-  const { data } = useGetAnotherAnswerResult(quizId || '', quizId !== '');
-  console.log('data :', data);
+  const { quizGroupId } = useParams();
+  const { data: related } = useGetQuizGroup(
+    quizGroupId || '',
+    // quizGroupId !== ''
+    false,
+  );
+  console.log('data :', related);
+  console.log(':mock_data', mock_data);
 
   return (
-    <div css={wrap}>
-      <p css={(theme) => ({ ...title(theme), margin: '170px 0 78px' })}>같이 푼 다른 문제</p>
-      <div css={{ display: 'flex', gap: '0 20px', marginBottom: '150px' }}>
-        {RECENT_MOCK_DATA.map((item) => (
-          <Fragment key={item.quizId}>
+    <section css={wrap}>
+      <hr css={grayDivider} />
+      <p css={title}>같이 푼 다른 문제</p>
+      <ul css={listWrap}>
+        {mock_data.result.map((item) => (
+          <li key={item.quizId}>
             <UiComponent.QuizCard item={item} />
-          </Fragment>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 

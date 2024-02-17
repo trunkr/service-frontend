@@ -1,6 +1,11 @@
 import { CSSObject, Theme } from '@emotion/react';
 
-const wrap = {
+const section: CSSObject = {
+  width: '100%',
+  marginBottom: '80px',
+};
+
+const title = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -69,4 +74,4 @@ const grayDivider: CSSObject = {
   width: '100%',
 };
 
-export { wrap, subTitle, countLabel, btnGroup, filterBtn, grayDivider };
+export { section, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider };

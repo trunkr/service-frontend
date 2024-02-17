@@ -4,6 +4,16 @@ const wrap: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  width: '100%',
+};
+
+const grayDivider: CSSObject = {
+  height: 0,
+  margin: 0,
+  borderStyle: 'solid',
+  borderColor: '#FCFCFC',
+  borderWidth: '0 0 10px 0',
+  width: '100%',
 };
 
 const title = ({
@@ -18,33 +28,13 @@ const title = ({
   fontSize: title5,
   fontWeight: bold,
   color: gray1000,
-});
-
-const subTitle = ({
-  color: {
-    gray: { gray1000 },
-    sub: { purple750 },
-  },
-  typography: {
-    size: { body2 },
-    weight: { medium },
-  },
-}: Theme): CSSObject => ({
-  color: gray1000,
-  fontSize: body2,
-  fontWeight: medium,
-  marginTop: '12px',
-  '> span': {
-    marginLeft: '4px',
-    color: purple750,
-  },
+  margin: '80px 0 78px',
 });
 
 const listWrap: CSSObject = {
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
   gap: '22px 24px',
-  paddingTop: '42px',
 };
 
-export { wrap, title, subTitle, listWrap };
+export { wrap, title, listWrap, grayDivider };
