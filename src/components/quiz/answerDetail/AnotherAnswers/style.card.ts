@@ -73,27 +73,51 @@ const date = ({
   color: gray400,
 });
 
-const answer = ({
-  color: {
-    gray: { gray900 },
-  },
-  typography: {
-    size: { body2 },
-    weight: { medium },
-  },
-}: Theme): CSSObject => ({
-  fontSize: body2,
-  fontWeight: medium,
-  color: gray900,
-  lineHeight: 1.7,
-  whiteSpace: 'pre-wrap',
-  wordBreak: 'break-all',
-  marginBottom: '14px',
-});
+const answer =
+  (isExpanded: boolean) =>
+  ({
+    color: {
+      gray: { gray0, gray600, gray900 },
+    },
+    typography: {
+      size: { body2 },
+      weight: { medium, semibold },
+    },
+  }: Theme): CSSObject => ({
+    fontSize: body2,
+    fontWeight: medium,
+    color: gray900,
+    lineHeight: 1.7,
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-all',
+    marginBottom: '14px',
+    position: 'relative',
+
+    ...(!isExpanded && {
+      overflow: 'hidden',
+      display: '-webkit-box',
+      WebkitLineClamp: 10,
+      WebkitBoxOrient: 'vertical',
+    }),
+
+    '& > button': {
+      position: 'absolute',
+      right: 0,
+      bottom: '0px',
+      padding: '0 15px',
+      width: 'max-content',
+      height: '27px',
+      fontSize: body2,
+      fontWeight: semibold,
+      color: gray600,
+      backgroundColor: gray0,
+      textAlign: 'center',
+    },
+  });
 
 const thumbsUp = ({
   color: {
-    gray: { gray1000 },
+    gray: { gray0, gray1000 },
   },
   typography: {
     size: { label2 },
@@ -102,6 +126,9 @@ const thumbsUp = ({
 }: Theme): CSSObject => ({
   display: 'flex',
   alignItems: 'center',
+  background: gray0,
+  height: '40px',
+  padding: '0 8px',
 
   '& > span': {
     color: gray1000,

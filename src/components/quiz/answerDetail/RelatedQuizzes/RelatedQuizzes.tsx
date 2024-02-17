@@ -17,7 +17,8 @@ const mock_data: IQuizGroup = {
     },
     {
       quizId: 1,
-      question: 'Wrapper Class란 무엇이며, Boxing과 UnBoxing은 무엇인지 설명해주세...',
+      question:
+        'Wrapper Class란 무엇이며, Boxing과 UnBoxing은 무엇인지 설명해주세 UnBoxing은 무엇인지 설명해주세 UnBoxing은 무엇인지 설명해주세',
       isCorrect: false,
     },
     {
@@ -41,7 +42,6 @@ function RelatedQuizzes() {
     false,
   );
   console.log('data :', related);
-  console.log(':mock_data', mock_data);
 
   return (
     <section css={wrap}>
@@ -50,7 +50,7 @@ function RelatedQuizzes() {
       <ul css={listWrap}>
         {mock_data.result.map((item) => (
           <li key={item.quizId}>
-            <UiComponent.QuizCard item={item} />
+            <UiComponent.QuizCard item={item} quizId={String(item.quizId)} quizGroupId={quizGroupId || ''} />
           </li>
         ))}
       </ul>

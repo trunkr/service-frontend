@@ -28,6 +28,10 @@ const title = ({
   lineHeight: '1.5',
   fontWeight: bold,
   color: gray1000,
+  overflow: 'hidden',
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
 });
 
 const statusLabel =
@@ -68,6 +72,11 @@ const moreButton = ({
   borderRadius: '44px',
   fontWeight: bold,
   fontSize: label4,
+  color: gray1000,
+  textDecoration: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 export { wrap, title, statusLabel, moreButton };

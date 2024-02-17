@@ -1,7 +1,11 @@
 import { CSSObject, keyframes, Theme } from '@emotion/react';
 
-const section: CSSObject = {
-  width: '100%',
+const section = ({ grids: { layout3 } }: Theme): CSSObject => ({
+  ...layout3,
+  alignItems: 'flex-start',
+});
+
+const wrap: CSSObject = {
   margin: '80px 0',
 };
 
@@ -262,6 +266,7 @@ const feedback = ({
 
 export {
   section,
+  wrap,
   category,
   categoryName,
   title,

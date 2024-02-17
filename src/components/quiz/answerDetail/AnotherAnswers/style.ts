@@ -1,7 +1,11 @@
 import { CSSObject, Theme } from '@emotion/react';
 
-const section: CSSObject = {
-  width: '100%',
+const section = ({ grids: { layout3 } }: Theme): CSSObject => ({
+  ...layout3,
+  alignItems: 'flex-start',
+});
+
+const wrap: CSSObject = {
   marginBottom: '80px',
 };
 
@@ -74,4 +78,4 @@ const grayDivider: CSSObject = {
   width: '100%',
 };
 
-export { section, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider };
+export { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider };

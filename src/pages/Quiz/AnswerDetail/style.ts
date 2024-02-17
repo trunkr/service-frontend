@@ -1,9 +1,7 @@
-import { CSSObject, Theme } from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 
-const wrap = ({ grids: { layout3 } }: Theme): CSSObject => ({
-  ...layout3,
-  alignItems: 'flex-start',
+const wrap: CSSObject = {
   marginBottom: '180px',
-});
+};
 
 export { wrap };
