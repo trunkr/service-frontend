@@ -16,7 +16,7 @@ function AnswersPopup(props: AnswersPopup) {
         <section css={section}>
           <div css={title}>
             <h2 css={subTitle}>
-              모든 풀이 <span css={countLabel}>23</span>
+              모든 풀이 <span css={countLabel}>{props.data.length}</span>
             </h2>
             <div css={btnGroup}>
               <button css={[filterBtn(true), { marginRight: '16px' }]}>

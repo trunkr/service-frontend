@@ -5,14 +5,16 @@ const wrap = ({
     gray: { gray250 },
   },
 }: Theme): CSSObject => ({
+  boxSizing: 'border-box',
   border: `2px solid ${gray250}`,
   padding: '24px',
   borderRadius: '10px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  width: '290px',
-  height: '157px',
+  width: '100%',
+  height: '205px',
+  gap: '22px',
 });
 
 const title = ({
@@ -66,9 +68,11 @@ const moreButton = ({
     weight: { bold },
   },
 }: Theme): CSSObject => ({
+  boxSizing: 'border-box',
   border: `2px solid ${gray1000}`,
   width: '128px',
   height: '40px',
+  minHeight: '40px',
   borderRadius: '44px',
   fontWeight: bold,
   fontSize: label4,
