@@ -31,3 +31,10 @@ export interface IPagination {
   totalPage: number;
   totalSize: number;
 }
+export type DividerOrientationType = 'horizontal' | 'vertical';
+
+export type DividerThicknessType = 'thin' | 'bold';
+
+export type SizeWithPxType = `${number}px`;
+
+export type SizeWithPercentType = `${number}%`;

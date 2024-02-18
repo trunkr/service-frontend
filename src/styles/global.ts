@@ -9,6 +9,11 @@ const global = css`
     cursor: pointer;
     padding: 0;
   }
+  hr {
+    height: 0;
+    margin: 0;
+    background: unset;
+  }
 `;
 
 export default global;
