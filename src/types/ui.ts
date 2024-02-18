@@ -1,8 +1,17 @@
 import { ReactNode } from 'react';
 
+export interface IUiStore {
+  toasts: IToastPayload[];
+}
+
 export interface INavLinkData {
   title: string;
   to: string;
+}
+
+export interface IToastPayload {
+  id: string;
+  message: string;
 }
 
 export type SizeType = 'small' | 'medium' | 'large';

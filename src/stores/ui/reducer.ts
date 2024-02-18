@@ -1,16 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUiStore } from 'types';
+import { v4 as _v4 } from 'uuid';
+import { IToastPayload, IUiStore } from 'types';
 
 const initialState: IUiStore = {
   loading: false,
   isOpenAlert: false,
   alertTitle: '',
   alertContent: '',
+  toasts: [],
 };
 
 const {
   reducer,
-  actions: { loaded, loading, openAlert, closeAlert, clearAll },
+  actions: { loaded, loading, openAlert, closeAlert, clearAll, addToast, removeToast },
 } = createSlice({
   name: 'ui',
   initialState,
@@ -34,8 +37,18 @@ const {
       state.isOpenAlert = false;
       state.alertContent = '';
     },
+    addToast: (state, action: PayloadAction<Omit<IToastPayload, 'id'>>) => {
+      const id = _v4();
+
+      state.toasts = [{ id, ...action.payload }, ...state.toasts];
+    },
+    removeToast: (state, action: PayloadAction<Pick<IToastPayload, 'id'>>) => {
+      const { id } = action.payload;
+
+      state.toasts = state.toasts.filter((toast) => toast.id !== id);
+    },
   },
 });
 
-export { initialState, loaded, loading, openAlert, closeAlert, clearAll };
+export { initialState, loaded, loading, openAlert, closeAlert, clearAll, addToast, removeToast };
 export default reducer;
