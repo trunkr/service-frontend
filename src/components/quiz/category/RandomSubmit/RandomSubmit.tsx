@@ -3,7 +3,7 @@ import { wrap } from './style';
 import { UiComponent } from 'components';
 import { IQuizRandomParams } from 'types';
 import { MemberQuery, QuizQuery } from 'queries';
-import { useAppDispatch, useAppSelector } from 'stores';
+import { useAppDispatch } from 'stores';
 import { foot } from 'components/ui/Dialog/style';
 import { setRandom } from 'stores/quiz';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,9 @@ import { PATH } from 'data/path';
 function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
   const [checked, toggle] = useReducer((c) => !c, false);
   const disabled = useMemo(() => categoryIds === '', [categoryIds]);
-  const { random } = useAppSelector((state) => state.quiz);
+
+  const { mutateAsync } = QuizQuery.useGetNotSubmitted();
+  // const { random } = useAppSelector((state) => state.quiz);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { mutate, isLoading } = QuizQuery.useRandom();
@@ -29,13 +31,15 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
     navigate(`${PATH.quizAnswer}`);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (disabled) return;
     if (!data) return;
-    if (random) {
-      setIsOpenConfirm(true);
-      return;
-    }
+    // const res = await mutateAsync();
+    // console.log(res);
+    // if (random) {
+    //   setIsOpenConfirm(true);
+    //   return;
+    // }
 
     const { quizCount } = data;
 

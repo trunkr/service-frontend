@@ -1,20 +1,22 @@
 import React from 'react';
+import { isMobile } from 'react-device-detect';
 import { Player } from '@lottiefiles/react-lottie-player';
 import animationData from 'static/lottie/main2.json';
-import { title, subTitle } from '../style';
+import { wrap, mWrap, playerStyle, mPlayerStyle } from './style';
+import { title, subTitle, mTitle, mSubTitle } from '../style';
 
 function Gpt() {
   return (
-    <section css={{ flexDirection: 'row', justifyContent: 'space-between', padding: '0 181px 0 202px' }}>
+    <section css={isMobile ? mWrap : wrap}>
       <div>
-        <p css={title}>
+        <p css={isMobile ? mTitle : title}>
           ChatGPT에게는 정확하게,
           <br />
           사람들에게는 풍부하게
           <br />
           피드백을 받아보세요.
         </p>
-        <p css={subTitle}>
+        <p css={isMobile ? mSubTitle : subTitle}>
           CS 문제를 풀고, ChatGPT에게
           <br />
           피드백을 받을 수 있어요. 다른 사용자가
@@ -22,16 +24,7 @@ function Gpt() {
         </p>
       </div>
 
-      <Player
-        autoplay
-        loop
-        src={animationData}
-        style={{
-          width: '525px',
-          height: '436px',
-          margin: '165px 0 150px 0',
-        }}
-      />
+      <Player autoplay loop src={animationData} style={isMobile ? mPlayerStyle : playerStyle} />
     </section>
   );
 }

@@ -22,7 +22,7 @@ function Recommend() {
   return (
     <ul css={wrap}>
       {categories.map((item: IQuizCategory) => (
-        <li key={item.name}>
+        <li key={item.name} onClick={() => handleClick(item)}>
           <div
             css={{
               borderRadius: '10px 10px 0 0',
@@ -35,7 +35,7 @@ function Recommend() {
           <div css={contentsWrap}>
             <b>{item.name}</b>
             <p>{DESC_MAP[item.name]}</p>
-            <button type="button" onClick={() => handleClick(item)}></button>
+            <div></div>
           </div>
         </li>
       ))}

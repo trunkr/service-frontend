@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
+import { isMobile } from 'react-device-detect';
 import icTextLogo from 'static/logos/text.svg';
-import { wrapper, logoSection, user } from './style';
+import { wrapper, logoSection, user, mWrapper } from './style';
 import { UiComponent } from 'components';
 import { PATH } from 'data/path';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -14,6 +15,14 @@ function Header() {
   const { data } = MemberQuery.usePersonalInfo();
 
   const [isOpenLoginDialog, toggleLoginDialog] = useReducer((isOpen) => !isOpen, false);
+
+  if (isMobile) {
+    return (
+      <header css={mWrapper}>
+        <img src={icTextLogo} width={78} height={16} />
+      </header>
+    );
+  }
 
   return (
     <>

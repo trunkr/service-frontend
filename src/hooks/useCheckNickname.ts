@@ -19,12 +19,14 @@ function useCheckNickname({ nickname, originNickname = '' }: Props) {
   const [invalidMsg, setInvalidMsg] = useState('');
 
   const disabled = useMemo(() => {
-    if (invalidMsg !== '') true;
+    if (invalidMsg !== '') return true;
     if (isLoading) return true;
     if (nickname.length < MIN_LEN || nickname.length > MAX_LEN) return true;
 
     return false;
   }, [nickname, invalidMsg, isLoading]);
+
+  console.log({ disabled });
 
   useEffect(() => {
     subjectRef.current

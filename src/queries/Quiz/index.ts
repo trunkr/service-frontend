@@ -7,3 +7,4 @@ export { default as useGetStatistics } from './useGetStatistics';
 export { default as useGetStatisticsByCategory } from './useGetStatisticsByCategory';
 export { default as useGetAnotherAnswerResult } from './useGetAnotherAnswer';
 export { default as useGetRecent } from './useGetRecent';
+export { default as useGetNotSubmitted } from './useGetNotSubmitted';

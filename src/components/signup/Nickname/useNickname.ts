@@ -9,8 +9,7 @@ interface Props {
 function useNickname({ nickname, handleNext }: Props) {
   const [agree, setAgree] = useState(false);
   const { disabled: nicknameDisabled, inpuRef, invalidMsg } = useCheckNickname({ nickname });
-
-  const disabled = useMemo(() => nicknameDisabled || !agree, [nicknameDisabled]);
+  const disabled = useMemo(() => nicknameDisabled || !agree, [nicknameDisabled, agree]);
 
   const next = () => {
     if (nicknameDisabled) {

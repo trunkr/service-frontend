@@ -17,9 +17,10 @@ function Nickname({ nickname, handleNickName, handleNext }: Props) {
     <section css={wrap}>
       <h1 css={pageTitle}>회원가입</h1>
       <p css={title}>닉네임</p>
-      <p css={subTitle}>한글,영문 10자 이하로 입력해주세요 (10자)</p>
+      <p css={subTitle}>한글,영문 10자 이하로 입력해주세요</p>
       <UiComponent.Input
         ref={inpuRef}
+        placeholder="닉네임을 입력해주세요"
         invalidMsg={invalidMsg}
         value={nickname}
         onChange={(e) => handleNickName(e.target.value)}

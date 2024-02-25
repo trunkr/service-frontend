@@ -11,6 +11,7 @@ const wrap = ({
   '> li': {
     borderRadius: '10px',
     border: `1px solid ${gray200}`,
+    cursor: 'pointer',
   },
 });
 
@@ -37,7 +38,7 @@ const contentsWrap = ({
     color: gray900,
   },
   padding: '24px 24px 40px 24px',
-  '> button': {
+  '> div': {
     position: 'absolute',
     top: '-20px',
     right: '26px',

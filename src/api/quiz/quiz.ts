@@ -16,6 +16,8 @@ const get = (quizId: number) => base.get(`${PATH_BASE}/${quizId}`);
 const getCategory = (categoryType: QuizCategoryFilterType) =>
   base.get<IResponse<IQuizCategory[]>>(`${PATH_BASE}/categories-figure`, { params: { categoryType } });
 
+const getNotSubmitted = () => base.get(`${PATH_BASE}/not-submitted`);
+
 /** 랜덤 퀴즈 출제 */
 const getRandom = ({ categoryIds, quizCount }: IQuizRandomParams) =>
   base.get<IResponse<IQuizRandomResponse>>(`${PATH_BASE}/random`, { params: { categoryIds, quizCount } });
@@ -23,4 +25,4 @@ const getRandom = ({ categoryIds, quizCount }: IQuizRandomParams) =>
 /** 최근에 풀었던 퀴즈 조회 */
 const getRecent = () => base.get<IResponse<RecentAnswerType[]>>(`${PATH_BASE}/recent-answer`);
 
-export { get, getCategory, getRandom, getRecent };
+export { get, getCategory, getRandom, getRecent, getNotSubmitted };

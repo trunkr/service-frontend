@@ -9,7 +9,7 @@ import { ProfileComponent, UiComponent } from 'components';
 import { useCheckNickname } from 'hooks';
 import { AuthQuery, MemberQuery } from 'queries';
 import { useAppDispatch } from 'stores';
-import { loaded, openAlert } from 'stores/ui';
+import { addToast, loaded } from 'stores/ui';
 import useWithdraw from './useWithdraw';
 
 interface Props {
@@ -37,17 +37,24 @@ function Edit({ data, handleProfileImage, handleValue, email, originData }: Prop
       return;
     }
 
-    mutate(data, {
-      onSettled() {
-        dispatch(loaded());
-        dispatch(
-          openAlert({
-            alertTitle: '',
-            alertContent: '저장 완료',
-          }),
-        );
+    mutate(
+      {
+        nickname: data.nickname,
+        profileImageUrl: data.profileImageUrl,
+        quizCount: data.quizCount,
+        isQuizOpen: data.isQuizOpen,
       },
-    });
+      {
+        onSettled() {
+          dispatch(loaded());
+          dispatch(
+            addToast({
+              message: '저장 완료',
+            }),
+          );
+        },
+      },
+    );
   };
 
   return (

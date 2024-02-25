@@ -19,6 +19,24 @@ const wrapper = ({
   zIndex: 1000,
 });
 
+const mWrapper = ({
+  color: {
+    gray: { gray0, gray250 },
+  },
+}: Theme): CSSObject => ({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  height: '48px',
+  borderBottom: `1px solid ${gray250}`,
+  display: 'flex',
+  alignItems: 'center',
+  padding: '0 20px',
+  background: gray0,
+  zIndex: 1000,
+});
+
 const logoSection: CSSObject = {
   display: 'flex',
   flexDirection: 'row',
@@ -40,4 +58,4 @@ const user = ({
   },
 });
 
-export { wrapper, logoSection, user };
+export { wrapper, mWrapper, logoSection, user };
