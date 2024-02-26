@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 
 import icCheckBold from 'static/icons/system/ic_check_bold.svg';
 import { QuizQuery } from 'queries';
-import { IQuizAnotherAnswer, Nullable } from 'types';
+import { IQuizAnotherAnswer } from 'types';
 
 import List from './List';
 import NoResults from './NoResults';
+import AnotherAnswersSkeleton from './Skeleton';
 import { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider } from './style';
 
 function AnotherAnswers() {
@@ -17,16 +18,16 @@ function AnotherAnswers() {
     quizId !== '',
   );
 
-  const handleChangeFilter = (condition: boolean) => () => {
-    if (condition) toggle();
-  };
-
   const hasAnswers = useMemo(() => {
     if (!answers) return 'pending';
     return Boolean(answers.length);
   }, [answers]);
 
-  let Render: Nullable<React.ReactNode> = null;
+  const handleChangeFilter = (condition: boolean) => () => {
+    if (condition) toggle();
+  };
+
+  let Render = <AnotherAnswersSkeleton />;
   switch (hasAnswers) {
     case true:
       Render = <List data={answers as IQuizAnotherAnswer[]} />;
