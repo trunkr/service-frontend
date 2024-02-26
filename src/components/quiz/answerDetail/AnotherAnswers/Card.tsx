@@ -1,5 +1,5 @@
+import { PROFILE_DATA } from 'data/profile';
 import React, { useState } from 'react';
-import icProfile7 from 'static/graphics/profile/Profile7.svg';
 import icThumbsUp from 'static/icons/system/ic_thumbs-up.svg';
 import icThumbsUpFilled from 'static/icons/system/ic_thumbs-up_filled.svg';
 import { IQuizAnotherAnswer } from 'types';
@@ -33,7 +33,7 @@ function Card({ userAnswer }: { userAnswer: IQuizAnotherAnswer }) {
     <article>
       <div css={{ display: 'flex', alignItems: 'center', marginBottom: '14px' }}>
         <button type="button" css={user}>
-          <img src={icProfile7} alt="" />
+          <img src={PROFILE_DATA[Number(userAnswer?.member?.profileImageUrl || '0')]} alt="" />
         </button>
         <div css={{ display: 'flex', flexDirection: 'column' }}>
           <div css={nickname}>

@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import icGpt from 'static/graphics/profile/Gpt.svg';
-import icProfile7 from 'static/graphics/profile/Profile7.svg';
 import useGetQuizAnswerDetailResult from 'queries/Quiz/useGetQuizAnswerDetail';
 import { CATEGORY_ICON_MAP } from 'data/category';
 import {
@@ -27,6 +26,7 @@ import {
   feedback,
   grayDivider,
 } from './style';
+import { PROFILE_DATA } from 'data/profile';
 
 function MyAnswer() {
   const { quizId, quizGroupId } = useParams();
@@ -51,7 +51,7 @@ function MyAnswer() {
           </div>
           <div css={answerDetail}>
             <button type="button" css={user}>
-              <img src={icProfile7} alt="" />
+              <img src={PROFILE_DATA[Number(data?.member?.profileImageUrl || '0')]} alt="" />
             </button>
             <div css={smallUserInfo}>
               <div css={nickname}>

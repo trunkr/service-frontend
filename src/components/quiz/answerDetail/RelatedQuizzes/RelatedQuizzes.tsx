@@ -13,8 +13,11 @@ import 'swiper/css/navigation';
 import { wrap, grayDivider, title, swiperFilterCss } from './style';
 
 function RelatedQuizzes() {
-  const { quizGroupId } = useParams();
-  const { data: related } = useGetQuizGroup(quizGroupId || '', quizGroupId !== '');
+  const { quizId, quizGroupId } = useParams();
+  const { data: related } = useGetQuizGroup(
+    { quizId: quizId || '', quizGroupId: quizGroupId || '' },
+    quizGroupId !== '',
+  );
 
   return (
     <section css={wrap}>

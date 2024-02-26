@@ -27,7 +27,7 @@ function Main() {
             return (
               <SwiperSlide key={item.quizId}>
                 <UiComponent.QuizCard
-                  item={{ ...item, isCorrect: false }}
+                  item={{ ...item, isCorrect: item.quizAnswerStatus === 'CORRECT' ? true : false }}
                   quizId={String(item.quizId)}
                   quizGroupId={item.quizGroupId}
                 />

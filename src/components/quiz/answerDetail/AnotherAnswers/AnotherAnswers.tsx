@@ -1,25 +1,25 @@
 import React, { useMemo, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
-import icCheckBold from 'static/icons/system/ic_check_bold.svg';
 import { QuizQuery } from 'queries';
 import { IQuizAnotherAnswer } from 'types';
 
 import List from './List';
 import NoResults from './NoResults';
 import AnotherAnswersSkeleton from './Skeleton';
-import { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider } from './style';
+import { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider, iconCheck } from './style';
+import IconCheckBold from 'static/icons/system/IconCheckBold';
 
 function AnotherAnswers() {
   const { quizId } = useParams();
   const [sort, toggle] = useReducer((c) => !c, true);
-  const { data: answers } = QuizQuery.useGetAnotherAnswerResult(
+  const { data: answers, isLoading } = QuizQuery.useGetAnotherAnswerResult(
     { quizId: quizId || '', sort: sort ? 'favor,asc' : 'answeredAt,asc' },
     quizId !== '',
   );
 
   const hasAnswers = useMemo(() => {
-    if (!answers) return 'pending';
+    if (isLoading || !answers) return 'loading';
     return Boolean(answers.length);
   }, [answers]);
 
@@ -35,6 +35,9 @@ function AnotherAnswers() {
     case false:
       Render = <NoResults />;
       break;
+    case 'loading':
+      Render = <AnotherAnswersSkeleton />;
+      break;
     default:
   }
 
@@ -48,10 +51,11 @@ function AnotherAnswers() {
           </h2>
           <div css={btnGroup}>
             <button css={[filterBtn(sort), { marginRight: '16px' }]} onClick={handleChangeFilter(!sort)}>
-              <img src={icCheckBold} alt="" />
+              {sort && <IconCheckBold css={iconCheck} />}
               인기 순
             </button>
             <button css={filterBtn(!sort)} onClick={handleChangeFilter(sort)}>
+              {!sort && <IconCheckBold css={iconCheck} />}
               최신 순
             </button>
           </div>
