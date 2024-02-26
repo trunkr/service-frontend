@@ -28,40 +28,18 @@ import {
   grayDivider,
 } from './style';
 
-// const mock_payload: IQuizAnswer = {
-//   quizId: 1,
-//   quizGroupId: '1',
-//   quizAnswerStatus: 'INCORRECT',
-//   question: '자바의 메모리 영역에 대해 설명해주세요.',
-//   answer: MOCK_ANSWER,
-//   feedback: MOCK_AI_FEEDBACK,
-//   category: {
-//     id: 1,
-//     name: 'OS',
-//     type: 'CS',
-//   },
-//   member: {
-//     id: 1,
-//     nickname: '테스터',
-//     profileImageUrl: 'https://abc.xyz',
-//   },
-// };
-
 function MyAnswer() {
   const { quizId, quizGroupId } = useParams();
   const { data } = useGetQuizAnswerDetailResult({ quizId: quizId || '', quizGroupId: quizGroupId || '' }, true);
-  console.log('data :', data);
-
-  if (!data) return null;
 
   return (
     <section css={section}>
       <div css={wrap}>
         <div css={category}>
-          <img src={CATEGORY_ICON_MAP[data.category.name as keyof typeof CATEGORY_ICON_MAP]} />
-          <p css={categoryName}>{data.category.name}</p>
+          <img src={CATEGORY_ICON_MAP[data?.category.name as keyof typeof CATEGORY_ICON_MAP]} />
+          <p css={categoryName}>{data?.category?.name}</p>
         </div>
-        <h1 css={title}>{data.question}</h1>
+        <h1 css={title}>{data?.question}</h1>
 
         <hr css={grayDivider} />
 
@@ -69,7 +47,7 @@ function MyAnswer() {
         <article>
           <div css={myAnswer}>
             <h2 css={subTitle}>내 풀이</h2>
-            <span css={answerLabel}>{data.quizAnswerStatus === 'CORRECT' ? '정답' : '오답'}</span>
+            <span css={answerLabel}>{data?.quizAnswerStatus === 'CORRECT' ? '정답' : '오답'}</span>
           </div>
           <div css={answerDetail}>
             <button type="button" css={user}>
@@ -77,17 +55,17 @@ function MyAnswer() {
             </button>
             <div css={smallUserInfo}>
               <div css={nickname}>
-                <span>{data.member.nickname}</span>
+                <span>{data?.member.nickname}</span>
                 <span>님의 풀이</span>
               </div>
               <span css={date}>2023.12.11</span>
             </div>
           </div>
-          <pre css={answer}>{data.answer}</pre>
+          <pre css={answer}>{data?.answer}</pre>
         </article>
 
         {/* AI Feedback */}
-        {data.quizAnswerStatus === 'INCORRECT' && (
+        {data?.quizAnswerStatus === 'INCORRECT' && (
           <article>
             <div css={aiFeedBackWrap}>
               <span css={onlyMe}>나만 볼 수 있어요</span>

@@ -21,6 +21,15 @@ export interface IAnswerDetailParams {
   quizGroupId: string;
 }
 
+export type AnotherAnswerSortType = 'favor' | 'answeredAt';
+export type AnotherAnswerOrderType = 'desc' | 'asc';
+export type AnotherAnswerFilterType = `${AnotherAnswerSortType},${AnotherAnswerOrderType}`;
+
+export interface IQuizAnotherAnswerParams {
+  quizId: string;
+  sort?: AnotherAnswerFilterType;
+}
+
 export interface IQuizAnotherAnswer extends Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'answer' | 'member'> {
   favorCount: number;
   isFavor: boolean;

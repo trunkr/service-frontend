@@ -14,12 +14,7 @@ import { wrap, grayDivider, title, swiperFilterCss } from './style';
 
 function RelatedQuizzes() {
   const { quizGroupId } = useParams();
-  const { data: related } = useGetQuizGroup(
-    quizGroupId || '',
-    // quizGroupId !== ''
-    true,
-  );
-  if (!related) return null;
+  const { data: related } = useGetQuizGroup(quizGroupId || '', quizGroupId !== '');
 
   return (
     <section css={wrap}>
@@ -34,7 +29,7 @@ function RelatedQuizzes() {
           modules={[Navigation, FreeMode]}
           css={swiperFilterCss}
         >
-          {related.result.map((item) => {
+          {related?.result?.map((item) => {
             return (
               <SwiperSlide key={item.quizId}>
                 <UiComponent.QuizCard item={item} quizId={String(item.quizId)} quizGroupId={quizGroupId || ''} />

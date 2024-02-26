@@ -6,6 +6,7 @@ const section = ({ grids: { layout3 } }: Theme): CSSObject => ({
 });
 
 const wrap: CSSObject = {
+  width: '100%',
   margin: '80px 0',
 };
 

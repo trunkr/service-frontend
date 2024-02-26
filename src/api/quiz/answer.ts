@@ -7,6 +7,7 @@ import {
   AnswerParams,
   AnswerResultType,
   IResponse,
+  IQuizAnotherAnswerParams,
 } from 'types';
 import { PATH_BASE } from './constants';
 
@@ -20,9 +21,9 @@ const get = (quizGroupId: string) =>
 const post = (data: AnswerParams) => base.post(PATH, data);
 
 /** 특정 퀴즈에 대한 다른 사람들이 푼 답변 조회 */
-const getAnother = (quizId: string) =>
+const getAnother = ({ quizId, sort }: IQuizAnotherAnswerParams) =>
   base.get<IResponse<IQuizAnotherAnswer[]>>(`${PATH_BASE}/another-answer`, {
-    params: { quizId },
+    params: { quizId, sort },
   });
 
 /** 퀴즈 답변 상세 조회 */
