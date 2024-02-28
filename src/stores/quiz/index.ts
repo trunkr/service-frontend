@@ -1,1 +1,1 @@
-export { default as quizReducer, setRandom, setQuizStatus } from './reducer';
+export { default as quizReducer, setRandom, setQuizStatus, setRandomFromNotSubmitted, setNotOpenDate } from './reducer';

@@ -17,14 +17,18 @@ export interface IQuizRandomResponse {
   quizzes: IQuiz[];
 }
 
+export type NotSubmittedQuizItemType = IQuiz & Pick<IQuizGroup, 'quizGroupId'>;
+
+export type QuizItemType = (IQuiz | NotSubmittedQuizItemType) & { status: QuizAnswerStatusType };
+
 export interface IQuizRandom {
   quizGroupId: string;
-  createdAt: string;
-  quizzes: (IQuiz & { status: QuizAnswerStatusType })[];
+  quizzes: QuizItemType[];
 }
 
 export interface IQuizStore {
   random: IQuizRandom | null;
+  notOpenDate: string | null;
 }
 
 export interface IsCorrect {
@@ -37,6 +41,6 @@ export interface IIsCorrectQuizGroup extends Pick<IQuiz, 'question'> {
 }
 
 export interface IQuizGroup {
-  quizGroupId: number;
+  quizGroupId: string;
   result: IIsCorrectQuizGroup[];
 }

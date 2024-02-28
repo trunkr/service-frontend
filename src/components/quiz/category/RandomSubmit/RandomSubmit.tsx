@@ -3,9 +3,9 @@ import { wrap } from './style';
 import { UiComponent } from 'components';
 import { IQuizRandomParams } from 'types';
 import { MemberQuery, QuizQuery } from 'queries';
-import { useAppDispatch } from 'stores';
+import { useAppDispatch, useAppSelector } from 'stores';
 import { foot } from 'components/ui/Dialog/style';
-import { setRandom } from 'stores/quiz';
+import { setNotOpenDate, setRandom, setRandomFromNotSubmitted } from 'stores/quiz';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from 'data/path';
 
@@ -13,8 +13,8 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
   const [checked, toggle] = useReducer((c) => !c, false);
   const disabled = useMemo(() => categoryIds === '', [categoryIds]);
 
-  const { mutateAsync } = QuizQuery.useGetNotSubmitted();
-  // const { random } = useAppSelector((state) => state.quiz);
+  const { mutateAsync, data: d } = QuizQuery.useGetNotSubmitted();
+  const { notOpenDate } = useAppSelector((state) => state.quiz);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { mutate, isLoading } = QuizQuery.useRandom();
@@ -24,29 +24,34 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
 
   const handleClose = () => {
     dispatch(setRandom(null));
+    dispatch(setNotOpenDate());
     setIsOpenConfirm(false);
   };
 
   const handleConfirm = () => {
-    navigate(`${PATH.quizAnswer}`);
+    if (d?.data.payload) {
+      setRandomFromNotSubmitted(d.data.payload);
+      navigate(`${PATH.quizAnswer}`);
+    }
   };
 
   const handleNext = async () => {
     if (disabled) return;
     if (!data) return;
-    // const res = await mutateAsync();
-    // console.log(res);
-    // if (random) {
-    //   setIsOpenConfirm(true);
-    //   return;
-    // }
+
+    const today = new Date();
+    const dateStr = `${today.getFullYear}${today.getMonth()}${today.getDate()}`;
+    const checkNotSubmitted = notOpenDate && notOpenDate === dateStr;
+    if (!checkNotSubmitted) {
+      const res = await mutateAsync();
+      if (res.data.payload.quizzes.length > 0) {
+        setIsOpenConfirm(true);
+        return;
+      }
+    }
 
     const { quizCount } = data;
-
-    mutate({
-      categoryIds,
-      quizCount,
-    });
+    mutate({ categoryIds, quizCount });
   };
 
   return (

@@ -6,6 +6,7 @@ import {
   IQuizRandomResponse,
   IResponse,
   QuizCategoryFilterType,
+  NotSubmittedQuizItemType,
   RecentAnswerType,
 } from 'types';
 
@@ -16,7 +17,8 @@ const get = (quizId: number) => base.get(`${PATH_BASE}/${quizId}`);
 const getCategory = (categoryType: QuizCategoryFilterType) =>
   base.get<IResponse<IQuizCategory[]>>(`${PATH_BASE}/categories-figure`, { params: { categoryType } });
 
-const getNotSubmitted = () => base.get(`${PATH_BASE}/not-submitted`);
+const getNotSubmitted = () =>
+  base.get<IResponse<{ quizzes: NotSubmittedQuizItemType[] }>>(`${PATH_BASE}/not-submitted`);
 
 /** 랜덤 퀴즈 출제 */
 const getRandom = ({ categoryIds, quizCount }: IQuizRandomParams) =>
