@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import icGpt from 'static/graphics/profile/Gpt.svg';
 import useGetQuizAnswerDetailResult from 'queries/Quiz/useGetQuizAnswerDetail';
 import { CATEGORY_ICON_MAP } from 'data/category';
+import { PROFILE_DATA } from 'data/profile';
 import {
   section,
   wrap,
@@ -26,7 +27,6 @@ import {
   feedback,
   grayDivider,
 } from './style';
-import { PROFILE_DATA } from 'data/profile';
 
 function MyAnswer() {
   const { quizId, quizGroupId } = useParams();

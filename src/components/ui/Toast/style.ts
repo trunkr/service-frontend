@@ -2,11 +2,11 @@ import { keyframes, type CSSObject, type Theme } from '@emotion/react';
 
 const scaleUp = keyframes`
   from { max-height: 0;}
-  to {max-height: 100px;}
+  to {max-height: 82px;}
 `;
 
 const scaleDown = keyframes`
-  from { max-height: 100px;}
+  from { max-height: 82px;}
   to { max-height: 0;}
  `;
 
@@ -22,14 +22,14 @@ const fadeOut = keyframes`
 
 const container: CSSObject = {
   position: 'fixed',
-  top: '60px',
+  bottom: '40px',
   left: '50%',
   height: 'max-content',
   transform: 'translateX(-50%)',
   zIndex: 4000,
 
   '& > div:not(:first-of-type)': {
-    marginTop: '8px',
+    marginTop: '12px',
   },
 };
 
@@ -72,11 +72,23 @@ const text = ({
   fontSize: label4,
   fontWeight: bold,
   lineHeight: 1.5,
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
 });
 
-const closeBtn: CSSObject = {
-  all: 'unset',
-  cursor: 'pointer',
-};
+const closeBtn = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  width: '24px',
+  height: '24px',
+
+  '& > svg > path': {
+    fill: gray0,
+  },
+});
 
 export { container, wrap, toast, text, closeBtn };

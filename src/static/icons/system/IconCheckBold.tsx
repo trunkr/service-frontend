@@ -9,8 +9,8 @@ const SVG = `
 </svg>
 `;
 
-const IconCheckBold: React.FC<{ className?: string }> = ({ className }) => (
-  <div css={f.flex} className={className} dangerouslySetInnerHTML={{ __html: SVG }} />
+const IconCheckBold: React.FC<{ onClick?: VoidFunction; className?: string }> = ({ onClick, className }) => (
+  <div css={f.flex} className={className} onClick={onClick} dangerouslySetInnerHTML={{ __html: SVG }} />
 );
 
 export default IconCheckBold;

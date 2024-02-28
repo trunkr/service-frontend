@@ -46,7 +46,24 @@ const contentsWrap = ({
     height: '44px',
     borderRadius: '50%',
     background: gray900,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
-export { wrap, contentsWrap };
+const arrow = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  '& > svg': {
+    transform: 'rotate(180deg)',
+
+    '& > path': {
+      fill: gray0,
+    },
+  },
+});
+
+export { wrap, contentsWrap, arrow };
