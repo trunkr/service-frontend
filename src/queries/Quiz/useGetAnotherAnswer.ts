@@ -13,6 +13,7 @@ function useGetAnotherAnswerResult({ quizId, sort = 'favor,desc' }: IQuizAnother
         return data.data.payload;
       },
       enabled,
+      suspense: true,
     },
   );
 

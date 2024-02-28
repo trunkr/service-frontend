@@ -2,24 +2,23 @@ import React, { useMemo, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { QuizQuery } from 'queries';
-import { IQuizAnotherAnswer } from 'types';
+import { IQuizAnotherAnswer, Nullable } from 'types';
 
 import List from './List';
 import NoResults from './NoResults';
-import AnotherAnswersSkeleton from './Skeleton';
 import { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider, iconCheck } from './style';
 import IconCheckBold from 'static/icons/system/IconCheckBold';
 
 function AnotherAnswers() {
   const { quizId } = useParams();
   const [sort, toggle] = useReducer((c) => !c, true);
-  const { data: answers, isLoading } = QuizQuery.useGetAnotherAnswerResult(
+  const { data: answers } = QuizQuery.useGetAnotherAnswerResult(
     { quizId: quizId || '', sort: sort ? 'favor,asc' : 'answeredAt,asc' },
     quizId !== '',
   );
 
   const hasAnswers = useMemo(() => {
-    if (isLoading || !answers) return 'loading';
+    if (!answers) return 'pending';
     return Boolean(answers.length);
   }, [answers]);
 
@@ -27,16 +26,13 @@ function AnotherAnswers() {
     if (condition) toggle();
   };
 
-  let Render = <AnotherAnswersSkeleton />;
+  let Render: Nullable<React.ReactNode> = null;
   switch (hasAnswers) {
     case true:
       Render = <List data={answers as IQuizAnotherAnswer[]} />;
       break;
     case false:
       Render = <NoResults />;
-      break;
-    case 'loading':
-      Render = <AnotherAnswersSkeleton />;
       break;
     default:
   }

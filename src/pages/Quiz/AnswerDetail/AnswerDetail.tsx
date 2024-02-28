@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { QuizComponent, ErrorComponent } from 'components';
 import MyAnswersSkeleton from 'components/quiz/answerDetail/MyAnswer/Skeleton';
+import AnotherAnswersSkeleton from 'components/quiz/answerDetail/AnotherAnswers/Skeleton';
 import { wrap } from './style';
-import { useParams } from 'react-router-dom';
 
 function AnswerDetail() {
   const { quizId } = useParams();
@@ -21,7 +22,9 @@ function AnswerDetail() {
         </ErrorComponent.QueryErrorBoundary>
 
         <ErrorComponent.QueryErrorBoundary fallback={null}>
-          <QuizComponent.AnotherAnswers />
+          <Suspense fallback={<AnotherAnswersSkeleton />}>
+            <QuizComponent.AnotherAnswers />
+          </Suspense>
         </ErrorComponent.QueryErrorBoundary>
 
         <ErrorComponent.QueryErrorBoundary fallback={null}>
