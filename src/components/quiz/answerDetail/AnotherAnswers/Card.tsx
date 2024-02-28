@@ -1,11 +1,20 @@
+import { UseMutateFunction } from '@tanstack/react-query';
+import { AxiosResponse } from 'axios';
 import { PROFILE_DATA } from 'data/profile';
 import React, { useState } from 'react';
 import icThumbsUp from 'static/icons/system/ic_thumbs-up.svg';
 import icThumbsUpFilled from 'static/icons/system/ic_thumbs-up_filled.svg';
-import { IQuizAnotherAnswer } from 'types';
+import { AnswerFavorParams, IQuizAnotherAnswer, IResponse } from 'types';
+import { formatDate } from 'utils/format';
 import { user, nickname, date, thumbsUp, answer } from './style.card';
 
-function Card({ userAnswer }: { userAnswer: IQuizAnotherAnswer }) {
+function Card({
+  userAnswer,
+  updateFavor,
+}: {
+  userAnswer: IQuizAnotherAnswer;
+  updateFavor: UseMutateFunction<AxiosResponse<IResponse<null>>, unknown, AnswerFavorParams>;
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpansion = () => setIsExpanded((prev) => !prev);
 
@@ -40,13 +49,18 @@ function Card({ userAnswer }: { userAnswer: IQuizAnotherAnswer }) {
             <span>{userAnswer.member.nickname}</span>
             <span>님의 풀이</span>
           </div>
-          <span css={date}>2023.12.11</span>
+          <span css={date}>{formatDate(userAnswer.answeredAt)}</span>
         </div>
       </div>
       <pre css={answer(isExpanded)}>{displayText()}</pre>
-      <button css={thumbsUp}>
+      <button
+        css={thumbsUp}
+        onClick={() =>
+          updateFavor({ isFavor: !userAnswer.isFavor, articleId: userAnswer.memberQuizAnswerId, articleType: 'QUIZ' })
+        }
+      >
         <img src={userAnswer.isFavor ? icThumbsUpFilled : icThumbsUp} alt="" />
-        <span>12</span>
+        <span>{userAnswer.favorCount}</span>
       </button>
     </article>
   );

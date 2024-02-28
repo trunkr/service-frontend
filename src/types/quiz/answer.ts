@@ -10,6 +10,7 @@ export interface IQuizAnswer {
   quizAnswerStatus: QuizAnswerStatusType;
   question: string;
   answer: string;
+  answeredAt: string;
   /** AI 피드백 */
   feedback: string;
   category: IQuizCategoryBase;
@@ -30,9 +31,11 @@ export interface IQuizAnotherAnswerParams {
   sort?: AnotherAnswerFilterType;
 }
 
-export interface IQuizAnotherAnswer extends Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'answer' | 'member'> {
+export interface IQuizAnotherAnswer
+  extends Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'answer' | 'member' | 'answeredAt'> {
   favorCount: number;
   isFavor: boolean;
+  memberQuizAnswerId: string;
 }
 
 export type RecentAnswerType = Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'question' | 'quizAnswerStatus'>;
@@ -44,3 +47,8 @@ export type AnotherAnswerParams = Pick<IQuizAnotherAnswer, 'quizId'> & IPagePara
 export type AnswerParams = AnswerGroupParams & Pick<IQuizAnswer, 'answer'> & { isQuizOpen: boolean };
 
 export type AnswerResultType = Pick<IQuizAnswer, 'quizId' | 'question'> & { isCorrect: boolean };
+
+export type AnswerFavorParams = {
+  articleId: string;
+  articleType: string;
+} & Pick<IQuizAnotherAnswer, 'isFavor'>;

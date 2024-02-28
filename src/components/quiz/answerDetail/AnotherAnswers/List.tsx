@@ -1,11 +1,19 @@
-import { UiComponent } from 'components';
 import React, { useReducer, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import { UseMutateFunction } from '@tanstack/react-query';
+import { UiComponent } from 'components';
+import { AnswerFavorParams, IQuizAnotherAnswer, IResponse } from 'types';
 import icChevronUp from 'static/icons/system/ic_chevron_up.svg';
-import { IQuizAnotherAnswer } from 'types';
 import Card from './Card';
 import { listWrap, nextBtn } from './style.card';
 
-function List({ data }: { data: IQuizAnotherAnswer[] }) {
+function List({
+  data,
+  updateFavor,
+}: {
+  data: IQuizAnotherAnswer[];
+  updateFavor: UseMutateFunction<AxiosResponse<IResponse<null>>, unknown, AnswerFavorParams>;
+}) {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [isOpenLoginDialog, toggleLoginDialog] = useReducer((isOpen) => !isOpen, false);
 
@@ -17,9 +25,9 @@ function List({ data }: { data: IQuizAnotherAnswer[] }) {
   return (
     <>
       <ul css={listWrap}>
-        {data.slice(0, showMore ? 10 : 5).map((answer, index) => (
-          <li key={index}>
-            <Card userAnswer={answer} />
+        {data.slice(0, showMore ? 10 : 5).map((answer) => (
+          <li key={answer.memberQuizAnswerId}>
+            <Card userAnswer={answer} updateFavor={updateFavor} />
           </li>
         ))}
       </ul>
@@ -33,6 +41,7 @@ function List({ data }: { data: IQuizAnotherAnswer[] }) {
         <UiComponent.AnswersPopup
           data={data}
           title="Java에서 오버로딩과 오버라이딩의 차이점은 무엇인가요?"
+          updateFavor={updateFavor}
           handleClose={toggleLoginDialog}
         />
       )}

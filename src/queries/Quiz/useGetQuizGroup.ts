@@ -5,7 +5,7 @@ import { getQueryKeys } from 'queries/query-key';
 
 function useGetQuizGroup({ quizId, quizGroupId }: { quizId: string; quizGroupId: string }, enabled?: boolean) {
   const result = useAuthQuery(
-    getQueryKeys(QUIZ_GROUP_KEY).detail(`${quizGroupId}_${quizId}`),
+    getQueryKeys(QUIZ_GROUP_KEY).detail(`${quizId}_${quizGroupId}`),
     () => QuizAnswerApi.getGroup(quizGroupId),
     {
       select: (data) => {

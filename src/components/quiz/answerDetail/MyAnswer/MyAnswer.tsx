@@ -27,6 +27,7 @@ import {
   feedback,
   grayDivider,
 } from './style';
+import { formatDate } from 'utils/format';
 
 function MyAnswer() {
   const { quizId, quizGroupId } = useParams();
@@ -58,7 +59,7 @@ function MyAnswer() {
                 <span>{data?.member.nickname}</span>
                 <span>님의 풀이</span>
               </div>
-              <span css={date}>2023.12.11</span>
+              <span css={date}>{formatDate(data?.answeredAt || '')}</span>
             </div>
           </div>
           <pre css={answer}>{data?.answer}</pre>

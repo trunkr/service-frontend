@@ -2,12 +2,13 @@ import React, { useMemo, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { QuizQuery } from 'queries';
+import useFavorMutate from 'queries/Quiz/useFavorMutate';
+import IconCheckBold from 'static/icons/system/IconCheckBold';
 import { IQuizAnotherAnswer, Nullable } from 'types';
 
 import List from './List';
 import NoResults from './NoResults';
 import { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider, iconCheck } from './style';
-import IconCheckBold from 'static/icons/system/IconCheckBold';
 
 function AnotherAnswers() {
   const { quizId } = useParams();
@@ -16,6 +17,7 @@ function AnotherAnswers() {
     { quizId: quizId || '', sort: sort ? 'favor,asc' : 'answeredAt,asc' },
     quizId !== '',
   );
+  const { mutate: updateFavor } = useFavorMutate({ quizId: quizId || '', sort: sort ? 'favor,asc' : 'answeredAt,asc' });
 
   const hasAnswers = useMemo(() => {
     if (!answers) return 'pending';
@@ -29,7 +31,7 @@ function AnotherAnswers() {
   let Render: Nullable<React.ReactNode> = null;
   switch (hasAnswers) {
     case true:
-      Render = <List data={answers as IQuizAnotherAnswer[]} />;
+      Render = <List data={answers as IQuizAnotherAnswer[]} updateFavor={updateFavor} />;
       break;
     case false:
       Render = <NoResults />;
