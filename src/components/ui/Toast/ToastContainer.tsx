@@ -4,11 +4,13 @@ import Toast from './Toast';
 import { useAppSelector } from 'stores';
 
 function ToastContainer() {
-  const { toasts } = useAppSelector((state) => state.ui);
+  const {
+    toasts: { posBottom, list },
+  } = useAppSelector((state) => state.ui);
 
   return (
-    <div css={container}>
-      {toasts.map((toast) => (
+    <div css={container(posBottom)}>
+      {list.map((toast) => (
         <Toast key={toast.id} {...toast} />
       ))}
     </div>

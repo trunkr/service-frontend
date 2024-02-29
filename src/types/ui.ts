@@ -1,17 +1,8 @@
 import { ReactNode } from 'react';
 
-export interface IUiStore {
-  toasts: IToastPayload[];
-}
-
 export interface INavLinkData {
   title: string;
   to: string;
-}
-
-export interface IToastPayload {
-  id: string;
-  message: string;
 }
 
 export type SizeType = 'small' | 'medium' | 'large';
@@ -31,6 +22,10 @@ export interface IUiStore {
   isOpenAlert: boolean;
   alertTitle: string;
   alertContent: ReactNode;
+  toasts: {
+    list: IToastPayload[];
+    posBottom: ToastBottomPositionType;
+  };
 }
 
 export interface IPagination {
@@ -40,6 +35,15 @@ export interface IPagination {
   totalPage: number;
   totalSize: number;
 }
+
+export type ToastBottomPositionType = 60 | 120;
+
+export interface IToastPayload {
+  id: string;
+  message: string;
+  posBottom?: ToastBottomPositionType;
+}
+
 export type DividerOrientationType = 'horizontal' | 'vertical';
 
 export type DividerThicknessType = 'thin' | 'bold';

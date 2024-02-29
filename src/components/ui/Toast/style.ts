@@ -20,9 +20,9 @@ const fadeOut = keyframes`
   to { opacity: 0; transform: translateY(50%)}
  `;
 
-const container: CSSObject = {
+const container = (posBottom: number): CSSObject => ({
   position: 'fixed',
-  bottom: '40px',
+  bottom: `${posBottom}px`,
   left: '50%',
   height: 'max-content',
   transform: 'translateX(-50%)',
@@ -31,7 +31,7 @@ const container: CSSObject = {
   '& > div:not(:first-of-type)': {
     marginTop: '12px',
   },
-};
+});
 
 const wrap = (isClosing: boolean): CSSObject => ({
   width: '608px',
