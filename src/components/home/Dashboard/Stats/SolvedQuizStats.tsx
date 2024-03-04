@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { PATH } from 'data/path';
 import { QuizQuery } from 'queries';
+import { CATEGORY_FORMATTED_MAP } from 'data/category';
 
 interface Props {
   count: number;
@@ -16,7 +17,7 @@ function SolvedQuizStats({ count, categoryIds }: Props) {
 
     return data
       .filter((d) => categoryIds.includes(d.id))
-      .map((d) => d.name)
+      .map((d) => CATEGORY_FORMATTED_MAP[d.name])
       .slice(0, 2)
       .join(',');
   }, [categoryIds, data]);

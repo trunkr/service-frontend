@@ -4,6 +4,7 @@ import DoughnutChart from 'components/ui/DoughnutChart';
 import { wrap, textStyle, titleStyle, scoreStyle, scoreText, scoreNumber, filterWrap } from './style';
 import useCategory from './useCategory';
 import { QuizComponent, UiComponent } from 'components';
+import { CATEGORY_FORMATTED_MAP } from 'data/category';
 
 function Category() {
   const {
@@ -30,7 +31,7 @@ function Category() {
           <p css={scoreText}>정답율</p>
         </div>
       </div>
-      <h1 css={titleStyle}>{category?.name}</h1>
+      <h1 css={titleStyle}>{CATEGORY_FORMATTED_MAP[category?.name as keyof typeof CATEGORY_FORMATTED_MAP]}</h1>
       <p
         css={textStyle}
       >{`푼 문제 총 ${statistics.totalCount}개 (정답 ${statistics.correctCount}개 / 오답 ${statistics.incorrectCount}개)`}</p>

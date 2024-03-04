@@ -23,4 +23,17 @@ const CATEGORY_ICON_MAP: Record<QuizCategoryNameType, string> = {
   SPRING: icSpring,
 };
 
-export { CATEGORY_ICON_MAP };
+const CATEGORY_FORMATTED_MAP: Record<QuizCategoryNameType, string> = {
+  DATABASE: '데이터베이스',
+  DATA_STRUCTURE: '자료구조',
+  NETWORK: '네트워크',
+  OS: '운영체제',
+  JAVA: 'Java',
+  KOTLIN: 'Kotlin',
+  SPRING: 'Spring',
+  REACT: 'React',
+  JAVASCRIPT: 'JavaScript',
+  COMPUTER_ARCHITECTURE: 'COMPUTER ARCHITECTURE',
+};
+
+export { CATEGORY_ICON_MAP, CATEGORY_FORMATTED_MAP };

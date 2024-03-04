@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { PATH } from 'data/path';
 import IconArrow from 'static/icons/system/IconArrow';
 import { wrap, contentsWrap, arrow } from './style';
+import { CATEGORY_FORMATTED_MAP } from 'data/category';
 
 function Recommend() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Recommend() {
             }}
           />
           <div css={contentsWrap}>
-            <b>{item.name}</b>
+            <b>{CATEGORY_FORMATTED_MAP[item.name]}</b>
             <p>{DESC_MAP[item.name]}</p>
             <div>
               <IconArrow css={arrow} />

@@ -5,6 +5,7 @@ import { ICON_DATA } from 'data/quiz';
 import icCheckOn from 'static/icons/system/ic_check_primary_on.svg';
 import icCheckOff from 'static/icons/system/ic_check_primary_off.svg';
 import { title, subTitle } from './style';
+import { CATEGORY_FORMATTED_MAP } from 'data/category';
 
 interface Props {
   item: IQuizCategory;
@@ -28,7 +29,7 @@ function CheckableItem({ item, checked, handleChecked, hadnleClick }: Props) {
         <img src={ICON_DATA[item.name]} alt="" width={24} />
         <img src={checked ? icCheckOn : icCheckOff} alt="" />
       </div>
-      <p css={title}>{item.name}</p>
+      <p css={title}>{CATEGORY_FORMATTED_MAP[item.name]}</p>
 
       <p css={subTitle}>
         {`풀 수 있는 문제 ${item.solvableQuizCnt}개`}

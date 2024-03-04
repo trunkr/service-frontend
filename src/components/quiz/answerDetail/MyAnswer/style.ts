@@ -52,6 +52,7 @@ const title = ({
   marginBottom: '60px',
   fontSize: title2,
   fontWeight: bold,
+  lineHeight: '41.6px',
   color: gray1000,
 });
 
@@ -171,7 +172,7 @@ const answer = ({
   fontSize: body2,
   fontWeight: medium,
   color: gray900,
-  lineHeight: 1.7,
+  lineHeight: '27.2px',
   marginBottom: '30px',
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-all',
@@ -260,7 +261,7 @@ const feedback = ({
   fontSize: body2,
   fontWeight: medium,
   color: gray900,
-  lineHeight: 1.7,
+  lineHeight: '27.2px',
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-all',
 });

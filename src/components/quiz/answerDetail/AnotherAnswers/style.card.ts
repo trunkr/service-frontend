@@ -87,7 +87,7 @@ const answer =
     fontSize: body2,
     fontWeight: medium,
     color: gray900,
-    lineHeight: 1.7,
+    lineHeight: '27.2px',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-all',
     marginBottom: '14px',

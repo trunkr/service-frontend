@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import icGpt from 'static/graphics/profile/Gpt.svg';
 import useGetQuizAnswerDetailResult from 'queries/Quiz/useGetQuizAnswerDetail';
-import { CATEGORY_ICON_MAP } from 'data/category';
+import { CATEGORY_FORMATTED_MAP, CATEGORY_ICON_MAP } from 'data/category';
 import { PROFILE_DATA } from 'data/profile';
 import {
   section,
@@ -38,7 +38,7 @@ function MyAnswer() {
       <div css={wrap}>
         <div css={category}>
           <img src={CATEGORY_ICON_MAP[data?.category.name as keyof typeof CATEGORY_ICON_MAP]} />
-          <p css={categoryName}>{data?.category?.name}</p>
+          <p css={categoryName}>{CATEGORY_FORMATTED_MAP[data?.category.name as keyof typeof CATEGORY_FORMATTED_MAP]}</p>
         </div>
         <h1 css={title}>{data?.question}</h1>
 
