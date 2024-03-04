@@ -53,6 +53,7 @@ function Header() {
           <UiComponent.Button
             color="line"
             css={(theme) => ({
+              height: '38px',
               borderRadius: '44px',
               padding: '4px 20px',
               fontSize: theme.typography.size.label4,

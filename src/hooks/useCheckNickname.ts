@@ -26,8 +26,6 @@ function useCheckNickname({ nickname, originNickname = '' }: Props) {
     return false;
   }, [nickname, invalidMsg, isLoading]);
 
-  console.log({ disabled });
-
   useEffect(() => {
     subjectRef.current
       .pipe(

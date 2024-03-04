@@ -18,9 +18,6 @@ function useCategory() {
   });
   const { data: categoryData } = QuizQuery.useGetCategory('');
 
-  console.log('data:', data);
-  console.log('categoryData:', categoryData);
-
   const category = useMemo(() => categoryData?.find((c) => c.id === Number(categoryId)), [categoryData]);
   const res = useMemo(
     () =>
