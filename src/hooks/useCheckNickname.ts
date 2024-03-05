@@ -63,10 +63,6 @@ function useCheckNickname({ nickname, originNickname = '' }: Props) {
     subjectRef.current.next(nickname);
   }, [nickname]);
 
-  useEffect(() => {
-    inpuRef.current?.focus();
-  }, []);
-
   return { invalidMsg, disabled, inpuRef };
 }
 

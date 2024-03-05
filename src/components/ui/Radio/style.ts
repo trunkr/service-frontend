@@ -4,10 +4,14 @@ const wrap: CSSObject = {
   display: 'flex',
   alignItems: 'center',
   fontSize: '14px',
-  lineHeight: '15px',
+  fontWeight: 'bold',
+  lineHeight: ' 21.6px',
   '> input': {
     display: 'none',
     appearance: 'none',
+  },
+  '> img': {
+    marginRight: '10px',
   },
 };
 
