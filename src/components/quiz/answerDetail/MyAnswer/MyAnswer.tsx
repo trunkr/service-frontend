@@ -37,7 +37,7 @@ function MyAnswer() {
     <section css={section}>
       <div css={wrap}>
         <div css={category}>
-          <img src={CATEGORY_ICON_MAP[data?.category.name as keyof typeof CATEGORY_ICON_MAP]} />
+          <img src={CATEGORY_ICON_MAP[data?.category.name as keyof typeof CATEGORY_ICON_MAP]} width={20} />
           <p css={categoryName}>{CATEGORY_FORMATTED_MAP[data?.category.name as keyof typeof CATEGORY_FORMATTED_MAP]}</p>
         </div>
         <h1 css={title}>{data?.question}</h1>
@@ -48,7 +48,9 @@ function MyAnswer() {
         <article>
           <div css={myAnswer}>
             <h2 css={subTitle}>내 풀이</h2>
-            <span css={answerLabel}>{data?.quizAnswerStatus === 'CORRECT' ? '정답' : '오답'}</span>
+            <span css={answerLabel(data?.quizAnswerStatus === 'CORRECT')}>
+              {data?.quizAnswerStatus === 'CORRECT' ? '정답' : '오답'}
+            </span>
           </div>
           <div css={answerDetail}>
             <button type="button" css={user}>
@@ -59,7 +61,7 @@ function MyAnswer() {
                 <span>{data?.member.nickname}</span>
                 <span>님의 풀이</span>
               </div>
-              <span css={date}>{formatDate(data?.answeredAt || '')}</span>
+              <span css={[date, { marginTop: '2px' }]}>{formatDate(data?.answeredAt || '')}</span>
             </div>
           </div>
           <pre css={answer}>{data?.answer}</pre>

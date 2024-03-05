@@ -3,9 +3,9 @@ import { AxiosResponse } from 'axios';
 import { UseMutateFunction } from '@tanstack/react-query';
 import { UiComponent } from 'components';
 import { AnswerFavorParams, IQuizAnotherAnswer, IResponse } from 'types';
-import icChevronUp from 'static/icons/system/ic_chevron_up.svg';
 import Card from './Card';
-import { listWrap, nextBtn } from './style.card';
+import { listWrap, nextBtn, nextBtnIcon } from './style.card';
+import IconChevron from 'static/icons/system/IconChevron';
 
 function List({
   data,
@@ -32,9 +32,9 @@ function List({
         ))}
       </ul>
       {data.length > 5 && (
-        <button css={nextBtn} onClick={handleShowMore}>
-          <span>다른 풀이 더보기</span>
-          <img src={icChevronUp} alt="" />
+        <button css={nextBtn(showMore)} onClick={handleShowMore}>
+          <span>{showMore ? `${data.length}개 풀이 모두 보기` : '다른 풀이 더보기'}</span>
+          <IconChevron css={nextBtnIcon(showMore)} />
         </button>
       )}
       {isOpenLoginDialog && (

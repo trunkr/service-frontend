@@ -121,7 +121,6 @@ const thumbsUp = ({
   },
   typography: {
     size: { label2 },
-    weight: { bold },
   },
 }: Theme): CSSObject => ({
   display: 'flex',
@@ -133,40 +132,50 @@ const thumbsUp = ({
   '& > span': {
     color: gray1000,
     fontSize: label2,
-    fontWeight: bold,
     marginLeft: '2px',
     position: 'relative',
     top: '1px',
   },
 });
 
-const nextBtn = ({
-  color: {
-    gray: { gray150, gray1000 },
-  },
-  typography: {
-    size: { label2 },
-    weight: { bold },
-  },
-}: Theme): CSSObject => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: '56px',
-  background: gray150,
-  borderRadius: '10px',
+const nextBtn =
+  (isLast: boolean) =>
+  ({
+    color: {
+      gray: { gray150, gray1000 },
+    },
+    typography: {
+      size: { label2 },
+      weight: { bold },
+    },
+  }: Theme): CSSObject => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '56px',
+    background: gray150,
+    borderRadius: '10px',
 
-  '& > span': {
-    color: gray1000,
-    fontSize: label2,
-    fontWeight: bold,
-    marginRight: '6px',
-  },
+    '& > span': {
+      color: gray1000,
+      fontSize: label2,
+      fontWeight: bold,
+      marginRight: '6px',
+    },
 
-  '& > img': {
-    transform: 'rotate(180deg)',
-  },
-});
+    '& > img': {},
+  });
 
-export { listWrap, user, nickname, date, answer, thumbsUp, nextBtn };
+const nextBtnIcon =
+  (isLast: boolean) =>
+  ({
+    color: {
+      gray: { gray500 },
+    },
+  }: Theme) => ({
+    transform: isLast ? 'rotate(90deg)' : 'rotate(180deg)',
+    '& > svg > path': { fill: gray500 },
+  });
+
+export { listWrap, user, nickname, date, answer, thumbsUp, nextBtn, nextBtnIcon };

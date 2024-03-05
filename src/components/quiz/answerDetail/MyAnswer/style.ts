@@ -78,26 +78,29 @@ const subTitle = ({
   marginRight: '10px',
 });
 
-const answerLabel = ({
-  color: {
-    error: { red200, red850 },
-  },
-  typography: {
-    size: { label6 },
-    weight: { bold },
-  },
-}: Theme): CSSObject => ({
-  fontSize: label6,
-  fontWeight: bold,
-  color: red850,
-  backgroundColor: red200,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '26px',
-  padding: '0 10px',
-  borderRadius: '6px',
-});
+const answerLabel =
+  (isAnswerCorrect: boolean) =>
+  ({
+    color: {
+      error: { red200, red850 },
+      primary: { mint200, mint800 },
+    },
+    typography: {
+      size: { label6 },
+      weight: { bold },
+    },
+  }: Theme): CSSObject => ({
+    fontSize: label6,
+    fontWeight: bold,
+    color: isAnswerCorrect ? mint800 : red850,
+    backgroundColor: isAnswerCorrect ? mint200 : red200,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '26px',
+    padding: '0 10px',
+    borderRadius: '6px',
+  });
 
 const answerDetail: CSSObject = {
   display: 'flex',
@@ -187,7 +190,6 @@ const aiFeedBackWrap = ({
   background: gray100,
   border: `2px solid ${gray200}`,
   borderRadius: '20px',
-  marginBottom: '80px',
 });
 
 const onlyMe = ({
