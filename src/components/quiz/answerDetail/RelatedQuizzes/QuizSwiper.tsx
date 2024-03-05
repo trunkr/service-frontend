@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-import { UiComponent } from 'components';
-
 import { FreeMode, Navigation } from 'swiper';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+
+import { IQuizGroup } from 'types';
+import { UiComponent } from 'components';
+import IconChevron from 'static/icons/system/IconChevron';
 
 import 'swiper/css/bundle';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import { swiperFilterCss, leftBtn, rightBtn } from './style';
-import IconChevron from 'static/icons/system/IconChevron';
-import { IQuizGroup } from 'types';
 
 function QuizSwiper({ related, quizGroupId }: { related: IQuizGroup; quizGroupId: string }) {
   const [swiperInstance, setSwiper] = useState<SwiperClass | undefined>(undefined);
@@ -32,7 +32,9 @@ function QuizSwiper({ related, quizGroupId }: { related: IQuizGroup; quizGroupId
           spaceBetween={20}
           modules={[Navigation, FreeMode]}
           css={swiperFilterCss}
-          onSwiper={(swiper) => setSwiper(swiper)}
+          onSwiper={(swiper) => {
+            setSwiper(swiper);
+          }}
           onSlideChange={(swiper) => {
             if (swiper.isBeginning) {
               setIsBeginning(true);

@@ -28,9 +28,7 @@ function AnswerDetail() {
         </ErrorComponent.QueryErrorBoundary>
 
         <ErrorComponent.QueryErrorBoundary fallback={null}>
-          <Suspense fallback={null}>
-            <QuizComponent.RelatedQuizzes />
-          </Suspense>
+          <QuizComponent.RelatedQuizzes />
         </ErrorComponent.QueryErrorBoundary>
       </ErrorComponent.ErrorBoundaryGroup>
     </main>

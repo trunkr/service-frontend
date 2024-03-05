@@ -12,7 +12,6 @@ function useGetQuizGroup({ quizId, quizGroupId }: { quizId: string; quizGroupId:
         return data.data.payload;
       },
       enabled,
-      suspense: true,
     },
   );
 
