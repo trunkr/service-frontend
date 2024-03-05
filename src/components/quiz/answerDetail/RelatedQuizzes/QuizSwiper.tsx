@@ -12,7 +12,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import { swiperFilterCss, leftBtn, rightBtn } from './style';
 
-function QuizSwiper({ related, quizGroupId }: { related: IQuizGroup; quizGroupId: string }) {
+function QuizSwiper({ related, quizGroupId }: { related?: IQuizGroup; quizGroupId?: string }) {
   const [swiperInstance, setSwiper] = useState<SwiperClass | undefined>(undefined);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -58,7 +58,7 @@ function QuizSwiper({ related, quizGroupId }: { related: IQuizGroup; quizGroupId
           })}
         </Swiper>
       </div>
-      {!isEnd && related?.result?.length >= 5 && (
+      {!isEnd && related?.result && related?.result?.length >= 5 && (
         <button css={rightBtn} onClick={() => swiperInstance?.slideNext()}>
           <IconChevron />
         </button>
