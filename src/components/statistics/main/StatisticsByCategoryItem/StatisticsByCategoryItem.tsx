@@ -7,6 +7,7 @@ import { wrap, title, subTitle } from './style';
 import { UiComponent } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from 'data/path';
+import { CATEGORY_FORMATTED_MAP } from 'data/category';
 
 interface Props {
   item: IQuizStatisticsByCategoriesItem;
@@ -23,7 +24,7 @@ function StatisticsByCategoryItem({ item }: Props) {
       <div css={wrap}>
         <img src={ICON_DATA[item.categoryName]} alt="" width={40} />
         <div css={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-          <p css={title}>{item.categoryName}</p>
+          <p css={title}>{CATEGORY_FORMATTED_MAP[item.categoryName]}</p>
           <p css={subTitle}>{`푼 문제 총 ${item.totalSolvedCount}개`}</p>
           <div css={{ display: 'flex', width: '100%', alignItems: 'center' }}>
             <div

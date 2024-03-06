@@ -49,6 +49,7 @@ function useCategory() {
     dispatch(
       addToast({
         message: '풀 수 있는 문제가 없습니다. 다른 카테고리를 선택해주세요. ',
+        posBottom: 120,
       }),
     );
   };

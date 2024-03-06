@@ -7,7 +7,10 @@ const initialState: IUiStore = {
   isOpenAlert: false,
   alertTitle: '',
   alertContent: '',
-  toasts: [],
+  toasts: {
+    list: [],
+    posBottom: 60,
+  },
 };
 
 const {
@@ -39,12 +42,15 @@ const {
     addToast: (state, action: PayloadAction<Omit<IToastPayload, 'id'>>) => {
       const id = _v4();
 
-      state.toasts = [{ id, ...action.payload }, ...state.toasts];
+      state.toasts = {
+        posBottom: action.payload?.posBottom || 60,
+        list: [{ id, ...action.payload }, ...state.toasts.list],
+      };
     },
     removeToast: (state, action: PayloadAction<Pick<IToastPayload, 'id'>>) => {
       const { id } = action.payload;
 
-      state.toasts = state.toasts.filter((toast) => toast.id !== id);
+      state.toasts = { ...state.toasts, list: state.toasts.list.filter((toast) => toast.id !== id) };
     },
   },
 });

@@ -6,6 +6,7 @@ const section = ({ grids: { layout3 } }: Theme): CSSObject => ({
 });
 
 const wrap: CSSObject = {
+  width: '100%',
   margin: '80px 0',
 };
 
@@ -51,6 +52,7 @@ const title = ({
   marginBottom: '60px',
   fontSize: title2,
   fontWeight: bold,
+  lineHeight: '41.6px',
   color: gray1000,
 });
 
@@ -76,26 +78,29 @@ const subTitle = ({
   marginRight: '10px',
 });
 
-const answerLabel = ({
-  color: {
-    error: { red200, red850 },
-  },
-  typography: {
-    size: { label6 },
-    weight: { bold },
-  },
-}: Theme): CSSObject => ({
-  fontSize: label6,
-  fontWeight: bold,
-  color: red850,
-  backgroundColor: red200,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '26px',
-  padding: '0 10px',
-  borderRadius: '6px',
-});
+const answerLabel =
+  (isAnswerCorrect: boolean) =>
+  ({
+    color: {
+      error: { red200, red850 },
+      primary: { mint200, mint800 },
+    },
+    typography: {
+      size: { label6 },
+      weight: { bold },
+    },
+  }: Theme): CSSObject => ({
+    fontSize: label6,
+    fontWeight: bold,
+    color: isAnswerCorrect ? mint800 : red850,
+    backgroundColor: isAnswerCorrect ? mint200 : red200,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '26px',
+    padding: '0 10px',
+    borderRadius: '6px',
+  });
 
 const answerDetail: CSSObject = {
   display: 'flex',
@@ -114,7 +119,7 @@ const user = ({
   borderRadius: '50%',
   marginRight: '10px',
   '> img': {
-    width: '12.27px',
+    width: '20px',
   },
 });
 
@@ -170,7 +175,7 @@ const answer = ({
   fontSize: body2,
   fontWeight: medium,
   color: gray900,
-  lineHeight: 1.7,
+  lineHeight: '27.2px',
   marginBottom: '30px',
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-all',
@@ -185,7 +190,6 @@ const aiFeedBackWrap = ({
   background: gray100,
   border: `2px solid ${gray200}`,
   borderRadius: '20px',
-  marginBottom: '80px',
 });
 
 const onlyMe = ({
@@ -259,7 +263,7 @@ const feedback = ({
   fontSize: body2,
   fontWeight: medium,
   color: gray900,
-  lineHeight: 1.7,
+  lineHeight: '27.2px',
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-all',
 });

@@ -33,13 +33,14 @@ const pageTitle = ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  margin: '0 0 30px',
+  margin: '60px 0 30px',
   '> p': {
     paddingTop: '3px',
     fontSize: title5,
     color: gray900,
     lineHeight: 1.3,
     fontWeight: bold,
+    marginLeft: '8px',
   },
 });
 
@@ -116,9 +117,9 @@ const optionRows = ({
     fontSize: title6,
     fontWeight: bold,
     lineHeight: 1.3,
+    marginBottom: '8px',
   },
   '> div > span': {
-    paddingTop: '8px',
     fontSize: label5,
     color: gray600,
   },

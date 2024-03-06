@@ -11,6 +11,8 @@ import { AuthQuery, MemberQuery } from 'queries';
 import { useAppDispatch } from 'stores';
 import { addToast, loaded } from 'stores/ui';
 import useWithdraw from './useWithdraw';
+import { Divider } from 'components/ui';
+import { theme } from 'styles';
 
 interface Props {
   data: MemberUpdateType;
@@ -60,7 +62,7 @@ function Edit({ data, handleProfileImage, handleValue, email, originData }: Prop
   return (
     <main css={wrap}>
       <h1 css={title}>설정</h1>
-      <hr />
+      <Divider color={theme.color.gray.gray250} />
       <div css={pageTitle}>
         <img src={icProfile} alt="" width={24} />
         <p>내 정보</p>
@@ -74,16 +76,18 @@ function Edit({ data, handleProfileImage, handleValue, email, originData }: Prop
 
       <p css={inputTitle}>닉네임</p>
       <UiComponent.Input
+        sizeType="large"
         ref={inpuRef}
         invalidMsg={invalidMsg}
         value={data.nickname}
         onChange={(e) => handleValue('nickname', e.target.value)}
       />
       <p css={[inputTitle, { marginTop: '30px' }]}>이메일</p>
-      <UiComponent.Input disabled value={email} />
-      <hr />
+      <UiComponent.Input disabled value={email} css={{ fontWeight: '500 !important' }} />
 
-      <div css={pageTitle}>
+      <Divider color={theme.color.gray.gray250} style={{ margin: '80px 0' }} />
+
+      <div css={[pageTitle, { margin: '0 0 30px' }]}>
         <img src={icSetting} alt="" width={24} />
         <p>CS 문제풀기 설정</p>
       </div>

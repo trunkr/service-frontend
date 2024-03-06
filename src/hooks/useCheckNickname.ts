@@ -26,8 +26,6 @@ function useCheckNickname({ nickname, originNickname = '' }: Props) {
     return false;
   }, [nickname, invalidMsg, isLoading]);
 
-  console.log({ disabled });
-
   useEffect(() => {
     subjectRef.current
       .pipe(
@@ -64,10 +62,6 @@ function useCheckNickname({ nickname, originNickname = '' }: Props) {
   useEffect(() => {
     subjectRef.current.next(nickname);
   }, [nickname]);
-
-  useEffect(() => {
-    inpuRef.current?.focus();
-  }, []);
 
   return { invalidMsg, disabled, inpuRef };
 }

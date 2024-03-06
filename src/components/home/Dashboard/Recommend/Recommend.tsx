@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { ICON_MAP, DESC_MAP } from './constants';
-import { wrap, contentsWrap } from './style';
 import { IQuizCategory } from 'types';
 import { QuizQuery } from 'queries';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from 'data/path';
+import IconArrow from 'static/icons/system/IconArrow';
+import { wrap, contentsWrap, arrow } from './style';
+import { CATEGORY_FORMATTED_MAP } from 'data/category';
 
 function Recommend() {
   const navigate = useNavigate();
@@ -33,9 +35,11 @@ function Recommend() {
             }}
           />
           <div css={contentsWrap}>
-            <b>{item.name}</b>
+            <b>{CATEGORY_FORMATTED_MAP[item.name]}</b>
             <p>{DESC_MAP[item.name]}</p>
-            <div></div>
+            <div>
+              <IconArrow css={arrow} />
+            </div>
           </div>
         </li>
       ))}

@@ -6,6 +6,7 @@ const section = ({ grids: { layout3 } }: Theme): CSSObject => ({
 });
 
 const wrap: CSSObject = {
+  width: '100%',
   marginBottom: '80px',
 };
 
@@ -78,4 +79,14 @@ const grayDivider: CSSObject = {
   width: '100%',
 };
 
-export { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider };
+const iconCheck = ({
+  color: {
+    primary: { mint600 },
+  },
+}: Theme): CSSObject => ({
+  '& > svg > g > path': {
+    fill: mint600,
+  },
+});
+
+export { section, wrap, title, subTitle, countLabel, btnGroup, filterBtn, grayDivider, iconCheck };

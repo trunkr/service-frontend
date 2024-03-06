@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import icClose from 'static/icons/system/ic_close.svg';
 import { IToastPayload } from 'types';
 import { wrap, toast, text, closeBtn } from './style';
 import { delay, fromEvent, interval, merge, take, tap } from 'rxjs';
 import { removeToast } from 'stores/ui';
+import IconClose from 'static/icons/system/IconClose';
 
 const TOAST_DURATION = 3000;
 const TRANSITION_DURATION = 1000;
@@ -35,8 +35,8 @@ function Toast({ id, message }: IToastPayload) {
     <div css={wrap(isClosing)}>
       <div css={toast}>
         <p css={text}>{message}</p>
-        <button ref={buttonRef} css={closeBtn} type="button">
-          <img src={icClose} alt="" width="24" height="24" />
+        <button ref={buttonRef} type="button">
+          <IconClose css={closeBtn} />
         </button>
       </div>
     </div>

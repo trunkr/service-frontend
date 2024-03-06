@@ -1,11 +1,19 @@
-import { UiComponent } from 'components';
 import React, { useReducer, useState } from 'react';
-import icChevronUp from 'static/icons/system/ic_chevron_up.svg';
-import { IQuizAnotherAnswer } from 'types';
+import { AxiosResponse } from 'axios';
+import { UseMutateFunction } from '@tanstack/react-query';
+import { UiComponent } from 'components';
+import { AnswerFavorParams, IQuizAnotherAnswer, IResponse } from 'types';
 import Card from './Card';
-import { listWrap, nextBtn } from './style.card';
+import { listWrap, nextBtn, nextBtnIcon } from './style.card';
+import IconChevron from 'static/icons/system/IconChevron';
 
-function List({ data }: { data: IQuizAnotherAnswer[] }) {
+function List({
+  data,
+  updateFavor,
+}: {
+  data: IQuizAnotherAnswer[];
+  updateFavor: UseMutateFunction<AxiosResponse<IResponse<null>>, unknown, AnswerFavorParams>;
+}) {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [isOpenLoginDialog, toggleLoginDialog] = useReducer((isOpen) => !isOpen, false);
 
@@ -17,22 +25,23 @@ function List({ data }: { data: IQuizAnotherAnswer[] }) {
   return (
     <>
       <ul css={listWrap}>
-        {data.slice(0, showMore ? 10 : 5).map((answer, index) => (
-          <li key={index}>
-            <Card userAnswer={answer} />
+        {data.slice(0, showMore ? 10 : 5).map((answer) => (
+          <li key={answer.memberQuizAnswerId}>
+            <Card userAnswer={answer} updateFavor={updateFavor} />
           </li>
         ))}
       </ul>
       {data.length > 5 && (
-        <button css={nextBtn} onClick={handleShowMore}>
-          <span>다른 풀이 더보기</span>
-          <img src={icChevronUp} alt="" />
+        <button css={nextBtn(showMore)} onClick={handleShowMore}>
+          <span>{showMore ? `${data.length}개 풀이 모두 보기` : '다른 풀이 더보기'}</span>
+          <IconChevron css={nextBtnIcon(showMore)} />
         </button>
       )}
       {isOpenLoginDialog && (
         <UiComponent.AnswersPopup
           data={data}
           title="Java에서 오버로딩과 오버라이딩의 차이점은 무엇인가요?"
+          updateFavor={updateFavor}
           handleClose={toggleLoginDialog}
         />
       )}
