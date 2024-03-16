@@ -10,7 +10,7 @@ const wrap = ({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '400px',
+  padding: '30px 0',
   '> button': {
     width: '500px',
     height: '56px',

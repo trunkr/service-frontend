@@ -23,6 +23,7 @@ function Nickname({ nickname, handleNickName, handleNext }: Props) {
         placeholder="닉네임을 입력해주세요"
         invalidMsg={invalidMsg}
         value={nickname}
+        sizeType="large"
         onChange={(e) => handleNickName(e.target.value)}
       />
       <p css={(theme) => ({ ...title(theme), margin: '80px 0 30px' })}>약관 동의</p>
@@ -31,14 +32,14 @@ function Nickname({ nickname, handleNickName, handleNext }: Props) {
           <p
             css={(theme) => ({
               fontSize: theme.typography.size.label1,
-              fontWeight: theme.typography.weight.bold,
+              fontWeight: theme.typography.weight.semibold,
               userSelect: 'none',
             })}
           >
             Trunkr 이용약관에 동의합니다
           </p>
         </UiComponent.CheckBox>
-        <button type="button" css={{ textDecoration: 'underline' }}>
+        <button type="button" css={(theme) => ({ textDecoration: 'underline', fontSize: theme.typography.size.body2 })}>
           전체보기
         </button>
       </div>

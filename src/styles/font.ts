@@ -1,0 +1,19 @@
+import { css } from '@emotion/react';
+
+const fontCss = css`
+  /* Pretendard */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('./static/fonts/Pretendard-Regular.woff2') format('woff2');
+    unicode-range: U+AC00-D7A3;
+  }
+
+  /* Poppins */
+  @font-face {
+    font-family: 'Poppins';
+    src: url('./static/fonts/Popins-Regular.ttf') format('truetype');
+    unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;
+  }
+`;
+
+export default fontCss;

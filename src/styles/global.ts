@@ -1,8 +1,15 @@
 import { css } from '@emotion/react';
 import reset from './reset';
+import fontCss from './font';
 
 const global = css`
   ${reset.styles}
+  ${fontCss.styles}
+
+  body {
+    font-familly: 'Pretendard', 'Poppins';
+  }
+
   button {
     border: none;
     background: none;

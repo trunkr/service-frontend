@@ -64,6 +64,7 @@ const invalidMsgStyle = ({
   color: red600,
   lineHeight: '1.2',
   height: '17px',
+  alignSelf: 'flex-start',
 });
 
 export { wrap, invalidMsgStyle };
