@@ -1,7 +1,6 @@
 import { CSSObject, Theme } from '@emotion/react';
 
 const wrap: CSSObject = {
-  margin: '0 100px',
   display: 'flex',
   flexDirection: 'column',
 };
@@ -47,11 +46,7 @@ const listWrap: CSSObject = {
   paddingTop: '42px',
 };
 
-const swiperFilterCss = ({
-  color: {
-    gray: { gray0 },
-  },
-}: Theme): CSSObject => ({
+const swiperFilterCss = (): CSSObject => ({
   position: 'relative',
   width: '100%',
 
@@ -61,39 +56,71 @@ const swiperFilterCss = ({
 
   '.swiper-button': {
     '&-prev': {
-      cursor: 'pointer',
-      zIndex: 10,
-
-      '&:after': {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: gray0,
-        height: '44px',
-        aspectRatio: '1 / 1',
-        fontSize: '12px !important',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        borderRadius: '50%',
-      },
+      display: 'none',
     },
 
     '&-next': {
-      cursor: 'pointer',
-      zIndex: 10,
-
-      '&:after': {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: gray0,
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        height: '44px !important',
-        aspectRatio: '1 / 1',
-        fontSize: '12px !important',
-        borderRadius: '50%',
-      },
+      display: 'none',
     },
   },
 });
 
-export { wrap, title, subTitle, listWrap, swiperFilterCss };
+const leftBtn = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: gray0,
+  height: '44px',
+  aspectRatio: '1 / 1',
+  fontSize: '12px !important',
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  borderRadius: '50%',
+  zIndex: 10,
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  left: '78px',
+
+  '& > div > svg': {
+    transform: 'rotate(270deg)',
+
+    '& > path': {
+      fill: gray0,
+    },
+  },
+});
+
+const rightBtn = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: gray0,
+  height: '44px',
+  aspectRatio: '1 / 1',
+  fontSize: '12px !important',
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  borderRadius: '50%',
+  zIndex: 10,
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  right: '78px',
+
+  '& > div > svg': {
+    transform: 'rotate(90deg)',
+
+    '& > path': {
+      fill: gray0,
+    },
+  },
+});
+
+export { wrap, title, subTitle, listWrap, swiperFilterCss, leftBtn, rightBtn };

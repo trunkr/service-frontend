@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { FreeMode, Navigation } from 'swiper';
-import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { Swiper, type SwiperClass, SwiperSlide } from 'swiper/react';
 
 import { IQuizGroup } from 'types';
 import { UiComponent } from 'components';
