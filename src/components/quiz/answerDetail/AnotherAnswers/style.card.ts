@@ -139,7 +139,7 @@ const thumbsUp = ({
 });
 
 const nextBtn =
-  (isLast: boolean) =>
+  () =>
   ({
     color: {
       gray: { gray150, gray1000 },

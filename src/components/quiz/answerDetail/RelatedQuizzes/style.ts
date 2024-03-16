@@ -41,11 +41,7 @@ const listWrap: CSSObject = {
   gap: '22px 24px',
 };
 
-const swiperFilterCss = ({
-  color: {
-    gray: { gray0 },
-  },
-}: Theme): CSSObject => ({
+const swiperFilterCss = (): CSSObject => ({
   position: 'relative',
   width: '100%',
 

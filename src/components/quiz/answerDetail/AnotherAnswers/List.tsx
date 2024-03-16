@@ -32,7 +32,7 @@ function List({
         ))}
       </ul>
       {data.length > 5 && (
-        <button css={nextBtn(showMore)} onClick={handleShowMore}>
+        <button css={nextBtn()} onClick={handleShowMore}>
           <span>{showMore ? `${data.length}개 풀이 모두 보기` : '다른 풀이 더보기'}</span>
           <IconChevron css={nextBtnIcon(showMore)} />
         </button>
