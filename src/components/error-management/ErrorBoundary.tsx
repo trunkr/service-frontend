@@ -14,12 +14,14 @@ import React, {
 } from 'react';
 
 import type { ConstructorType, Nullable } from 'types';
+import errIcon from 'static/icons/system/ic_error.svg';
 import {
   AssertionError,
   useErrorBoundary_this_hook_should_be_called_in_ErrorBoundary_props_children,
 } from './AssertionError';
 import { ErrorBoundaryGroupContext } from './ErrorBoundaryGroup';
 import { hasResetKeysChanged } from './utils';
+import { errWrap } from './style';
 
 export interface ErrorBoundaryFallbackProps<TError extends Error = Error> {
   /**
@@ -60,7 +62,7 @@ export type ErrorBoundaryProps = PropsWithChildren<{
   /**
    * when ErrorBoundary catch error, fallback will be render instead of children
    */
-  fallback: ReactNode | FunctionComponent<ErrorBoundaryFallbackProps>;
+  fallback?: ReactNode | FunctionComponent<ErrorBoundaryFallbackProps>;
   /**
    * @experimental This is experimental feature.
    * @default true
@@ -119,16 +121,22 @@ class BaseErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState
     if (isError) {
       if (typeof fallback === 'undefined') {
         if (process.env.NODE_ENV === 'development') {
-          console.error('ErrorBoundary of @suspensive/react requires a defined fallback');
+          console.error('ErrorBoundary requires a defined fallback');
         }
-        throw error;
       }
 
       if (typeof fallback === 'function') {
         const FallbackComponent = fallback;
         childrenOrFallback = <FallbackComponent error={error} reset={this.reset} />;
       } else {
-        childrenOrFallback = fallback;
+        childrenOrFallback = (
+          <div css={errWrap}>
+            <img src={errIcon} alt="" />
+            <span>다시 시도해 주세요.</span>
+            <p>{`네트워크 오류가 발생했습니다.\n다시 시도해 주세요.`}</p>
+            <button onClick={this.reset}>새로고침</button>
+          </div>
+        );
       }
     }
 

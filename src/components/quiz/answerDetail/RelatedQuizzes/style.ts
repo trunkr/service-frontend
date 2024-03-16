@@ -1,13 +1,13 @@
 import { CSSObject, Theme } from '@emotion/react';
 
-const wrap: CSSObject = {
+const wrapRelatedQuizzes: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   width: '100%',
 };
 
-const grayDivider = ({
+const grayDividerRelatedQuizzes = ({
   color: {
     gray: { gray100 },
   },
@@ -20,7 +20,7 @@ const grayDivider = ({
   width: '100%',
 });
 
-const title = ({
+const titleRelatedQuizzes = ({
   color: {
     gray: { gray1000 },
   },
@@ -118,4 +118,12 @@ const rightBtn = ({
   },
 });
 
-export { wrap, title, listWrap, grayDivider, swiperFilterCss, leftBtn, rightBtn };
+export {
+  wrapRelatedQuizzes,
+  titleRelatedQuizzes,
+  listWrap,
+  grayDividerRelatedQuizzes,
+  swiperFilterCss,
+  leftBtn,
+  rightBtn,
+};
