@@ -51,3 +51,8 @@ export type DividerThicknessType = 'thin' | 'bold';
 export type SizeWithPxType = `${number}px`;
 
 export type SizeWithPercentType = `${number}%`;
+
+export type IconType = React.FC<{
+  onClick?: VoidFunction | undefined;
+  className?: string | undefined;
+}>;

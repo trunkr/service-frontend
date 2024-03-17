@@ -13,7 +13,7 @@ interface Props {
 function QuizCard({ item, quizId, quizGroupId }: Props) {
   return (
     <div css={wrap}>
-      <div css={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div css={{ display: 'flex', flexDirection: 'column' }}>
         <div css={statusLabel(item.isCorrect)}>{item.isCorrect ? '정답' : '오답'}</div>
         <p css={title}>{item.question}</p>
       </div>

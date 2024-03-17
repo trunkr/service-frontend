@@ -7,8 +7,20 @@ const wrap = (isActive: boolean): CSSObject => ({
   gap: '0 20px',
   cursor: isActive ? 'pointer' : '',
 
-  '& > div > p': {
-    color: isActive ? '#111' : '#616161 ',
+  '& > div': {
+    '& > svg': {
+      width: '40px',
+      height: '40px',
+
+      '& > path': {
+        fill: isActive ? '#111' : '#616161 ',
+        stroke: isActive ? '#111' : '#616161 ',
+      },
+    },
+
+    '& > p': {
+      color: isActive ? '#111' : '#616161 ',
+    },
   },
 });
 

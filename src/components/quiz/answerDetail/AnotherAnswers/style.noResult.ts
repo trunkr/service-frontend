@@ -12,6 +12,9 @@ const noResultsWrap: CSSObject = {
 const noResultImg: CSSObject = {
   width: '60px',
   height: '60px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   marginBottom: '10px',
 };
 

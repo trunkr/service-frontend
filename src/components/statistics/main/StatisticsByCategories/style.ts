@@ -20,12 +20,12 @@ const subTitle = ({
     sub: { purple750 },
   },
   typography: {
-    size: { body2 },
+    size: { body4 },
     weight: { medium },
   },
 }: Theme): CSSObject => ({
   color: gray1000,
-  fontSize: body2,
+  fontSize: body4,
   fontWeight: medium,
   marginTop: '12px',
   '> span': {
