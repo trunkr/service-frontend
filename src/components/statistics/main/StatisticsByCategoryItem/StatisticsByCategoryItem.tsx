@@ -23,7 +23,7 @@ function StatisticsByCategoryItem({ item }: Props) {
   return (
     <Box handleClick={handleClick}>
       <div css={wrap(!!item.totalSolvedCount)}>
-        {ICON_MAP[item.categoryName]}
+        <img src={ICON_MAP(!!item.totalSolvedCount)[item.categoryName]} alt="" width={40} />
         <div css={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
           <p css={title}>{CATEGORY_FORMATTED_MAP[item.categoryName]}</p>
           <p css={subTitle}>{`푼 문제 총 ${item.totalSolvedCount}개`}</p>
