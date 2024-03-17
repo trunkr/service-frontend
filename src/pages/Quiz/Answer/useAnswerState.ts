@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
-import { Subject, catchError, from, map, mergeMap, of } from 'rxjs';
+import { Subject, catchError, from, map, mergeMap, of, tap } from 'rxjs';
 import { useAppDispatch, useAppSelector } from 'stores';
 import { QuizQuery } from 'queries';
 import { AnswerParams, IQuizRandom } from 'types';
@@ -55,6 +55,8 @@ function useAnswerState() {
     });
   };
 
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   useEffect(() => {
     subjectRef.current
       .pipe(
@@ -62,6 +64,11 @@ function useAnswerState() {
           from(mutateAsync(data)).pipe(
             catchError((e) => of(e as AxiosError)),
             map((d) => ({ ...d, isLast: data.isLast })),
+            tap((d) => {
+              if (!d.isLast) {
+                scrollTop();
+              }
+            }),
           ),
         ),
       )

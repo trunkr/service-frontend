@@ -28,11 +28,16 @@ function Answer() {
           onChange={(e) => setAnswer(e.target.value)}
         >
           <div css={optionWrap}>
-            <p>문제 답변 모두에게 공개</p>
+            <p css={{ marginRight: '7px' }}>문제 답변 모두에게 공개</p>
             <UiComponent.Toggle checked={isQuizOpen} handleCheck={setIsQuizOpen} />
           </div>
         </UiComponent.Textarea>
-        <UiComponent.Button color="primary" css={btnStyle} onClick={handleAnswer} disabled={isLoading}>
+        <UiComponent.Button
+          color="primary"
+          css={btnStyle}
+          onClick={handleAnswer}
+          disabled={isLoading || answer.length === 0}
+        >
           다음
         </UiComponent.Button>
       </main>

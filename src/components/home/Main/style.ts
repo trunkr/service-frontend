@@ -14,7 +14,7 @@ const wrap = ({
 });
 
 const title = (theme: Theme): CSSObject => ({
-  fontSize: '40px',
+  fontSize: '35px',
   fontWeight: theme.typography.weight.bold,
   lineHeight: '1.3',
   color: theme.color.gray.gray900,
