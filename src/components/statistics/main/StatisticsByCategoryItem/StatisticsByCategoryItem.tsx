@@ -16,12 +16,13 @@ interface Props {
 function StatisticsByCategoryItem({ item }: Props) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`${PATH.statistics}/${item.categoryId}`);
+    if (!item.totalSolvedCount) return;
+    else navigate(`${PATH.statistics}/${item.categoryId}`);
   };
 
   return (
     <Box handleClick={handleClick}>
-      <div css={wrap}>
+      <div css={wrap(!!item.totalSolvedCount)}>
         <img src={ICON_DATA[item.categoryName]} alt="" width={40} />
         <div css={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
           <p css={title}>{CATEGORY_FORMATTED_MAP[item.categoryName]}</p>
@@ -40,6 +41,7 @@ function StatisticsByCategoryItem({ item }: Props) {
                 css={{
                   fontSize: '12px',
                   marginRight: '6px',
+                  color: item.totalSolvedCount ? '#111' : '#616161 ',
                 }}
               >
                 정답률
@@ -49,10 +51,10 @@ function StatisticsByCategoryItem({ item }: Props) {
                   fontSize: theme.typography.size.number5,
                   fontWeight: theme.typography.weight.bold,
                   color:
-                    item.percentage > 70
+                    item.percentage >= 40
                       ? theme.color.primary.mint600
                       : item.percentage === 0
-                      ? theme.color.gray.gray250
+                      ? '#616161'
                       : theme.color.error.red600,
                 })}
               >{`${item.percentage}%`}</p>

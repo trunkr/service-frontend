@@ -9,7 +9,7 @@ interface Props {
 
 function ProgressBar({ width, percent }: Props) {
   const progressType: ProgressType = useMemo(() => {
-    if (percent > 60) return 'correct';
+    if (percent >= 40) return 'correct';
     if (percent === 0) return 'none';
 
     return 'incorrect';
