@@ -52,13 +52,19 @@ function StatisticsByCategoryItem({ item }: Props) {
                   color:
                     item.percentage >= 40
                       ? theme.color.primary.mint600
-                      : item.percentage === 0
+                      : item.percentage === 0 && item.totalSolvedCount === 0
                       ? '#616161'
                       : theme.color.error.red600,
                 })}
               >{`${item.percentage}%`}</p>
             </div>
-            <UiComponent.ProgressBar width={'100%'} percent={item.percentage} />
+            <div css={{ flex: 1 }}>
+              <UiComponent.ProgressBar
+                width={'100%'}
+                percent={item.percentage}
+                notProgress={item.totalSolvedCount === 0}
+              />
+            </div>
           </div>
         </div>
       </div>

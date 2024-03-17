@@ -5,12 +5,13 @@ import { CSSObject } from '@emotion/react';
 interface Props {
   width: CSSObject['width'];
   percent: number;
+  notProgress?: boolean;
 }
 
-function ProgressBar({ width, percent }: Props) {
+function ProgressBar({ width, percent, notProgress }: Props) {
   const progressType: ProgressType = useMemo(() => {
     if (percent >= 40) return 'correct';
-    if (percent === 0) return 'none';
+    if (notProgress) return 'none';
 
     return 'incorrect';
   }, [percent]);
