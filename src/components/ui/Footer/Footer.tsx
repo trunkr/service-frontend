@@ -1,11 +1,11 @@
 import React from 'react';
-import { isMobile } from 'react-device-detect';
 import icLogo from 'static/logos/logo.svg';
 import { theme } from 'styles';
 import Divider from '../Divider';
 import { wrap, mWrap, text, linkWrap, mCopyrightText, mGuideText } from './style';
 import { openAlert } from 'stores/ui';
 import { useAppDispatch } from 'stores';
+import { isMobileDevice } from 'utils/device';
 
 function Footer() {
   const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ function Footer() {
     );
   };
 
-  if (isMobile) {
+  if (isMobileDevice) {
     return (
       <footer css={mWrap}>
         <p css={mGuideText}>

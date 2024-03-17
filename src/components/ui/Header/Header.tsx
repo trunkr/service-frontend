@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-import { isMobile } from 'react-device-detect';
 import icTextLogo from 'static/logos/text.svg';
 import { wrapper, logoSection, user, mWrapper } from './style';
 import { UiComponent } from 'components';
@@ -8,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'stores';
 import { MemberQuery } from 'queries';
 import { PROFILE_DATA } from 'data/profile';
+import { isMobileDevice } from 'utils/device';
 
 function Header() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Header() {
 
   const [isOpenLoginDialog, toggleLoginDialog] = useReducer((isOpen) => !isOpen, false);
 
-  if (isMobile) {
+  if (isMobileDevice) {
     return (
       <header css={mWrapper}>
         <img src={icTextLogo} width={78} height={16} />
