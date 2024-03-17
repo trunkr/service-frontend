@@ -20,7 +20,7 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
   const { mutate, isLoading } = QuizQuery.useRandom();
   const { data } = MemberQuery.usePersonalInfo();
 
-  const [isOpenConfirm, setIsOpenConfirm] = useState(true);
+  const [isOpenConfirm, setIsOpenConfirm] = useState(false);
 
   const handleClose = () => {
     dispatch(setRandom(null));
