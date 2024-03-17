@@ -1,10 +1,8 @@
 import { css } from '@emotion/react';
 import reset from './reset';
-import fontCss from './font';
 
 const global = css`
   ${reset.styles}
-  ${fontCss.styles}
 
   :root {
     color-scheme: light only;
