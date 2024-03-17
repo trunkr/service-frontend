@@ -54,7 +54,7 @@ const user = ({
   height: '30px',
   borderRadius: '50%',
   '> img': {
-    width: '12.27px',
+    width: '30px',
   },
 });
 

@@ -60,7 +60,14 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
         {/* <UiComponent.CheckBox uiType="rect" checked={checked} handleCheck={() => toggle()}>
           이 카테고리 다음에도 사용
         </UiComponent.CheckBox> */}
-        <UiComponent.Button color="primary" disabled={disabled} onClick={handleNext}>
+        <UiComponent.Button
+          color="primary"
+          disabled={disabled}
+          onClick={handleNext}
+          css={(theme) => ({
+            fontSize: theme.typography.size.body1,
+          })}
+        >
           다음
         </UiComponent.Button>
       </div>

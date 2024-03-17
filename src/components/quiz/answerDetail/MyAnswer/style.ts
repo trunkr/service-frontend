@@ -119,7 +119,7 @@ const user = ({
   borderRadius: '50%',
   marginRight: '10px',
   '> img': {
-    width: '20px',
+    width: '50px',
   },
 });
 
