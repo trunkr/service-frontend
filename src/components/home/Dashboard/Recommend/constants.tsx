@@ -11,6 +11,30 @@ import IconReact from 'static/icons/category/IconReact';
 import IconSpring from 'static/icons/category/IconSpring';
 import { QuizCategoryNameType } from 'types';
 
+import icComputerStructure from 'static/graphics/category/ComputerStructure.svg';
+import icDataBase from 'static/graphics/category/DataBase.svg';
+import icDataStructure from 'static/graphics/category/DataStructure.svg';
+import icJava from 'static/graphics/category/Java.svg';
+import icJavaScript from 'static/graphics/category/JavaScript.svg';
+import icKotlin from 'static/graphics/category/Kotlin.svg';
+import icNetwork from 'static/graphics/category/Network.svg';
+import icOS from 'static/graphics/category/OS.svg';
+import icReact from 'static/graphics/category/React.svg';
+import icSpring from 'static/graphics/category/Spring.svg';
+
+const FANCY_ICON_MAP: Record<QuizCategoryNameType, string> = {
+  COMPUTER_ARCHITECTURE: icComputerStructure,
+  DATABASE: icDataBase,
+  DATA_STRUCTURE: icDataStructure,
+  JAVA: icJava,
+  JAVASCRIPT: icJavaScript,
+  KOTLIN: icKotlin,
+  NETWORK: icNetwork,
+  OS: icOS,
+  REACT: icReact,
+  SPRING: icSpring,
+};
+
 const ICON_MAP: Record<QuizCategoryNameType, React.ReactNode> = {
   COMPUTER_ARCHITECTURE: <IconComputerStructure />,
   DATABASE: <IconDataBase />,
@@ -45,4 +69,4 @@ const DESC_MAP: Record<QuizCategoryNameType, string> = {
     '애플리케이션 서버를 만들 수 있는 Spring에 대해 얼마나 알고 있나요? 프레임워크의 개념부터 스프링의 핵심기능과 원리를 익혀봐요.',
 };
 
-export { ICON_MAP, DESC_MAP };
+export { FANCY_ICON_MAP, ICON_MAP, DESC_MAP };
