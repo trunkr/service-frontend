@@ -33,7 +33,7 @@ const CATEGORY_FORMATTED_MAP: Record<QuizCategoryNameType, string> = {
   SPRING: 'Spring',
   REACT: 'React',
   JAVASCRIPT: 'JavaScript',
-  COMPUTER_ARCHITECTURE: 'COMPUTER ARCHITECTURE',
+  COMPUTER_ARCHITECTURE: '컴퓨터구조',
 };
 
 export { CATEGORY_ICON_MAP, CATEGORY_FORMATTED_MAP };
