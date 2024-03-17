@@ -35,11 +35,11 @@ function Header() {
             tabs={[
               {
                 title: 'CS 문제 풀기',
-                to: PATH.quiz,
+                to: [PATH.quiz, PATH.quizAnswer],
               },
               {
                 title: 'CS 문제 풀이 분석',
-                to: PATH.statistics,
+                to: [PATH.statistics],
               },
             ]}
             toggleLoginDialog={toggleLoginDialog}

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface INavLinkData {
   title: string;
-  to: string;
+  to: string[];
 }
 
 export type SizeType = 'small' | 'medium' | 'large';

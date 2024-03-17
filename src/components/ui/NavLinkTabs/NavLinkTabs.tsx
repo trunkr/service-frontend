@@ -43,14 +43,14 @@ function NavLinkTabs({ tabs, toggleLoginDialog }: Props) {
         {tabs.map((tab, i) => (
           <button
             key={i}
-            css={item(pathname === tab.to)}
-            onClick={() => handleClick(tab.to)}
+            css={item(tab.to.includes(pathname))}
+            onClick={() => handleClick(tab.to[0])}
             ref={(instance) => {
-              addRefs(instance, tab.to);
+              addRefs(instance, tab.to[0]);
             }}
           >
             {tab.title}
-            {pathname === tab.to && current && current.offsetWidth === 0 && (
+            {pathname === tab.to[0] && current && current.offsetWidth === 0 && (
               <div
                 css={{
                   width: '100%',
@@ -61,14 +61,19 @@ function NavLinkTabs({ tabs, toggleLoginDialog }: Props) {
           </button>
         ))}
       </div>
-      <div
-        css={{
-          ...indicatorStyle(gray900),
-          width: `${width}px`,
-          transition: `transform 0.3s ease-in-out, width 0.3s ease-in-out`,
-          transform: `translate(${left}px)`,
-        }}
-      />
+      {tabs
+        .map((item) => item.to)
+        .flat()
+        .includes(pathname) && (
+        <div
+          css={{
+            ...indicatorStyle(gray900),
+            width: `${width}px`,
+            transition: `transform 0.3s ease-in-out, width 0.3s ease-in-out`,
+            transform: `translate(${left}px)`,
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -79,6 +84,7 @@ const indicatorStyle = (background: string): CSSObject => ({
   height: '2px',
   borderRadius: '1px',
   background,
+  // display: isActive ? 'block' : 'none',
 });
 
 export default NavLinkTabs;
