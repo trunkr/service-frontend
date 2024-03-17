@@ -37,7 +37,7 @@ function Category() {
       >{`푼 문제 총 ${statistics.totalCount}개 (정답 ${statistics.correctCount}개 / 오답 ${statistics.incorrectCount}개)`}</p>
       <div css={filterWrap}>
         <UiComponent.CheckBox uiType="rect" checked={seeOnlyIncorrectQuiz} handleCheck={setSeeOnlyIncorrectQuiz}>
-          <p>틀린 문제만 보기</p>
+          <p css={(theme) => ({ fontSize: theme.typography.size.body4 })}>틀린 문제만 보기</p>
         </UiComponent.CheckBox>
       </div>
 

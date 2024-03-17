@@ -68,7 +68,7 @@ function Edit({ data, handleProfileImage, handleValue, email, originData }: Prop
         <p>내 정보</p>
       </div>
       <div css={profileWrap}>
-        <img src={PROFILE_DATA[Number(data.profileImageUrl)]} alt="" width={70} />
+        <img src={PROFILE_DATA[Number(data.profileImageUrl)]} alt="" width={130} />
         <button type="button" onClick={handleProfileImage}>
           <img src={icEdit} alt="" />
         </button>

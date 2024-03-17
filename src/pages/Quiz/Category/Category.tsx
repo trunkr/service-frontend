@@ -36,7 +36,9 @@ function Category() {
 
       <div css={{ margin: '20px 0 35px' }}>
         <UiComponent.CheckBox uiType="rect" checked={isAllChecked} handleCheck={handleCheckAll}>
-          {`전체 선택 (${checkedItems.length}/${categories.length})`}
+          <p
+            css={(theme) => ({ fontSize: theme.typography.size.body4 })}
+          >{`전체 선택 (${checkedItems.length}/${categories.length})`}</p>
         </UiComponent.CheckBox>
       </div>
       <section css={listWrap}>
