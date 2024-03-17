@@ -40,12 +40,15 @@ const {
       state.alertContent = '';
     },
     addToast: (state, action: PayloadAction<Omit<IToastPayload, 'id'>>) => {
-      const id = _v4();
+      if (state.toasts.list.length > 0) return;
+      else {
+        const id = _v4();
 
-      state.toasts = {
-        posBottom: action.payload?.posBottom || 60,
-        list: [{ id, ...action.payload }, ...state.toasts.list],
-      };
+        state.toasts = {
+          posBottom: action.payload?.posBottom || 60,
+          list: [{ id, ...action.payload }, ...state.toasts.list],
+        };
+      }
     },
     removeToast: (state, action: PayloadAction<Pick<IToastPayload, 'id'>>) => {
       const { id } = action.payload;
