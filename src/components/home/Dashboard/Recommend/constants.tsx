@@ -1,52 +1,63 @@
-import React from 'react';
-import IconComputerStructure from 'static/icons/category/IconComputerStructure';
-import IconDataBase from 'static/icons/category/IconDataBase';
-import IconDataStructure from 'static/icons/category/IconDataStructure';
-import IconJava from 'static/icons/category/IconJava';
-import IconJavaScript from 'static/icons/category/IconJavaScript';
-import IconKotlin from 'static/icons/category/IconKotlin';
-import IconNetwork from 'static/icons/category/IconNetwork';
-import IconOS from 'static/icons/category/IconOS';
-import IconReact from 'static/icons/category/IconReact';
-import IconSpring from 'static/icons/category/IconSpring';
 import { QuizCategoryNameType } from 'types';
 
-import icComputerStructure from 'static/graphics/category/ComputerStructure.svg';
-import icDataBase from 'static/graphics/category/DataBase.svg';
-import icDataStructure from 'static/graphics/category/DataStructure.svg';
-import icJava from 'static/graphics/category/Java.svg';
-import icJavaScript from 'static/graphics/category/JavaScript.svg';
-import icKotlin from 'static/graphics/category/Kotlin.svg';
-import icNetwork from 'static/graphics/category/Network.svg';
-import icOS from 'static/graphics/category/OS.svg';
-import icReact from 'static/graphics/category/React.svg';
-import icSpring from 'static/graphics/category/Spring.svg';
+import graphicComputerStructure from 'static/graphics/category/ComputerStructure.svg';
+import graphicDataBase from 'static/graphics/category/DataBase.svg';
+import graphicDataStructure from 'static/graphics/category/DataStructure.svg';
+import graphicJava from 'static/graphics/category/Java.svg';
+import graphicJavaScript from 'static/graphics/category/JavaScript.svg';
+import graphicKotlin from 'static/graphics/category/Kotlin.svg';
+import graphicNetwork from 'static/graphics/category/Network.svg';
+import graphicOS from 'static/graphics/category/OS.svg';
+import graphicReact from 'static/graphics/category/React.svg';
+import graphicSpring from 'static/graphics/category/Spring.svg';
+
+import icComputerStructure from 'static/icons/category/ComputerStructure.svg';
+import icDataBase from 'static/icons/category/DataBase.svg';
+import icDataStructure from 'static/icons/category/DataStructure.svg';
+import icJava from 'static/icons/category/Java.svg';
+import icJavaScript from 'static/icons/category/JavaScript.svg';
+import icKotlin from 'static/icons/category/Kotlin.svg';
+import icNetwork from 'static/icons/category/Network.svg';
+import icOS from 'static/icons/category/OS.svg';
+import icReact from 'static/icons/category/React.svg';
+import icSpring from 'static/icons/category/Spring.svg';
+
+import icComputerStructureDisabled from 'static/icons/category/ComputerStructure_disabled.svg';
+import icDataBaseDisabled from 'static/icons/category/DataBase_disabled.svg';
+import icDataStructureDisabled from 'static/icons/category/DataStructure_disabled.svg';
+import icJavaDisabled from 'static/icons/category/Java_disabled.svg';
+import icJavaScriptDisabled from 'static/icons/category/JavaScript_disabled.svg';
+import icKotlinDisabled from 'static/icons/category/Kotlin_disabled.svg';
+import icNetworkDisabled from 'static/icons/category/Network_disabled.svg';
+import icOSDisabled from 'static/icons/category/OS_disabled.svg';
+import icReactDisabled from 'static/icons/category/React_disabled.svg';
+import icSpringDisabled from 'static/icons/category/Spring_disabled.svg';
 
 const FANCY_ICON_MAP: Record<QuizCategoryNameType, string> = {
-  COMPUTER_ARCHITECTURE: icComputerStructure,
-  DATABASE: icDataBase,
-  DATA_STRUCTURE: icDataStructure,
-  JAVA: icJava,
-  JAVASCRIPT: icJavaScript,
-  KOTLIN: icKotlin,
-  NETWORK: icNetwork,
-  OS: icOS,
-  REACT: icReact,
-  SPRING: icSpring,
+  COMPUTER_ARCHITECTURE: graphicComputerStructure,
+  DATABASE: graphicDataBase,
+  DATA_STRUCTURE: graphicDataStructure,
+  JAVA: graphicJava,
+  JAVASCRIPT: graphicJavaScript,
+  KOTLIN: graphicKotlin,
+  NETWORK: graphicNetwork,
+  OS: graphicOS,
+  REACT: graphicReact,
+  SPRING: graphicSpring,
 };
 
-const ICON_MAP: Record<QuizCategoryNameType, React.ReactNode> = {
-  COMPUTER_ARCHITECTURE: <IconComputerStructure />,
-  DATABASE: <IconDataBase />,
-  DATA_STRUCTURE: <IconDataStructure />,
-  JAVA: <IconJava />,
-  JAVASCRIPT: <IconJavaScript />,
-  KOTLIN: <IconKotlin />,
-  NETWORK: <IconNetwork />,
-  OS: <IconOS />,
-  REACT: <IconReact />,
-  SPRING: <IconSpring />,
-};
+const ICON_MAP = (isActive: boolean): Record<QuizCategoryNameType, string> => ({
+  COMPUTER_ARCHITECTURE: isActive ? icComputerStructure : icComputerStructureDisabled,
+  DATABASE: isActive ? icDataBase : icDataBaseDisabled,
+  DATA_STRUCTURE: isActive ? icDataStructure : icDataStructureDisabled,
+  JAVA: isActive ? icJava : icJavaDisabled,
+  JAVASCRIPT: isActive ? icJavaScript : icJavaScriptDisabled,
+  KOTLIN: isActive ? icKotlin : icKotlinDisabled,
+  NETWORK: isActive ? icNetwork : icNetworkDisabled,
+  OS: isActive ? icOS : icOSDisabled,
+  REACT: isActive ? icReact : icReactDisabled,
+  SPRING: isActive ? icSpring : icSpringDisabled,
+});
 
 const DESC_MAP: Record<QuizCategoryNameType, string> = {
   COMPUTER_ARCHITECTURE:
