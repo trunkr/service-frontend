@@ -17,7 +17,7 @@ function useSignup() {
       memberId: auth.memberId,
       nickname,
       profileImageUrl: String(profileImageUrl),
-      termsAgreement: {
+      termsAgreements: {
         PRIVACY_CONSENT: true,
         SERVICE_TERMS: true,
       },

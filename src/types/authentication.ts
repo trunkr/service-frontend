@@ -33,7 +33,7 @@ export interface ITermsAgreement {
 export interface ISignUpParams extends MembeIdBase {
   nickname: string;
   profileImageUrl: string;
-  termsAgreement: ITermsAgreement;
+  termsAgreements: ITermsAgreement;
 }
 
 export interface IRefreshTokenParams extends MembeIdBase {

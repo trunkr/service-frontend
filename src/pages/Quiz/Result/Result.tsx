@@ -5,10 +5,24 @@ import DoughnutChart from 'components/ui/DoughnutChart';
 import { QuizQuery } from 'queries';
 import { useParams } from 'react-router-dom';
 import { wrap, textStyle, titleStyle, scoreStyle } from './style';
+import { AnswerResultType } from 'types';
 
 function Result() {
   const { quizGroupId } = useParams();
   const { data } = QuizQuery.useGetAnswerResult(quizGroupId || '');
+
+  const d: AnswerResultType[] = [
+    {
+      quizId: 1,
+      question: 'q1',
+      isCorrect: true,
+    },
+    {
+      quizId: 2,
+      question: 'q2',
+      isCorrect: false,
+    },
+  ];
 
   const isCorrentCnt = useMemo(() => data?.result.reduce((a, b) => a + (b.isCorrect ? 1 : 0), 0) || 0, [data?.result]);
   const total = useMemo(() => data?.result.length || 0, [data?.result]);
@@ -34,7 +48,8 @@ function Result() {
         <br />
         틀린 문제부터 복습해보세요!
       </p>
-      {data?.result.map((item) => (
+      {d.map((item) => (
+        // {data?.result.map((item) => (
         <Fragment key={item.quizId}>
           <QuizComponent.ResultItem item={item} quizGroupId={quizGroupId || ''} />
         </Fragment>

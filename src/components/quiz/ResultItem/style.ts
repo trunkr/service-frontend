@@ -38,6 +38,7 @@ const labelStyle =
       weight: { bold },
     },
   }: Theme): CSSObject => ({
+    display: 'flex',
     borderRadius: '4px',
     padding: '6px 10px',
     background: isCorrect ? mint200 : red200,
