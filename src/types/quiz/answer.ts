@@ -46,7 +46,9 @@ export type AnotherAnswerParams = Pick<IQuizAnotherAnswer, 'quizId'> & IPagePara
 
 export type AnswerParams = AnswerGroupParams & Pick<IQuizAnswer, 'answer'> & { isQuizOpen: boolean };
 
-export type AnswerResultType = Pick<IQuizAnswer, 'quizId' | 'question'> & { isCorrect: boolean };
+export type AnswerResultType = Pick<IQuizAnswer, 'quizId' | 'question'> & { isCorrect: boolean } & Partial<
+    Pick<IQuizAnswer, 'quizGroupId'>
+  >;
 
 export type AnswerFavorParams = {
   articleId: string;

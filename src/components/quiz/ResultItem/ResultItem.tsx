@@ -14,7 +14,8 @@ interface Props {
 function ResultItem({ item, quizGroupId }: Props) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`${PATH.quizAnswer}/${item.quizId}/${quizGroupId}`);
+    const groupId = item.quizGroupId || quizGroupId;
+    navigate(`${PATH.quizAnswer}/${item.quizId}/${groupId}`);
   };
 
   return (
