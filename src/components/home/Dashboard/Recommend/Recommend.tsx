@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import { ICON_MAP, DESC_MAP } from './constants';
+import { DESC_MAP } from './constants';
 import { IQuizCategory } from 'types';
 import { QuizQuery } from 'queries';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from 'data/path';
 import IconArrow from 'static/icons/system/IconArrow';
 import { wrap, contentsWrap, arrow } from './style';
-import { CATEGORY_FORMATTED_MAP } from 'data/category';
+import { CATEGORY_FORMATTED_MAP, CATEGORY_ICON_MAP } from 'data/category';
 
 function Recommend() {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ function Recommend() {
               borderRadius: '10px 10px 0 0',
               width: '100%',
               height: '160px',
-              background: `url(${ICON_MAP[item.name]}) no-repeat center`,
+              background: `url(${CATEGORY_ICON_MAP[item.name]}) no-repeat center`,
               backgroundSize: 'cover',
             }}
           />

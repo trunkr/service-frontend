@@ -1,0 +1,14 @@
+import React from 'react';
+import { f } from 'styles';
+
+const SVG = `
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 5.5C15.5 7.43 13.93 9 12 9C10.07 9 8.5 7.43 8.5 5.5C8.5 3.57 10.07 2 12 2C13.93 2 15.5 3.57 15.5 5.5ZM17.22 15.4999H20.5C21.33 15.4999 22 16.1699 22 16.9999V20.4999C22 21.3299 21.33 21.9999 20.5 21.9999H17C16.17 21.9999 15.5 21.3299 15.5 20.4999V16.9999C15.5 16.8699 15.52 16.7499 15.55 16.6299L12 12.5899L8.45 16.6299C8.48 16.7499 8.5 16.8699 8.5 16.9999V20.4999C8.5 21.3299 7.83 21.9999 7 21.9999H3.5C2.67 21.9999 2 21.3299 2 20.4999V16.9999C2 16.1699 2.67 15.4999 3.5 15.4999H6.78L11.25 10.4099C11.44 10.1899 11.71 10.0699 12 10.0699C12.29 10.0699 12.56 10.1899 12.75 10.4099L17.22 15.4999Z" fill="black"/>
+</svg>
+`;
+
+const IconDataStructure: React.FC<{ onClick?: VoidFunction; className?: string }> = ({ onClick, className }) => (
+  <div css={[f.flex]} className={className} onClick={onClick} dangerouslySetInnerHTML={{ __html: SVG }} />
+);
+
+export default IconDataStructure;

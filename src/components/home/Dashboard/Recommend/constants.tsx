@@ -1,26 +1,27 @@
-import icComputerStructure from 'static/graphics/category/ComputerStructure.svg';
-import icDataBase from 'static/graphics/category/DataBase.svg';
-import icDataStructure from 'static/graphics/category/DataStructure.svg';
-import icJava from 'static/graphics/category/Java.svg';
-import icJavaScript from 'static/graphics/category/JavaScript.svg';
-import icKotlin from 'static/graphics/category/Kotlin.svg';
-import icNetwork from 'static/graphics/category/Network.svg';
-import icOS from 'static/graphics/category/OS.svg';
-import icReact from 'static/graphics/category/React.svg';
-import icSpring from 'static/graphics/category/Spring.svg';
+import React from 'react';
+import IconComputerStructure from 'static/icons/category/IconComputerStructure';
+import IconDataBase from 'static/icons/category/IconDataBase';
+import IconDataStructure from 'static/icons/category/IconDataStructure';
+import IconJava from 'static/icons/category/IconJava';
+import IconJavaScript from 'static/icons/category/IconJavaScript';
+import IconKotlin from 'static/icons/category/IconKotlin';
+import IconNetwork from 'static/icons/category/IconNetwork';
+import IconOS from 'static/icons/category/IconOS';
+import IconReact from 'static/icons/category/IconReact';
+import IconSpring from 'static/icons/category/IconSpring';
 import { QuizCategoryNameType } from 'types';
 
-const ICON_MAP: Record<QuizCategoryNameType, string> = {
-  COMPUTER_ARCHITECTURE: icComputerStructure,
-  DATABASE: icDataBase,
-  DATA_STRUCTURE: icDataStructure,
-  JAVA: icJava,
-  JAVASCRIPT: icJavaScript,
-  KOTLIN: icKotlin,
-  NETWORK: icNetwork,
-  OS: icOS,
-  REACT: icReact,
-  SPRING: icSpring,
+const ICON_MAP: Record<QuizCategoryNameType, React.ReactNode> = {
+  COMPUTER_ARCHITECTURE: <IconComputerStructure />,
+  DATABASE: <IconDataBase />,
+  DATA_STRUCTURE: <IconDataStructure />,
+  JAVA: <IconJava />,
+  JAVASCRIPT: <IconJavaScript />,
+  KOTLIN: <IconKotlin />,
+  NETWORK: <IconNetwork />,
+  OS: <IconOS />,
+  REACT: <IconReact />,
+  SPRING: <IconSpring />,
 };
 
 const DESC_MAP: Record<QuizCategoryNameType, string> = {

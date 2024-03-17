@@ -13,7 +13,7 @@ import IconEmpty from 'static/graphics/system/IconEmpty';
 import { PATH } from 'data/path';
 
 function Main() {
-  const { data } = QuizQuery.useGetRecent();
+  const { data, isLoading } = QuizQuery.useGetRecent();
 
   const [swiperInstance, setSwiper] = useState<SwiperClass | undefined>(undefined);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -79,12 +79,16 @@ function Main() {
           )}
         </div>
       ) : (
-        <div css={emptyWrap}>
-          <IconEmpty />
-          <span>최근에 푼 문제가 없어요.</span>
-          <p>CS 문제를 풀고, Ai 피드백을 받아보세요.</p>
-          <button onClick={navigateToQuizPage}>문제풀기</button>
-        </div>
+        <>
+          {!isLoading && (
+            <div css={emptyWrap}>
+              <IconEmpty />
+              <span>최근에 푼 문제가 없어요.</span>
+              <p>CS 문제를 풀고, Ai 피드백을 받아보세요.</p>
+              <button onClick={navigateToQuizPage}>문제풀기</button>
+            </div>
+          )}
+        </>
       )}
       <StatisticsComponent.StatisticsByCategories />
     </main>

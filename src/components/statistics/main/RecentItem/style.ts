@@ -13,6 +13,7 @@ const wrap = ({
   justifyContent: 'space-between',
   width: '290px',
   height: '157px',
+  gap: 'none',
 });
 
 const title = ({

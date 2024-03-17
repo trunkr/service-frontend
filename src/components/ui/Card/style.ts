@@ -7,7 +7,7 @@ const wrap = ({
 }: Theme): CSSObject => ({
   boxSizing: 'border-box',
   border: `2px solid ${gray250}`,
-  padding: '24px',
+  padding: '26px',
   borderRadius: '10px',
   display: 'flex',
   flexDirection: 'column',
