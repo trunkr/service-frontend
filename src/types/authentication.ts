@@ -27,6 +27,7 @@ export interface ISocialSignInParams {
 
 export interface ITermsAgreement {
   PRIVACY_CONSENT: boolean;
+  SERVICE_TERMS: boolean;
 }
 
 export interface ISignUpParams extends MembeIdBase {

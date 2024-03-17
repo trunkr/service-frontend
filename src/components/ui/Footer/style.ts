@@ -48,6 +48,7 @@ const linkWrap = ({
     cursor: 'pointer',
     fontWeight: bold,
     fontSize: label2,
+    textDecoration: 'none',
     ':hover': {
       textDecoration: 'underline',
     },

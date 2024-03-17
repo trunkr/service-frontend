@@ -22,7 +22,7 @@ function useRandom() {
           openAlert({
             alertContent:
               '하루에 1번만 풀 수 있어요! CS 문제 풀기는 내일 다시 시도해 주세요.\n오늘 푼 문제에 대해 복습해보시는 건 어떨까요?',
-            alertTitle: err.response?.data?.message,
+            alertTitle: '더 이상 풀 수 있는 문제가 없어요.',
           }),
         );
       }

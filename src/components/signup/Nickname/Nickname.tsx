@@ -39,7 +39,13 @@ function Nickname({ nickname, handleNickName, handleNext }: Props) {
             Trunkr 이용약관에 동의합니다
           </p>
         </UiComponent.CheckBox>
-        <button type="button" css={(theme) => ({ textDecoration: 'underline', fontSize: theme.typography.size.body2 })}>
+        <button
+          type="button"
+          css={(theme) => ({ textDecoration: 'underline', fontSize: theme.typography.size.body2 })}
+          onClick={() => {
+            window.open('https://colossal-entrance-a84.notion.site/TRUNKR-5cf24cf811f342db872a674635503f0d', '__blank');
+          }}
+        >
           전체보기
         </button>
       </div>

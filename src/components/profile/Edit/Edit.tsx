@@ -94,7 +94,7 @@ function Edit({ data, handleProfileImage, handleValue, email, originData }: Prop
 
       <div css={[optionRows, { margin: '30px 0 60px' }]}>
         <div>
-          <p>CS 문제 갯수 설정</p>
+          <p>CS 문제 개수 설정</p>
         </div>
         <ProfileComponent.QuizCountOption count={data.quizCount} handleCount={(v) => handleValue('quizCount', v)} />
       </div>

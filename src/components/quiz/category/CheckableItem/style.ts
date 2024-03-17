@@ -22,15 +22,16 @@ const subTitle = ({
   },
   typography: {
     size: { label7 },
-    weight: { medium },
+    weight: { medium, bold },
   },
 }: Theme): CSSObject => ({
   fontSize: label7,
   color: gray900,
   lineHeight: 1.2,
-  fontWeight: medium,
+  fontWeight: bold,
   '> span': {
     color: gray700,
+    fontWeight: medium,
   },
 });
 

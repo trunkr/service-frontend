@@ -3,9 +3,22 @@ import { isMobile } from 'react-device-detect';
 import icLogo from 'static/logos/logo.svg';
 import { theme } from 'styles';
 import Divider from '../Divider';
-import { wrap, mWrap, text, linkWrap, mCopyrightText, mGuideText, mBtn } from './style';
+import { wrap, mWrap, text, linkWrap, mCopyrightText, mGuideText } from './style';
+import { openAlert } from 'stores/ui';
+import { useAppDispatch } from 'stores';
 
 function Footer() {
+  const dispatch = useAppDispatch();
+
+  const handleBlog = () => {
+    dispatch(
+      openAlert({
+        alertContent: '',
+        alertTitle: '준비중입니다',
+      }),
+    );
+  };
+
   if (isMobile) {
     return (
       <footer css={mWrap}>
@@ -13,9 +26,9 @@ function Footer() {
           현재 서비스 환경 상 PC에서만 사용 가능합니다.
           <br />곧 모바일에서도 만나요!
         </p>
-        <button type="button" css={mBtn}>
+        {/* <button type="button" css={mBtn}>
           PC 버전으로 접속하기
-        </button>
+        </button> */}
         <p css={mCopyrightText}>ⓒ 2023. Trunkr, All rights reserved.</p>
       </footer>
     );
@@ -30,9 +43,11 @@ function Footer() {
           <p css={text}>ⓒ 2023. Trunkr, All rights reserved.</p>
         </div>
         <div css={linkWrap}>
-          <a>이용약관</a>
-          <a>문의하기</a>
-          <a>팀 블로그</a>
+          <a href="https://colossal-entrance-a84.notion.site/TRUNKR-5cf24cf811f342db872a674635503f0d" target="__blank">
+            이용약관
+          </a>
+          <a href="mailto:trunkrai@gmail.com">문의하기</a>
+          <a onClick={handleBlog}>팀 블로그</a>
         </div>
       </footer>
     </>

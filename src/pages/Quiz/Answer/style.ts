@@ -30,7 +30,7 @@ const quizTitle = ({
   lineHeight: 1.3,
   maxWidth: '501px',
   textAlign: 'center',
-  margin: '90px 0 60px',
+  margin: '30px 0 60px',
   wordBreak: 'keep-all',
 });
 

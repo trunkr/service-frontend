@@ -19,6 +19,7 @@ function useSignup() {
       profileImageUrl: String(profileImageUrl),
       termsAgreement: {
         PRIVACY_CONSENT: true,
+        SERVICE_TERMS: true,
       },
     });
   };

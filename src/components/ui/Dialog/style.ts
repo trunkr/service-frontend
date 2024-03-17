@@ -50,14 +50,20 @@ const foot = ({
   color: {
     gray: { gray1000, gray0, gray150 },
   },
+  typography: {
+    size: { body4 },
+    weight: { bold },
+  },
 }: Theme): CSSObject => ({
   display: 'flex',
   flexDirection: 'row-reverse',
   justifyContent: 'flex-start',
   gap: '0 10px',
   '> button': {
-    padding: '12px 33px',
     borderRadius: '10px',
+    fontWeight: bold,
+    fontSize: body4,
+    padding: '12px 22px',
   },
   'button:nth-of-type(2n+1)': {
     color: gray0,

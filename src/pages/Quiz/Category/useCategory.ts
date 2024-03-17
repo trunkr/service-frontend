@@ -17,7 +17,10 @@ function useCategory() {
   const { data } = QuizQuery.useGetCategory(filter);
   const { categories, inactiveCategories } = useMemo(() => {
     if (!data) {
-      return { categories: [], inactiveCategories: [] };
+      return {
+        categories: [],
+        inactiveCategories: [],
+      };
     }
 
     return data.reduce(

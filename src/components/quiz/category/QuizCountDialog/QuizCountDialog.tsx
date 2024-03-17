@@ -36,8 +36,8 @@ function QuizCountDialog({ handleClose }: Props) {
 
   return (
     <UiComponent.Alert
-      title="CS 문제 갯수 설정"
-      subTitle="설정한 문제 갯수에 맞춰 문제가 랜덤으로 출제됩니다. "
+      title="CS 문제 개수 설정"
+      subTitle="설정한 문제 개수에 맞춰 문제가 랜덤으로 출제됩니다. "
       handleClose={handleClose}
       existFooter={false}
       opacity={0.5}

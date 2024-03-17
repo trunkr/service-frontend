@@ -68,7 +68,11 @@ function useAnswerState() {
       .subscribe((v) => {
         if (v.isLast) {
           setIsLoading(false);
-          navigate(`${PATH.quizAnswer}/${quizGroupId}`);
+          if (quizzes.length === 1) {
+            navigate(`${PATH.quizAnswer}/${quizzes[0].id}/${quizGroupId}`);
+          } else {
+            navigate(`${PATH.quizAnswer}/${quizGroupId}`);
+          }
         }
       });
 

@@ -23,6 +23,7 @@ function Answer() {
         <UiComponent.Textarea
           css={{ width: '100%' }}
           maxLen={2000}
+          placeholder="답변을 입력해주세요"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
         >

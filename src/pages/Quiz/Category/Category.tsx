@@ -27,10 +27,10 @@ function Category() {
       <p css={subTitle}>
         풀고 싶은 문제 카테고리를 선택해주세요. 선택한 카테고리에서 5개의 문제가 랜덤으로 출제됩니다.
         <br />
-        효율적인 학습을 위해 푼 문제는 중복으로 축제되지 않습니다.
+        효율적인 학습을 위해 푼 문제는 중복으로 출제되지 않습니다.
       </p>
       <button type="button" css={settingButton} onClick={() => setIsOpenQuizCountDialog(true)}>
-        문제 갯수 설정
+        문제 개수 설정
       </button>
       <QuizComponent.CategoryFilter filter={filter} handleFilter={handleFilter} />
 

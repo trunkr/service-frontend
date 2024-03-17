@@ -6,11 +6,16 @@ const global = css`
   ${reset.styles}
   ${fontCss.styles}
 
-  body {
-    font-familly: 'Pretendard', 'Poppins';
+  :root {
+    color-scheme: light only;
+  }
+
+  textarea {
+    font-family: 'Pretendard', 'Poppins';
   }
 
   button {
+    font-family: 'Pretendard', 'Poppins';
     border: none;
     background: none;
     cursor: pointer;
@@ -22,7 +27,7 @@ const global = css`
     background: unset;
   }
   pre {
-    font-family: Pretendard, system-ui;
+    font-family: 'Pretendard', 'Poppins';
   }
 `;
 

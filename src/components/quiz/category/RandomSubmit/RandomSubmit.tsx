@@ -1,4 +1,4 @@
-import React, { useMemo, useReducer, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { wrap } from './style';
 import { UiComponent } from 'components';
 import { IQuizRandomParams } from 'types';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { PATH } from 'data/path';
 
 function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
-  const [checked, toggle] = useReducer((c) => !c, false);
+  // const [checked, toggle] = useReducer((c) => !c, false);
   const disabled = useMemo(() => categoryIds === '', [categoryIds]);
 
   const { mutateAsync, data: d } = QuizQuery.useGetNotSubmitted();
@@ -20,7 +20,7 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
   const { mutate, isLoading } = QuizQuery.useRandom();
   const { data } = MemberQuery.usePersonalInfo();
 
-  const [isOpenConfirm, setIsOpenConfirm] = useState(false);
+  const [isOpenConfirm, setIsOpenConfirm] = useState(true);
 
   const handleClose = () => {
     dispatch(setRandom(null));
@@ -57,9 +57,9 @@ function RandomSubmit({ categoryIds }: Pick<IQuizRandomParams, 'categoryIds'>) {
   return (
     <>
       <div css={wrap}>
-        <UiComponent.CheckBox uiType="rect" checked={checked} handleCheck={() => toggle()}>
+        {/* <UiComponent.CheckBox uiType="rect" checked={checked} handleCheck={() => toggle()}>
           이 카테고리 다음에도 사용
-        </UiComponent.CheckBox>
+        </UiComponent.CheckBox> */}
         <UiComponent.Button color="primary" disabled={disabled} onClick={handleNext}>
           다음
         </UiComponent.Button>
