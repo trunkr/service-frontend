@@ -21,8 +21,8 @@ function ResultItem({ item, quizGroupId }: Props) {
   return (
     <div css={wrap} onClick={handleClick}>
       <div css={labelStyle(item.isCorrect)}>
-        <img src={item.isCorrect ? icCorrect : icIncorrect} alt="" css={{ marginRight: '4px' }} />
-        {item.isCorrect ? '정답' : '오답'}
+        <img src={item.isCorrect ? icCorrect : icIncorrect} alt="" css={{ marginRight: '4px' }} width={20} />
+        <p css={{ lineHeight: '1.1' }}>{item.isCorrect ? '정답' : '오답'}</p>
       </div>
       <p>{item.question}</p>
     </div>

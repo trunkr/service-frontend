@@ -9,7 +9,7 @@ function RecommendedAnswerStats({ count }: Props) {
     <li>
       <div>
         <p>추천 받은 답변 수</p>
-        <b>{count}</b>
+        <b className="font-number-semibold">{count}</b>
       </div>
       {count > 0 ? (
         <p>

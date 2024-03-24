@@ -39,8 +39,9 @@ const labelStyle =
     },
   }: Theme): CSSObject => ({
     display: 'flex',
-    borderRadius: '4px',
+    alignItems: 'center',
     padding: '6px 10px',
+    borderRadius: '4px',
     background: isCorrect ? mint200 : red200,
     color: isCorrect ? mint800 : red850,
     marginRight: '16px',

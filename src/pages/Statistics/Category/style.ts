@@ -57,6 +57,7 @@ const scoreStyle = ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  paddingLeft: '5px',
 });
 
 const scoreNumber =

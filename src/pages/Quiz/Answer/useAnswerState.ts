@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
-import { Subject, catchError, from, map, mergeMap, of, tap } from 'rxjs';
+import { Subject, catchError, delay, from, map, mergeMap, of, tap } from 'rxjs';
 import { useAppDispatch, useAppSelector } from 'stores';
 import { QuizQuery } from 'queries';
 import { AnswerParams, IQuizRandom } from 'types';
@@ -74,12 +74,15 @@ function useAnswerState() {
       )
       .subscribe((v) => {
         if (v.isLast) {
-          setIsLoading(false);
-          if (quizzes.length === 1) {
-            navigate(`${PATH.quizAnswer}/${quizzes[0].id}/${quizGroupId}`);
-          } else {
-            navigate(`${PATH.quizAnswer}/${quizGroupId}`);
-          }
+          delay(2000);
+          setTimeout(() => {
+            setIsLoading(false);
+            if (quizzes.length === 1) {
+              navigate(`${PATH.quizAnswer}/${quizzes[0].id}/${quizGroupId}`);
+            } else {
+              navigate(`${PATH.quizAnswer}/${quizGroupId}`);
+            }
+          }, 2000);
         }
       });
 

@@ -33,9 +33,11 @@ const itemWrap =
     },
   }: Theme) => ({
     width: '100%',
-    padding: '20px',
     borderRadius: '10px',
     border: `2px solid ${isSelected ? mint600 : gray200}`,
+    '> label': {
+      padding: '20px',
+    },
   });
 
 export { optionTitle, rows, itemWrap };

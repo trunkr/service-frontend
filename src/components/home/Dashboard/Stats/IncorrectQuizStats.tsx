@@ -11,7 +11,7 @@ function IncorrectQuizStats({ count }: Props) {
     <li>
       <div>
         <p>틀린 CS 문제 수</p>
-        <b>{count}</b>
+        <b className="font-number-semibold">{count}</b>
       </div>
       {count > 0 ? <NavLink to={PATH.statistics}>CS 문제 풀이 분석 보기</NavLink> : <p>아직 없어요</p>}
     </li>

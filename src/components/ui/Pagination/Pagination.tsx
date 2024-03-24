@@ -13,7 +13,6 @@ interface Props {
 function Pagination({ currentPage, totalPage, handlePage }: Props) {
   const start = useMemo(() => Math.floor(currentPage / MAX_PAGE) * MAX_PAGE, [currentPage]);
   const total = useMemo(() => totalPage - start, [totalPage, start]);
-
   const pages = useMemo(() => {
     if (total <= 0) return [];
 
@@ -32,6 +31,10 @@ function Pagination({ currentPage, totalPage, handlePage }: Props) {
       handlePage(nextPage);
     }
   };
+
+  if (total < 2) {
+    return null;
+  }
 
   return (
     <div css={wrap}>

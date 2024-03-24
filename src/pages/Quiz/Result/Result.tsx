@@ -21,8 +21,8 @@ function Result() {
     <main css={wrap}>
       <div css={{ position: 'relative' }}>
         <DoughnutChart percent={percent} size={131} />
-        <p css={scoreStyle}>
-          <span css={(theme) => ({ color: percent > 50 ? theme.color.primary.mint600 : theme.color.gray.gray350 })}>
+        <p css={scoreStyle} className="font-number-bold">
+          <span css={(theme) => ({ color: isCorrentCnt > 0 ? theme.color.primary.mint600 : theme.color.gray.gray350 })}>
             {isCorrentCnt}
           </span>
           <span css={(theme) => ({ color: theme.color.gray.gray350 })}>{` / ${total}`}</span>

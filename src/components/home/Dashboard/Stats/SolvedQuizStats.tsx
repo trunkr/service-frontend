@@ -26,7 +26,7 @@ function SolvedQuizStats({ count, categoryIds }: Props) {
     <li>
       <div>
         <p>지금까지 푼 CS 문제 수</p>
-        <b>{count}</b>
+        <b className="font-number-semibold">{count}</b>
       </div>
       {count > 0 ? (
         <p>

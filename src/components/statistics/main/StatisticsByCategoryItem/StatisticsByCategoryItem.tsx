@@ -46,6 +46,7 @@ function StatisticsByCategoryItem({ item }: Props) {
                 정답률
               </p>
               <p
+                className="font-number-bold"
                 css={(theme) => ({
                   fontSize: theme.typography.size.number5,
                   fontWeight: theme.typography.weight.bold,

@@ -25,10 +25,10 @@ function Category() {
         <DoughnutChart percent={percentageOfCorrectAnswers} size={131} />
         <div css={scoreStyle}>
           <div css={scoreNumber(percentageOfCorrectAnswers === 0)}>
-            <p>{percentageOfCorrectAnswers}</p>
+            <p className="font-number-bold">{percentageOfCorrectAnswers}</p>
             <p>%</p>
           </div>
-          <p css={scoreText}>정답율</p>
+          <p css={scoreText}>정답률</p>
         </div>
       </div>
       <h1 css={titleStyle}>{CATEGORY_FORMATTED_MAP[category?.name as keyof typeof CATEGORY_FORMATTED_MAP]}</h1>

@@ -82,7 +82,9 @@ function Edit({ data, handleProfileImage, handleValue, email, originData }: Prop
         value={data.nickname}
         onChange={(e) => handleValue('nickname', e.target.value)}
       />
-      <p css={[inputTitle, { marginTop: '30px' }]}>이메일</p>
+      <div>
+        <p css={[inputTitle, { marginTop: '30px' }]}>이메일</p>
+      </div>
       <UiComponent.Input disabled value={email} css={{ fontWeight: '500 !important' }} />
 
       <Divider color={theme.color.gray.gray250} style={{ margin: '80px 0' }} />

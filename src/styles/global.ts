@@ -9,11 +9,11 @@ const global = css`
   }
 
   textarea {
-    font-family: 'Pretendard', 'Poppins';
+    font-family: 'Pretendard';
   }
 
   button {
-    font-family: 'Pretendard', 'Poppins';
+    font-family: 'Pretendard';
     border: none;
     background: none;
     cursor: pointer;
@@ -25,7 +25,17 @@ const global = css`
     background: unset;
   }
   pre {
-    font-family: 'Pretendard', 'Poppins';
+    font-family: 'Pretendard';
+  }
+
+  .font-number-semibold {
+    font-family: 'PoppinsSemiBold';
+    line-height: 1.2;
+  }
+
+  .font-number-bold {
+    font-family: 'PoppinsBold';
+    line-height: 1.2;
   }
 `;
 

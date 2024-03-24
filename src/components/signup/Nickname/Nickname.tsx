@@ -41,7 +41,12 @@ function Nickname({ nickname, handleNickName, handleNext }: Props) {
         </UiComponent.CheckBox>
         <button
           type="button"
-          css={(theme) => ({ textDecoration: 'underline', fontSize: theme.typography.size.body2 })}
+          css={(theme) => ({
+            textDecoration: 'underline',
+            fontWeight: theme.typography.weight.bold,
+            fontSize: theme.typography.size.label2,
+            color: theme.color.gray.gray700,
+          })}
           onClick={() => {
             window.open('https://colossal-entrance-a84.notion.site/TRUNKR-5cf24cf811f342db872a674635503f0d', '__blank');
           }}
