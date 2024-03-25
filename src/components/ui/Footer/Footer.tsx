@@ -4,21 +4,19 @@ import icLogo from 'static/logos/logo.svg';
 import { theme } from 'styles';
 import Divider from '../Divider';
 import { wrap, mWrap, text, linkWrap, mCopyrightText, mGuideText } from './style';
-import { openAlert } from 'stores/ui';
-import { useAppDispatch } from 'stores';
 import { UiComponent } from 'components';
 
 function Footer() {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  const handleBlog = () => {
-    dispatch(
-      openAlert({
-        alertContent: '',
-        alertTitle: '준비중입니다',
-      }),
-    );
-  };
+  // const handleBlog = () => {
+  //   dispatch(
+  //     openAlert({
+  //       alertContent: '',
+  //       alertTitle: '준비중입니다',
+  //     }),
+  //   );
+  // };
 
   if (isMobile) {
     return (

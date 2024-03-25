@@ -12,7 +12,7 @@ function Hero() {
         <br />
         Trunkr와 함께 성장해보세요.
       </p>
-      <video autoPlay loop muted css={isMobile ? mVideoStyle : videoStyle}>
+      <video autoPlay loop muted controls={false} css={isMobile ? mVideoStyle : videoStyle} playsInline>
         <source src={heroVideo} />
       </video>
     </section>
