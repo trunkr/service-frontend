@@ -62,7 +62,9 @@ function Footer() {
           <UiComponent.Divider orientation="vertical" size={'16px'} color="#D9D9D9" />
           <div>
             <a href="mailto:trunkrai@gmail.com">문의</a>
-            <a onClick={handleBlog}>Instagram</a>
+            <a href="https://www.instagram.com/trunkr.ai/" target="__blank">
+              Instagram
+            </a>
           </div>
         </div>
       </footer>
