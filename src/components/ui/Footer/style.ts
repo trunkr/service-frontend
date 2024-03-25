@@ -36,21 +36,30 @@ const linkWrap = ({
     gray: { gray1000 },
   },
   typography: {
-    weight: { bold },
+    weight: { medium },
     size: { label2 },
   },
 }: Theme): CSSObject => ({
   display: 'flex',
   flexDirection: 'row',
-  gap: '0 155px',
-  '> a': {
-    color: gray1000,
-    cursor: 'pointer',
-    fontWeight: bold,
-    fontSize: label2,
-    textDecoration: 'none',
-    ':hover': {
-      textDecoration: 'underline',
+  gap: '0 60px',
+
+  '> div': {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '40px',
+
+    '> a': {
+      color: gray1000,
+      cursor: 'pointer',
+      fontWeight: medium,
+      fontSize: label2,
+      textDecoration: 'none',
+      height: 'max-content',
+
+      ':hover': {
+        textDecoration: 'underline',
+      },
     },
   },
 });

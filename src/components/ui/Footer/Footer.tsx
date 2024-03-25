@@ -6,6 +6,7 @@ import Divider from '../Divider';
 import { wrap, mWrap, text, linkWrap, mCopyrightText, mGuideText } from './style';
 import { openAlert } from 'stores/ui';
 import { useAppDispatch } from 'stores';
+import { UiComponent } from 'components';
 
 function Footer() {
   const dispatch = useAppDispatch();
@@ -43,11 +44,26 @@ function Footer() {
           <p css={text}>ⓒ 2023. Trunkr, All rights reserved.</p>
         </div>
         <div css={linkWrap}>
-          <a href="https://colossal-entrance-a84.notion.site/TRUNKR-5cf24cf811f342db872a674635503f0d" target="__blank">
-            이용약관
-          </a>
-          <a href="mailto:trunkrai@gmail.com">문의하기</a>
-          <a onClick={handleBlog}>팀 블로그</a>
+          <div>
+            <a
+              href="https://colossal-entrance-a84.notion.site/TRUNKR-9af721552d0a44fd8149ed7f5f06cea9"
+              target="__blank"
+            >
+              이용약관
+            </a>
+            <a
+              href="https://colossal-entrance-a84.notion.site/TRUNKR-5cf24cf811f342db872a674635503f0d"
+              target="__blank"
+              css={{ fontWeight: '700 !important' }}
+            >
+              개인정보처리방침
+            </a>
+          </div>
+          <UiComponent.Divider orientation="vertical" size={'16px'} color="#D9D9D9" />
+          <div>
+            <a href="mailto:trunkrai@gmail.com">문의</a>
+            <a onClick={handleBlog}>Instagram</a>
+          </div>
         </div>
       </footer>
     </>
