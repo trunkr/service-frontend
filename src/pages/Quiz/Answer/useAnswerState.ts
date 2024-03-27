@@ -89,6 +89,10 @@ function useAnswerState() {
     return () => subjectRef.current?.unsubscribe();
   }, []);
 
+  useEffect(() => {
+    scrollTop();
+  }, []);
+
   return { answer, quizzes, current, question, isQuizOpen, setIsQuizOpen, setAnswer, handleAnswer, isLoading };
 }
 
