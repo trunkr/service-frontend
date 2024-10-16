@@ -2,7 +2,7 @@ name: FE-Trunkr CD Test
 on:
   push:
     branches:
-      - dev
+      - ci-test
   workflow_dispatch:
 
 jobs:
