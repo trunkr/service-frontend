@@ -27,12 +27,13 @@ export interface ISocialSignInParams {
 
 export interface ITermsAgreement {
   PRIVACY_CONSENT: boolean;
+  SERVICE_TERMS: boolean;
 }
 
 export interface ISignUpParams extends MembeIdBase {
   nickname: string;
   profileImageUrl: string;
-  termsAgreement: ITermsAgreement;
+  termsAgreements: ITermsAgreement;
 }
 
 export interface IRefreshTokenParams extends MembeIdBase {

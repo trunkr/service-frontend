@@ -1,21 +1,25 @@
 import React, { useMemo } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme, CSSObject } from '@emotion/react';
 import { INavLinkData } from 'types';
 import useNavLinkTabs from './useNavLinkTabs';
 import { wrap, item } from './styles';
+import { useAppSelector } from 'stores';
 
 interface Props {
   tabs: INavLinkData[];
+  toggleLoginDialog: () => void;
 }
 
-function NavLinkTabs({ tabs }: Props) {
+function NavLinkTabs({ tabs, toggleLoginDialog }: Props) {
   const {
     color: {
       gray: { gray900 },
     },
   } = useTheme();
+  const { auth } = useAppSelector((state) => state.auth);
 
+  const navigate = useNavigate();
   const { current, addRefs } = useNavLinkTabs();
   const { pathname } = useLocation();
 
@@ -25,20 +29,28 @@ function NavLinkTabs({ tabs }: Props) {
     return { width: current.offsetWidth, left: current.offsetLeft };
   }, [current, pathname]);
 
+  const handleClick = (path: string) => {
+    if (!auth) {
+      toggleLoginDialog();
+      return;
+    }
+    navigate(path);
+  };
+
   return (
     <div css={{ position: 'relative', marginTop: '2px' }}>
       <div css={wrap}>
         {tabs.map((tab, i) => (
-          <NavLink
+          <button
             key={i}
-            to={tab.to}
-            css={item(pathname === tab.to)}
+            css={item(tab.to.includes(pathname))}
+            onClick={() => handleClick(tab.to[0])}
             ref={(instance) => {
-              addRefs(instance, tab.to);
+              addRefs(instance, tab.to[0]);
             }}
           >
             {tab.title}
-            {pathname === tab.to && current && current.offsetWidth === 0 && (
+            {pathname === tab.to[0] && current && current.offsetWidth === 0 && (
               <div
                 css={{
                   width: '100%',
@@ -46,17 +58,22 @@ function NavLinkTabs({ tabs }: Props) {
                 }}
               />
             )}
-          </NavLink>
+          </button>
         ))}
       </div>
-      <div
-        css={{
-          ...indicatorStyle(gray900),
-          width: `${width}px`,
-          transition: `transform 0.3s ease-in-out, width 0.3s ease-in-out`,
-          transform: `translate(${left}px)`,
-        }}
-      />
+      {tabs
+        .map((item) => item.to)
+        .flat()
+        .includes(pathname) && (
+        <div
+          css={{
+            ...indicatorStyle(gray900),
+            width: `${width}px`,
+            transition: `transform 0.3s ease-in-out, width 0.3s ease-in-out`,
+            transform: `translate(${left}px)`,
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -67,6 +84,7 @@ const indicatorStyle = (background: string): CSSObject => ({
   height: '2px',
   borderRadius: '1px',
   background,
+  // display: isActive ? 'block' : 'none',
 });
 
 export default NavLinkTabs;

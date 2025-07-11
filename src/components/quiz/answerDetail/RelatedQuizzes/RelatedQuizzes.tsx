@@ -1,0 +1,27 @@
+import React, { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+
+import useGetQuizGroup from 'queries/Quiz/useGetQuizGroup';
+
+import QuizSwiper from './QuizSwiper';
+import { IQuizGroup } from 'types';
+
+function RelatedQuizzes() {
+  const { quizId, quizGroupId } = useParams();
+  const { data: related, isSuccess } = useGetQuizGroup(
+    { quizId: quizId || '', quizGroupId: quizGroupId || '' },
+    quizGroupId !== '',
+  );
+
+  const filteredResults = useMemo(() => {
+    return related ? { ...related, result: related?.result?.filter((item) => item.quizId !== Number(quizId)) } : null;
+  }, [related, quizId]);
+
+  return (
+    <>
+      {filteredResults && isSuccess && <QuizSwiper related={filteredResults as IQuizGroup} quizGroupId={quizGroupId} />}
+    </>
+  );
+}
+
+export default RelatedQuizzes;

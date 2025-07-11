@@ -66,6 +66,7 @@ const buttonStyle =
     },
   }: Theme): CSSObject => {
     return {
+      boxSizing: 'border-box',
       textAlign: 'center',
       fontWeight: bold,
       ...(size && SIZE[size]),

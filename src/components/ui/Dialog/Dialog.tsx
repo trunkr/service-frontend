@@ -1,33 +1,25 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren } from 'react';
 import icClose from 'static/icons/system/ic_close.svg';
 import { closeStyle, foot, contents } from './style';
 import { IDialogProps } from './types';
 import Portal from '../Portal/Portal';
 import Background from './Background';
+import useDisableScroll from './useDisableScroll';
 
 function Dialog({
   children,
   handleClose,
   handleConfirm,
+  opacity = 0,
   existFooter = true,
   closeTitle = '닫기',
   confirmtitle = '확인',
 }: PropsWithChildren<IDialogProps>) {
-  const disableScroll = (disable: boolean) => {
-    document.body.style.overflowY = disable ? 'hidden' : 'scroll';
-  };
-
-  useEffect(() => {
-    disableScroll(true);
-
-    return () => {
-      disableScroll(false);
-    };
-  }, []);
+  useDisableScroll();
 
   return (
     <Portal>
-      <Background>
+      <Background opacity={opacity}>
         <div css={contents}>
           <button css={closeStyle} type="button" onClick={handleClose}>
             <img src={icClose} alt="" width="24" height="24" />

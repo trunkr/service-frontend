@@ -29,7 +29,7 @@ export interface IQuizStatistics {
 export interface IQuizStatisticsByCategoryParams extends IPageParams {
   quizCategoryId: string;
   /** 오답 필터 */
-  seeOnlyIncorrectQuiz?: string;
+  seeOnlyIncorrectQuiz?: boolean;
 }
 
 export interface IQuizStatisticsByCategoryResponse {
@@ -39,7 +39,7 @@ export interface IQuizStatisticsByCategoryResponse {
   content: AnswerResultType[];
 }
 
-export interface IQuizStatisticsByCategorieResponse {
+export interface IQuizStatisticsResponse {
   /** 전체 카테고리 수 */
   totalCategoryCount: number;
   content: IQuizStatisticsByCategoriesItem[];

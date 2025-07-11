@@ -11,6 +11,7 @@ const wrap = ({
   '> li': {
     borderRadius: '10px',
     border: `1px solid ${gray200}`,
+    cursor: 'pointer',
   },
 });
 
@@ -37,7 +38,7 @@ const contentsWrap = ({
     color: gray900,
   },
   padding: '24px 24px 40px 24px',
-  '> button': {
+  '> div': {
     position: 'absolute',
     top: '-20px',
     right: '26px',
@@ -45,7 +46,24 @@ const contentsWrap = ({
     height: '44px',
     borderRadius: '50%',
     background: gray900,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
-export { wrap, contentsWrap };
+const arrow = ({
+  color: {
+    gray: { gray0 },
+  },
+}: Theme): CSSObject => ({
+  '& > svg': {
+    transform: 'rotate(180deg)',
+
+    '& > path': {
+      fill: gray0,
+    },
+  },
+});
+
+export { wrap, contentsWrap, arrow };

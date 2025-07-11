@@ -17,7 +17,7 @@ const pageTitle = ({
 });
 
 const itemWrap: CSSObject = {
-  gap: '60px 30px',
+  gap: '60px 60px',
   display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr 1fr',
 };

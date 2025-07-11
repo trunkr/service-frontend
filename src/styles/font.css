@@ -1,0 +1,17 @@
+/* Pretendard */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('static/fonts/PretendardVariable.woff2') format('woff2');
+}
+
+/* Poppins */
+@font-face {
+  font-family: 'PoppinsBold';
+  src: url('static/fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+/* Poppins */
+@font-face {
+  font-family: 'PoppinsSemiBold';
+  src: url('static/fonts/Poppins-SemiBold.ttf') format('truetype');
+}

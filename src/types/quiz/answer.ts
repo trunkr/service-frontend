@@ -10,15 +10,32 @@ export interface IQuizAnswer {
   quizAnswerStatus: QuizAnswerStatusType;
   question: string;
   answer: string;
+  answeredAt: string;
   /** AI 피드백 */
   feedback: string;
   category: IQuizCategoryBase;
   member: Pick<IMember, 'nickname' | 'profileImageUrl'> & { id: number };
 }
 
-export interface IQuizAnotherAnswer extends Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'answer' | 'member'> {
+export interface IAnswerDetailParams {
+  quizId: string;
+  quizGroupId: string;
+}
+
+export type AnotherAnswerSortType = 'favor' | 'answeredAt';
+export type AnotherAnswerOrderType = 'desc' | 'asc';
+export type AnotherAnswerFilterType = `${AnotherAnswerSortType},${AnotherAnswerOrderType}`;
+
+export interface IQuizAnotherAnswerParams {
+  quizId: string;
+  sort?: AnotherAnswerFilterType;
+}
+
+export interface IQuizAnotherAnswer
+  extends Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'answer' | 'member' | 'answeredAt'> {
   favorCount: number;
   isFavor: boolean;
+  memberQuizAnswerId: string;
 }
 
 export type RecentAnswerType = Pick<IQuizAnswer, 'quizId' | 'quizGroupId' | 'question' | 'quizAnswerStatus'>;
@@ -27,6 +44,13 @@ export type AnswerGroupParams = Pick<IQuizAnswer, 'quizId' | 'quizGroupId'>;
 
 export type AnotherAnswerParams = Pick<IQuizAnotherAnswer, 'quizId'> & IPageParams;
 
-export type AnswerParams = AnswerGroupParams & Pick<IQuizAnswer, 'answer'>;
+export type AnswerParams = AnswerGroupParams & Pick<IQuizAnswer, 'answer'> & { isQuizOpen: boolean };
 
-export type AnswerResultType = Pick<IQuizAnswer, 'quizId' | 'question'> & { isCorrect: boolean };
+export type AnswerResultType = Pick<IQuizAnswer, 'quizId' | 'question'> & { isCorrect: boolean } & Partial<
+    Pick<IQuizAnswer, 'quizGroupId'>
+  >;
+
+export type AnswerFavorParams = {
+  articleId: string;
+  articleType: string;
+} & Pick<IQuizAnotherAnswer, 'isFavor'>;

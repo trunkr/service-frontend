@@ -14,7 +14,7 @@ const wrap = ({
 });
 
 const title = (theme: Theme): CSSObject => ({
-  fontSize: '40px',
+  fontSize: '35px',
   fontWeight: theme.typography.weight.bold,
   lineHeight: '1.3',
   color: theme.color.gray.gray900,
@@ -29,4 +29,22 @@ const subTitle = (theme: Theme): CSSObject => ({
   marginTop: '18px',
 });
 
-export { wrap, title, subTitle };
+const mTitle = (theme: Theme): CSSObject => ({
+  fontSize: '24px',
+  fontWeight: theme.typography.weight.bold,
+  lineHeight: '33.6px',
+  color: '#272727',
+  marginTop: '80px',
+  textAlign: 'center',
+});
+
+const mSubTitle = (theme: Theme): CSSObject => ({
+  fontSize: theme.typography.size.label4,
+  fontWeight: theme.typography.weight.semibold,
+  lineHeight: '22.4px',
+  color: theme.color.gray.gray650,
+  marginTop: '16px',
+  textAlign: 'center',
+});
+
+export { wrap, title, subTitle, mTitle, mSubTitle };

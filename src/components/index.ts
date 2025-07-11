@@ -5,3 +5,6 @@ export * as SingupComponent from './signup';
 
 export * as QuizComponent from './quiz';
 export * as StatisticsComponent from './statistics';
+
+export * as ProfileComponent from './profile';
+export * as ErrorComponent from './error-management';

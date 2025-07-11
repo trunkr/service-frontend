@@ -10,5 +10,9 @@ export { default as ProgressBar } from './ProgressBar';
 export { default as StepProgress } from './StepProgress';
 export { default as Textarea } from './Textarea';
 export { default as Toggle } from './Toggle';
+export { default as Pagination } from './Pagination';
+export { default as Toast } from './Toast';
+export { default as QuizCard } from './Card';
 
 export * from './Dialog';
+export { default as Divider } from './Divider';

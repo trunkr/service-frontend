@@ -13,6 +13,7 @@ const wrap = ({
   justifyContent: 'space-between',
   width: '290px',
   height: '157px',
+  gap: 'none',
 });
 
 const title = ({
@@ -42,7 +43,7 @@ const statusLabel =
       weight: { bold },
     },
   }: Theme): CSSObject => ({
-    padding: '6px 10px 3px 10px',
+    padding: '6px 10px 6px 10px',
     width: 'fit-content',
     lineHeight: '1.2',
     fontSize: label6,

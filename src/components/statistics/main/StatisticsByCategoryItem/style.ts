@@ -1,11 +1,28 @@
 import { CSSObject, Theme } from '@emotion/react';
 
-const wrap: CSSObject = {
+const wrap = (isActive: boolean): CSSObject => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'flex-start',
   gap: '0 20px',
-};
+  cursor: isActive ? 'pointer' : '',
+
+  '& > div': {
+    '& > svg': {
+      width: '40px',
+      height: '40px',
+
+      '& > path': {
+        fill: isActive ? '#111' : '#616161 ',
+        stroke: isActive ? '#111' : '#616161 ',
+      },
+    },
+
+    '& > p': {
+      color: isActive ? '#111' : '#616161 ',
+    },
+  },
+});
 
 const title = ({
   color: {

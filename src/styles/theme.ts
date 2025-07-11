@@ -1,4 +1,4 @@
-import { CSSObject, Theme } from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 
 const layout: CSSObject = {
   display: 'flex',
@@ -7,7 +7,7 @@ const layout: CSSObject = {
   margin: '0 auto',
 };
 
-const theme: Theme = {
+const theme = {
   color: {
     primary: {
       mint100: '#F4FFFE',
@@ -44,6 +44,7 @@ const theme: Theme = {
       gray200: '#EFEFEF',
       gray250: '#E8E8E8',
       gray300: '#DFDFDF',
+      gray330: '#D9D9D9',
       gray350: '#C8C8C8',
       gray400: '#B7B7B7',
       gray500: '#949494',
@@ -112,6 +113,6 @@ const theme: Theme = {
       width: '50%',
     },
   },
-};
+} as const;
 
 export default theme;

@@ -14,6 +14,9 @@ function useSignin() {
       const path = data.data.payload.isRequiredSignUp ? '/signup' : '/';
       navigate(path, { replace: true });
     },
+    onError() {
+      navigate('/', { replace: true });
+    },
   });
 }
 

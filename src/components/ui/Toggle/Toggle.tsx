@@ -6,7 +6,7 @@ import icOff from 'static/icons/system/ic_toggle_off.svg';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   handleCheck?: (checked: boolean) => void;
-  css?: Interpolation<Theme>;
+  sizeCss?: Interpolation<Theme>;
   readOnly?: boolean;
 }
 
@@ -14,7 +14,7 @@ function CheckBox({
   children,
   checked,
   handleCheck,
-  css = {
+  sizeCss = {
     width: '26px',
     height: '16px',
   },
@@ -28,7 +28,6 @@ function CheckBox({
     <label css={toggle}>
       <input
         {...props}
-        css={css}
         type="checkbox"
         checked={checked}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +37,7 @@ function CheckBox({
           toggleCheck();
         }}
       />
-      <img src={isChecked ? icOn : icOff} css={css} />
+      <img src={isChecked ? icOn : icOff} css={sizeCss} />
       {children}
     </label>
   );
